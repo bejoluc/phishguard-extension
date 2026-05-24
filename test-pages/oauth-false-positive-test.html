@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mój Portal - Zaloguj Się</title>
+  <!-- 
+    OPIS SCENARIUSZA TESTOWEGO (FAŁSZYWY ALARM - ELIMINACJA):
+    1. Strona zawiera przycisk OAuth "Zaloguj przez Google" (pojedyncze wystąpienie słowa Google w obszarze uwierzytelniania).
+    2. Strona zawiera generyczne wzmianki o markach w stopce (np. "Powered by Google & Microsoft") oraz w komentarzach.
+    3. Tradycyjny skan całego body flagował tu niespójność marek Google i Microsoft.
+    4. Zogniskowany skan DOM w nowej wersji PhishGuard powinien zignorować stopkę i komentarze,
+       a pojedyncze wystąpienie "Google" w przycisku OAuth powinno zostać pominięte ze względu na próg ufności (count = 1 < 2).
+    5. Oczekiwany wynik: brak wskaźnika "Brand Mismatch".
+  -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      width: 340px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    label {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    input {
+      padding: 10px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      color: white;
+    }
+    button.submit-btn {
+      padding: 12px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      color: #64748b;
+      position: relative;
+    }
+    .oauth-btn {
+      padding: 10px;
+      background: #ffffff;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    footer {
+      background: #0b0f19;
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+      font-size: 13px;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="card">
+      <h2>Zaloguj się do portalu</h2>
+      
+      <!-- Normalny, bezpieczny formularz logowania kierujący do lokalnej ścieżki -->
+      <form action="/login-handler" method="POST">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="twoj@email.pl" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Hasło</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="submit-btn">Zaloguj się</button>
+      </form>
+      
+      <div class="divider">lub</div>
+      
+      <!-- Pojedyncze wystąpienie marki Google jako zewnętrzny OAuth (powinno być zignorowane przez PhishGuard) -->
+      <button class="oauth-btn" onclick="alert('Logowanie przez Google...')">
+        Zaloguj przez Google
+      </button>
+    </div>
+  </div>
+
+  <!-- Generyczna stopka z markami, która powinna być całkowicie zignorowana -->
+  <footer>
+    <p>&copy; 2026 Mój Portal. Wspierane przez technologie Google Cloud, Microsoft Azure oraz Netflix OpenConnect.</p>
+  </footer>
+
+  <!-- Komentarz w kodzie zawierający wzmiankę o paypal (również ignorowany) -->
+  <!-- UWAGA DEWELOPERA: Przejście z systemu PayPal na integrację z Stripe w przyszłym kwartale. -->
+
+</body>
+</html>

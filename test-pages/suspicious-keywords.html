@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weryfikacja Konta Użytkownika</title>
+  <!-- 
+    OPIS SCENARIUSZA TESTOWEGO (SUSPICIOUS KEYWORDS):
+    1. Brak pól haseł i celów formularzy.
+    2. Strona zawiera nagromadzenie podejrzanych słów i zdań wywierających presję na użytkowniku.
+    3. Stosowane słowa kluczowe: verify, account, secure, update, password, zaloguj, haslo.
+    
+    * Ten test demonstruje zdolność rozszerzenia PhishGuard do wykrywania stron,
+      które próbują nakłonić użytkownika do podjęcia akcji pod pretekstem "pilnej weryfikacji konta"
+      lub "aktualizacji zabezpieczeń".
+  -->
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .alert-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .title {
+      color: #b91c1c;
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .btn-action {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #b91c1c;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="alert-box">
+    <div class="title">Secure Account Verification Alert</div>
+    
+    <p>We detected an unauthorized attempt to access your account. To maintain account security, you must immediately <strong>verify</strong> your credentials and identity.</p>
+    
+    <p>Please update your current <strong>password</strong> as soon as possible. Failure to complete this <strong>update</strong> secure process within 24 hours will result in permanent account suspension.</p>
+    
+    <!-- Link odsyłający do złośliwego zasobu (tekstowy przycisk akcji) -->
+    <a href="http://scam-link-example.com/verify-account" class="btn-action">Zaloguj się i zaktualizuj hasło</a>
+  </div>
+</body>
+</html>

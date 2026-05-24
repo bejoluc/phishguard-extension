@@ -1,0 +1,236 @@
+/* ==========================================================================
+   PhishGuard MVP - Czysty Styl Inżynierski (Flat Design)
+   ========================================================================== */
+
+/* Definicja stałych zmiennych kolorystycznych */
+:root {
+  --bg-dark: #0f172a;       /* Głębokie tło aplikacji */
+  --bg-card: #1e293b;       /* Tło sekcji/kart */
+  --border-color: #334155;  /* Granica elementów */
+  
+  --text-main: #f8fafc;     /* Główny jasny tekst */
+  --text-sub: #94a3b8;      /* Tekst pomocniczy */
+  
+  /* Kolory statusu bezpieczeństwa (podstawowa paleta o wysokim kontraście) */
+  --color-safe: #10b981;
+  --color-safe-bg: #064e3b;
+  
+  --color-suspicious: #f59e0b;
+  --color-suspicious-bg: #78350f;
+  
+  --color-dangerous: #ef4444;
+  --color-dangerous-bg: #7f1d1d;
+}
+
+/* Reset marginesów i podstawowa definicja ciała strony */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  width: 360px;
+  font-size: 14px;
+}
+
+/* Kontener główny aplikacji */
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Sekcja Nagłówka z podtytułem */
+.header-container {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+.header-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: var(--text-sub);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  background-color: #475569;
+  color: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Definicja powtarzalnych sekcji */
+.section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  letter-spacing: 0.5px;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+
+/* Prezentacja domeny */
+.domain-text {
+  font-size: 14px;
+  font-weight: 700;
+  word-break: break-all;
+  font-family: monospace; /* Monospace dla dokładnego podglądu znaków domeny */
+  color: #38bdf8;
+}
+
+/* Układ oceny ryzyka i statusu */
+.score-box {
+  background-color: var(--bg-card);
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-value {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+#risk-score {
+  color: #38bdf8;
+}
+
+/* Odznaka (Badge) Statusu Bezpieczeństwa */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Trzy warianty statusu - płaskie kolory bez animacji i poświaty */
+.status-badge.safe {
+  background-color: var(--color-safe-bg);
+  color: var(--color-safe);
+  border-color: var(--color-safe);
+}
+
+.status-badge.suspicious {
+  background-color: var(--color-suspicious-bg);
+  color: var(--color-suspicious);
+  border-color: var(--color-suspicious);
+}
+
+.status-badge.dangerous {
+  background-color: var(--color-dangerous-bg);
+  color: var(--color-dangerous);
+  border-color: var(--color-dangerous);
+}
+
+/* Lista wskaźników ryzyka */
+.indicators-list {
+  margin: 0;
+  padding: 0 0 0 16px;
+  list-style-type: square;
+}
+
+.indicators-list li {
+  font-size: 12px;
+  color: var(--text-main);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.indicators-list li:last-child {
+  margin-bottom: 0;
+}
+
+.indicators-list li.no-threats {
+  list-style-type: none;
+  margin-left: -16px;
+  color: var(--color-safe);
+  font-weight: 500;
+}
+
+/* Stopka i przycisk akcji */
+.footer {
+  margin-top: 4px;
+}
+
+.scan-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.scan-button:hover {
+  background-color: #0369a1;
+}
+
+.scan-button:active {
+  background-color: #075985;
+}
+
+/* Odznaka (Badge) Wiarygodności Analizy */
+.confidence-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.confidence-badge.low {
+  background-color: #1e293b;
+  color: #94a3b8;
+  border-color: #475569;
+}
+
+.confidence-badge.medium {
+  background-color: #451a03;
+  color: #f59e0b;
+  border-color: #d97706;
+}
+
+.confidence-badge.high {
+  background-color: #064e3b;
+  color: #10b981;
+  border-color: #10b981;
+}

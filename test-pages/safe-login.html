@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bezpieczny Portal Logowania</title>
+  <!-- 
+    OPIS SCENARIUSZA TESTOWEGO (SAFE):
+    1. Brak prób podszywania się pod znane marki (brak typosquattingu).
+    2. Formularz logowania wskazuje na ten sam host/ścieżkę relatywną (akcja lokalna, brak wycieku danych).
+    3. Normalne pole wprowadzania hasła.
+    * Uwaga: Po załadowaniu tego pliku lokalnie (jako file:///) rozszerzenie wykryje
+      "Zasób przeglądarki" ze względu na protokół lokalny. W celach badawczych witrynę
+      należy serwować przez lokalny serwer HTTP/HTTPS.
+  -->
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      width: 320px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    .form-group {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    input {
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Zaloguj się do konta</h2>
+    <!-- Akcja wskazuje na ścieżkę lokalną na tej samej domenie -->
+    <form action="/auth/login" method="POST">
+      <div class="form-group">
+        <label for="username">Nazwa użytkownika</label>
+        <input type="text" id="username" name="username" placeholder="Twoja nazwa..." required>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+      </div>
+      <button type="submit">Zaloguj się</button>
+    </form>
+  </div>
+</body>
+</html>

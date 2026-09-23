@@ -30,16 +30,16 @@
       <div class="score-row">
         <div>
           <h2 class="label">Ocena ryzyka:</h2>
-          <div class="score-value"><span id="risk-score">0</span> / 100</div>
+          <div class="score-value"><span id="risk-score">--</span> / 100</div>
         </div>
         <div class="status-wrapper">
           <h2 class="label">Status:</h2>
-          <div id="status-badge" class="status-badge safe">Bezpieczny</div>
+          <div id="status-badge" class="status-badge pending">Skanowanie</div>
         </div>
       </div>
       <div class="confidence-row" style="margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 8px; display: flex; justify-content: space-between; align-items: center;">
         <h2 class="label" style="margin: 0;">Wiarygodność analizy:</h2>
-        <div id="confidence-badge" class="confidence-badge low">Niska</div>
+        <div id="confidence-badge" class="confidence-badge low">Nie dotyczy</div>
       </div>
     </section>
 
@@ -47,7 +47,7 @@
     <section class="section">
       <h2 class="label">Wykryte wskaźniki ryzyka:</h2>
       <ul id="indicators-list" class="indicators-list">
-        <li class="no-threats">Brak anomalii. Witryna spełnia podstawowe kryteria bezpieczeństwa.</li>
+        <li class="scan-pending">Trwa analiza aktywnej strony.</li>
       </ul>
     </section>
 

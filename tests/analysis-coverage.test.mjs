@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { UrlHeuristicsEngine } from '../src/detectors/urlDetector.js';
 import { RiskCalculator } from '../src/scoring/riskScoring.js';
@@ -29,7 +30,8 @@ function render(assessment, systemUrl) {
   globalThis.document = { createElement: makeElement };
   UiRenderer.elements = elements;
   try {
-    if (systemUrl) UiRenderer.renderSystemPage(systemUrl);
+    if (systemUrl === 'scan') UiRenderer.renderScanning();
+    else if (systemUrl) UiRenderer.renderSystemPage(systemUrl);
     else UiRenderer.renderAssessment(assessment);
   } finally {
     globalThis.document = previousDocument;
@@ -87,4 +89,15 @@ test('internal browser pages are reported as not evaluated', () => {
   assert.equal(ui.riskScore.textContent, '--');
   assert.equal(ui.statusBadge.textContent, 'Nie oceniono');
   assert.match(ui.indicatorsList.children[0].textContent, /nie jest dostępna do analizy/);
+});
+
+test('the initial popup and subsequent scans show a pending state', () => {
+  const html = readFileSync(new URL('../popup.html', import.meta.url), 'utf8');
+  const ui = render(null, 'scan');
+
+  assert.match(html, /id="risk-score">--<\/span>/);
+  assert.match(html, /class="status-badge pending">Skanowanie<\/div>/);
+  assert.equal(ui.riskScore.textContent, '--');
+  assert.equal(ui.statusBadge.textContent, 'Skanowanie');
+  assert.match(ui.indicatorsList.children[0].textContent, /Trwa analiza/);
 });

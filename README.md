@@ -72,7 +72,7 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 - **31 - 70**: **Suspicious (Podejrzany)**
 - **71 - 100**: **Dangerous (Zagrożenie)**
 
-Klasyfikacja „Bezpieczny” dotyczy wyłącznie stron, dla których udało się zebrać dane URL i DOM. Gdy skanowanie DOM jest niedostępne, popup wyświetla ostrzeżenie o analizie niepełnej. Jeżeli sam URL wskazuje podejrzenie lub zagrożenie, kategoria pozostaje ostrzegawcza, ale nadal widać informację o niepełnym skanie. Strony wewnętrzne przeglądarki mają status „Nie oceniono”, bez punktacji. Wynik 0/100 oznacza brak wykrytych sygnałów w badanych cechach, a nie gwarancję bezpieczeństwa strony.
+Klasyfikacja „Bezpieczny” dotyczy wyłącznie stron, dla których udało się zebrać dane URL i DOM. Przed zakończeniem skanu oraz po kliknięciu „Skanuj ponownie” popup pokazuje status „Skanowanie”. Gdy skanowanie DOM jest niedostępne, popup wyświetla ostrzeżenie o analizie niepełnej. Jeżeli sam URL wskazuje podejrzenie lub zagrożenie, kategoria pozostaje ostrzegawcza, ale nadal widać informację o niepełnym skanie. Strony wewnętrzne przeglądarki mają status „Nie oceniono”, bez punktacji. Wynik 0/100 oznacza brak wykrytych sygnałów w badanych cechach, a nie gwarancję bezpieczeństwa strony.
 
 ---
 

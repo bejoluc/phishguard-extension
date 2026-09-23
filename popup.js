@@ -39,6 +39,7 @@ const AppController = {
    * Procedura główna sterująca przepływem i koordynacją skanowania.
    */
   async runScanner() {
+    UiRenderer.renderScanning();
     try {
       // 1. Pobranie aktywnej karty przeglądarki z Chrome API
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });

@@ -26,6 +26,23 @@ export const UiRenderer = {
     this.elements.indicatorsList = document.getElementById("indicators-list");
   },
 
+  /** Pokazuje stan oczekiwania przed każdym skanowaniem. */
+  renderScanning() {
+    this.elements.domainDisplay.textContent = "Wykrywanie domeny...";
+    this.elements.riskScore.textContent = "--";
+    this.elements.statusBadge.className = "status-badge pending";
+    this.elements.statusBadge.textContent = "Skanowanie";
+    if (this.elements.confidenceBadge) {
+      this.elements.confidenceBadge.className = "confidence-badge low";
+      this.elements.confidenceBadge.textContent = "Nie dotyczy";
+    }
+    this.elements.indicatorsList.innerHTML = "";
+    const notice = document.createElement("li");
+    notice.className = "scan-pending";
+    notice.textContent = "Trwa analiza aktywnej strony.";
+    this.elements.indicatorsList.appendChild(notice);
+  },
+
   /**
    * Prezentuje wyniki skanowania w dokumencie HTML.
    * @param {Object} assessment - Obiekt z wynikami kalkulacji.

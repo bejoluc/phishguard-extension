@@ -42,6 +42,9 @@ export const UiRenderer = {
     } else if (assessment.status === "Suspicious") {
       this.elements.statusBadge.textContent = "Podejrzany";
       this.elements.statusBadge.classList.add("suspicious");
+    } else if (assessment.status === "Incomplete") {
+      this.elements.statusBadge.textContent = "Niepełna";
+      this.elements.statusBadge.classList.add("incomplete");
     } else {
       this.elements.statusBadge.textContent = "Zagrożenie";
       this.elements.statusBadge.classList.add("dangerous");
@@ -60,14 +63,23 @@ export const UiRenderer = {
       } else if (assessment.confidence === "High") {
         this.elements.confidenceBadge.textContent = "Wysoka";
         this.elements.confidenceBadge.classList.add("high");
+      } else if (assessment.confidence === "Incomplete") {
+        this.elements.confidenceBadge.textContent = "Niepełna";
+        this.elements.confidenceBadge.classList.add("incomplete");
       }
     }
 
     // Odświeżenie listy indykatorów wskaźników ryzyka
     this.elements.indicatorsList.innerHTML = "";
-    if (assessment.indicators.length === 0) {
+    if (!assessment.analysisComplete) {
+      const notice = document.createElement("li");
+      notice.className = "scan-warning";
+      notice.textContent = "Nie udało się zbadać struktury strony. Wynik obejmuje tylko adres URL i może być zaniżony.";
+      this.elements.indicatorsList.appendChild(notice);
+    }
+    if (assessment.indicators.length === 0 && assessment.analysisComplete) {
       this.elements.indicatorsList.innerHTML = `
-        <li class="no-threats">Brak anomalii. Witryna spełnia podstawowe kryteria bezpieczeństwa.</li>`;
+        <li class="no-threats">Nie wykryto wskaźników ryzyka w badanych cechach URL i DOM.</li>`;
     } else {
       assessment.indicators.forEach(indicator => {
         const li = document.createElement("li");
@@ -90,18 +102,21 @@ export const UiRenderer = {
    */
   renderSystemPage(pageUrl) {
     this.elements.domainDisplay.textContent = "Zasób przeglądarki";
-    this.elements.riskScore.textContent = "0";
+    this.elements.riskScore.textContent = "--";
     
-    this.elements.statusBadge.className = "status-badge safe";
-    this.elements.statusBadge.textContent = "Bezpieczny";
+    this.elements.statusBadge.className = "status-badge incomplete";
+    this.elements.statusBadge.textContent = "Nie oceniono";
     
     if (this.elements.confidenceBadge) {
       this.elements.confidenceBadge.className = "confidence-badge low";
-      this.elements.confidenceBadge.textContent = "Niska";
+      this.elements.confidenceBadge.textContent = "Nie dotyczy";
     }
 
-    this.elements.indicatorsList.innerHTML = `
-      <li class="no-threats">Wewnętrzna strona przeglądarki (${pageUrl}). Analiza wyłączona ze względów bezpieczeństwa.</li>`;
+    this.elements.indicatorsList.innerHTML = "";
+    const notice = document.createElement("li");
+    notice.className = "scan-warning";
+    notice.textContent = `Strona przeglądarki (${pageUrl}) nie jest dostępna do analizy.`;
+    this.elements.indicatorsList.appendChild(notice);
   },
 
   /**

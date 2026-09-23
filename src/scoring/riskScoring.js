@@ -20,6 +20,7 @@ export const RiskCalculator = {
   calculate(urlIndicators, pageAnalysis, currentHostname) {
     let score = 0;
     const indicators = [];
+    const analysisComplete = pageAnalysis != null;
 
     // --- 1. Agregacja wskaźników z analizy adresu URL ---
     if (urlIndicators && urlIndicators.length > 0) {
@@ -35,7 +36,7 @@ export const RiskCalculator = {
     }
 
     // --- 2. Agregacja wskaźników ze skanowania DOM strony ---
-    if (pageAnalysis) {
+    if (analysisComplete) {
       
       // A. Obecność pola wprowadzania hasła (Password field present: +15)
       if (pageAnalysis.hasPasswordField) {
@@ -106,6 +107,10 @@ export const RiskCalculator = {
     } else if (score > 70) {
       status = "Dangerous";
     }
+    // Bez telemetrii DOM niski wynik URL nie jest pełną oceną strony.
+    if (!analysisComplete && status === "Safe") {
+      status = "Incomplete";
+    }
 
     // --- 3. Ewaluacja Wiarygodności Analizy (Confidence Level Evaluation) ---
     let confidenceScore = 0;
@@ -136,11 +141,15 @@ export const RiskCalculator = {
     } else if (confidenceScore >= 4.5) {
       confidence = "High";
     }
+    if (!analysisComplete) {
+      confidence = "Incomplete";
+    }
 
     return {
       score,
       status,
       confidence,
+      analysisComplete,
       indicators
     };
   }

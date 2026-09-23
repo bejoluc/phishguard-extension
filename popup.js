@@ -97,10 +97,15 @@ const AppController = {
    */
   async fetchDomTelemetry(tabId) {
     const response = await chrome.tabs.sendMessage(tabId, { action: "ANALYZE_PAGE" });
-    if (response && response.success) {
+    if (response && response.success &&
+        response.analysis &&
+        typeof response.analysis.hasPasswordField === "boolean" &&
+        Array.isArray(response.analysis.insecureFormActions) &&
+        Array.isArray(response.analysis.externalFormActions) &&
+        Array.isArray(response.analysis.detectedBrandKeywords)) {
       return response.analysis;
     }
-    throw new Error(response ? response.error : "Nieprawidłowa odpowiedź ze skryptu DOM.");
+    throw new Error(response?.error || "Nieprawidłowa odpowiedź ze skryptu DOM.");
   }
 };
 

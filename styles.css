@@ -135,7 +135,7 @@ body {
   border-style: solid;
 }
 
-/* Trzy warianty statusu - płaskie kolory bez animacji i poświaty */
+/* Statusy oceny i braku pełnej analizy */
 .status-badge.safe {
   background-color: var(--color-safe-bg);
   color: var(--color-safe);
@@ -152,6 +152,12 @@ body {
   background-color: var(--color-dangerous-bg);
   color: var(--color-dangerous);
   border-color: var(--color-dangerous);
+}
+
+.status-badge.incomplete {
+  background-color: var(--color-suspicious-bg);
+  color: var(--color-suspicious);
+  border-color: var(--color-suspicious);
 }
 
 /* Lista wskaźników ryzyka */
@@ -177,6 +183,11 @@ body {
   margin-left: -16px;
   color: var(--color-safe);
   font-weight: 500;
+}
+
+.indicators-list li.scan-warning {
+  color: var(--color-suspicious);
+  font-weight: 600;
 }
 
 /* Stopka i przycisk akcji */
@@ -233,4 +244,10 @@ body {
   background-color: #064e3b;
   color: #10b981;
   border-color: #10b981;
+}
+
+.confidence-badge.incomplete {
+  background-color: var(--color-suspicious-bg);
+  color: var(--color-suspicious);
+  border-color: var(--color-suspicious);
 }

@@ -36,3 +36,13 @@ export function getCleanHostname(urlStr) {
     return "";
   }
 }
+
+/**
+ * Domena oficjalna pasuje tylko jako cały host albo jego subdomena.
+ * Porównanie samego sufiksu uznałoby np. fakepaypal.com za paypal.com.
+ */
+export function isSameOrSubdomain(hostname, officialDomain) {
+  const host = hostname.toLowerCase().replace(/\.$/, "");
+  const domain = officialDomain.toLowerCase().replace(/\.$/, "");
+  return host === domain || host.endsWith(`.${domain}`);
+}

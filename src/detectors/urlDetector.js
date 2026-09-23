@@ -6,6 +6,7 @@
  */
 
 import { brandsMap } from '../constants/brands.js';
+import { isSameOrSubdomain } from '../utils/urlUtils.js';
 
 export const UrlHeuristicsEngine = {
   /**
@@ -72,7 +73,7 @@ export const UrlHeuristicsEngine = {
     Object.keys(brandsMap).forEach(brand => {
       if (hostname.includes(brand)) {
         const officialDomains = brandsMap[brand];
-        const isOfficial = officialDomains.some(domain => hostname.endsWith(domain));
+        const isOfficial = officialDomains.some(domain => isSameOrSubdomain(hostname, domain));
         if (!isOfficial) {
           typosquattingFound = true;
           matchedBrandName = brand;

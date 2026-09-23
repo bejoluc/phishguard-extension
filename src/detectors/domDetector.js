@@ -214,15 +214,15 @@ const DomDetector = {
 
       // Mapowanie domen oficjalnych do weryfikacji domeny hostującej
       const brandDomains = {
-        "paypal": "paypal.com",
-        "google": "google.com",
-        "microsoft": "microsoft.com",
-        "netflix": "netflix.com",
-        "apple": "apple.com",
-        "amazon": "amazon.com",
-        "facebook": "facebook.com",
-        "allegro": "allegro.pl",
-        "olx": "olx.pl"
+        "paypal": ["paypal.com", "paypal.pl"],
+        "google": ["google.com", "google.pl"],
+        "microsoft": ["microsoft.com"],
+        "netflix": ["netflix.com"],
+        "apple": ["apple.com"],
+        "amazon": ["amazon.com"],
+        "facebook": ["facebook.com", "facebook.pl"],
+        "allegro": ["allegro.pl"],
+        "olx": ["olx.pl"]
       };
 
       // Pomocnicza funkcja zliczająca dopasowania słowa kluczowego
@@ -233,8 +233,9 @@ const DomDetector = {
       };
 
       brandsList.forEach(brand => {
-        const officialDomain = brandDomains[brand];
-        const isOfficialSite = officialDomain && (currentHostname.endsWith(officialDomain) || currentHostname.endsWith(officialDomain + ".pl"));
+        const officialDomains = brandDomains[brand] || [];
+        const host = currentHostname.toLowerCase().replace(/\.$/, '');
+        const isOfficialSite = officialDomains.some(domain => host === domain || host.endsWith('.' + domain));
         
         // Wykonujemy analizę tylko gdy domena NIE należy do oficjalnej marki
         if (!isOfficialSite) {

@@ -5,7 +5,8 @@
  * oraz nadawanie statusów bezpieczeństwa na podstawie zebranych indykatorów.
  */
 
-import { brandDomains } from '../constants/brands.js';
+import { brandsMap, brandDomains } from '../constants/brands.js';
+import { isSameOrSubdomain } from '../utils/urlUtils.js';
 
 export const RiskCalculator = {
   /**
@@ -19,6 +20,7 @@ export const RiskCalculator = {
   calculate(urlIndicators, pageAnalysis, currentHostname) {
     let score = 0;
     const indicators = [];
+    const analysisComplete = pageAnalysis != null;
 
     // --- 1. Agregacja wskaźników z analizy adresu URL ---
     if (urlIndicators && urlIndicators.length > 0) {
@@ -34,7 +36,7 @@ export const RiskCalculator = {
     }
 
     // --- 2. Agregacja wskaźników ze skanowania DOM strony ---
-    if (pageAnalysis) {
+    if (analysisComplete) {
       
       // A. Obecność pola wprowadzania hasła (Password field present: +15)
       if (pageAnalysis.hasPasswordField) {
@@ -75,8 +77,8 @@ export const RiskCalculator = {
         let mismatchedBrands = [];
 
         pageAnalysis.detectedBrandKeywords.forEach(brand => {
-          const official = brandDomains[brand];
-          if (official && !currentHostname.endsWith(official) && !currentHostname.endsWith(official + ".pl")) {
+          const officialDomains = brandsMap[brand] || (brandDomains[brand] ? [brandDomains[brand]] : []);
+          if (officialDomains.length > 0 && !officialDomains.some(domain => isSameOrSubdomain(currentHostname, domain))) {
             mismatchDetected = true;
             mismatchedBrands.push(brand.toUpperCase());
           }
@@ -104,6 +106,10 @@ export const RiskCalculator = {
       status = "Suspicious";
     } else if (score > 70) {
       status = "Dangerous";
+    }
+    // Bez telemetrii DOM niski wynik URL nie jest pełną oceną strony.
+    if (!analysisComplete && status === "Safe") {
+      status = "Incomplete";
     }
 
     // --- 3. Ewaluacja Wiarygodności Analizy (Confidence Level Evaluation) ---
@@ -135,11 +141,15 @@ export const RiskCalculator = {
     } else if (confidenceScore >= 4.5) {
       confidence = "High";
     }
+    if (!analysisComplete) {
+      confidence = "Incomplete";
+    }
 
     return {
       score,
       status,
       confidence,
+      analysisComplete,
       indicators
     };
   }

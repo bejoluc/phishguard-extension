@@ -1,11 +1,11 @@
 # PhishGuard – Rozszerzenie Przeglądarki do Detekcji Phishingu (Projekt MVP)
 
-Niniejszy projekt stanowi inżynierskie Minimum Viable Product (MVP) rozszerzenia dla przeglądarki Google Chrome, służącego do real-time'owej analizy bezpieczeństwa witryn i wykrywania zagrożeń phishingowych. Projekt został zaprojektowany z myślą o wysokiej modularności i przejrzystości architektury (Separation of Concerns), stanowiąc doskonały fundament teoretyczny i praktyczny do pracy dyplomowej z zakresu cyberbezpieczeństwa.
+Niniejszy projekt stanowi prototyp rozszerzenia dla przeglądarki Google Chrome, służącego do oceny ryzyka phishingu po otwarciu panelu rozszerzenia. Kod rozdziela analizę adresu URL, analizę DOM, obliczenie wyniku oraz prezentację raportu.
 
 ---
 
 ## 1. Cel Główny Projektu
-Głównym celem systemu jest lokalna ocena ryzyka wyłudzenia danych (phishingu) na aktywnej karcie przeglądarki na podstawie zestawu heurystyk adresów URL oraz analizy strukturalnej kodu DOM odwiedzanej witryny. Rozszerzenie działa w 100% lokalnie w przeglądarce, co gwarantuje pełne poszanowanie prywatności użytkownika (brak wysyłania wrażliwych danych czy odwiedzanych adresów URL do zewnętrznych API/serwerów).
+Głównym celem systemu jest lokalna ocena ryzyka wyłudzenia danych na aktywnej karcie na podstawie heurystyk adresu URL i struktury DOM. Kod rozszerzenia nie wysyła analizowanych adresów ani danych formularzy do zewnętrznych API; skrypt zawartości zbiera tylko cechy strony, bez odczytywania wartości pól wpisanych przez użytkownika.
 
 ---
 
@@ -72,6 +72,8 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 - **31 - 70**: **Suspicious (Podejrzany)**
 - **71 - 100**: **Dangerous (Zagrożenie)**
 
+Klasyfikacja „Bezpieczny” dotyczy wyłącznie stron, dla których udało się zebrać dane URL i DOM. Przed zakończeniem skanu oraz po kliknięciu „Skanuj ponownie” popup pokazuje status „Skanowanie”. Gdy skanowanie DOM jest niedostępne, popup wyświetla ostrzeżenie o analizie niepełnej. Jeżeli sam URL wskazuje podejrzenie lub zagrożenie, kategoria pozostaje ostrzegawcza, ale nadal widać informację o niepełnym skanie. Strony wewnętrzne przeglądarki mają status „Nie oceniono”, bez punktacji. Wynik 0/100 oznacza brak wykrytych sygnałów w badanych cechach, a nie gwarancję bezpieczeństwa strony.
+
 ---
 
 ## 6. Uruchomienie Rozszerzenia w Google Chrome
@@ -84,14 +86,17 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 ---
 
 ## 7. Ręczne Scenariusze Testowe (Katalog `test-pages`)
-W celach demonstracyjnych w projekcie utworzono katalog [test-pages](file:///c:/Users/blaze/StudioProjects/phishguard-extension/test-pages) zawierający gotowe, bezpieczne szablony HTML (wyłącznie tekst, brak logotypów marek) do weryfikacji działania silnika:
+W celach demonstracyjnych w projekcie utworzono katalog `test-pages` zawierający szablony HTML (bez prawdziwych danych logowania i logotypów) do weryfikacji działania silnika:
 
-1.  **`safe-login.html`**: Formularz logowania przesyłający hasło na tę samą domenę (relatywnie). Wykazuje brak anomalii.
+1.  **`safe-login.html`**: Formularz logowania wysyłający dane na tę samą domenę. Samo pole hasła jest punktowane (+15); na serwerze HTTP dodatkowe punkty pochodzą od protokołu i słowa „login” w ścieżce.
 2.  **`fake-paypal-login.html`**: Atrapa strony PayPal. Wykrywa pole hasła, typosquatting/mismatch marki oraz nieszyfrowaną i zewnętrzną wysyłkę formularza. Generuje status **Zagrożenie**.
-3.  **`external-form.html`**: Formularz wysyłający hasło na obcą domenę (wyszukiwanie credential harvesting). Generuje status **Podejrzany**.
-4.  **`suspicious-keywords.html`**: Strona wywierająca presję bez formularzy, przepełniona podejrzanymi słowami w treści. Generuje odpowiedni wskaźnik zagrożenia.
+3.  **`external-form.html`**: Formularz wysyłający dane na obcą domenę. Na lokalnym serwerze HTTP otrzymuje 75 pkt i status **Zagrożenie**; na HTTPS bez innych wskaźników 50 pkt i status **Podejrzany**.
+4.  **`oauth-false-positive-test.html`**: Formularz z pojedynczym przyciskiem „Zaloguj przez Google” pozwala sprawdzić brak fałszywego wskaźnika niezgodności marki.
+5.  **`suspicious-keywords.html`**: Materiał do sprawdzenia ograniczenia prototypu: słowa ostrzegawcze występują w treści, ale bieżący detektor słów kluczowych sprawdza wyłącznie host i ścieżkę URL.
 
-*Wskazówka badawcza: Aby prawidłowo przetestować dopasowywanie domen (mismatch/external), pliki testowe należy uruchomić w środowisku lokalnym poprzez serwer HTTP (np. uruchamiając `python -m http.server` w katalogu rozszerzenia) i wchodząc pod adres `http://localhost:8000/test-pages/...`.*
+*Wskazówka badawcza: Testy domen i celów formularzy wymagają podania stron przez serwer (np. `python -m http.server` i `http://localhost:8000/test-pages/...`). Serwer HTTP dodaje 25 punktów za brak HTTPS i może zmieniać kategorię wyniku. Do porównania skuteczności należy oddzielić wpływ protokołu od badanej cechy lub użyć serwera HTTPS. Nie wpisuj prawdziwych danych do formularzy testowych.*
+
+Regresję dopasowywania domen można uruchomić przez `node --test tests/*.test.mjs` (Node.js 24). Testy obejmują podszywające się hosty, domeny oficjalne i próbkę analizy DOM; nie zastępują sprawdzenia rozszerzenia w Chrome.
 
 ---
 

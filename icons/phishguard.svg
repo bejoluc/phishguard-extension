@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">PhishGuard — tarcza z haczykiem</title>
+  <rect x="2" y="2" width="124" height="124" rx="28" fill="#0f172a"/>
+  <path d="M64 15c13 8 28 11 43 13v28c0 29-18 50-43 62-25-12-43-33-43-62V28c15-2 30-5 43-13Z" fill="#38bdf8"/>
+  <path d="M62 42v33c0 20 25 20 25 0V63" fill="none" stroke="#0f172a" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="m79 65 8-12 8 12Z" fill="#0f172a"/>
+</svg>

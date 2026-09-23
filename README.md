@@ -27,6 +27,7 @@ phishguard-extension/
 ├── styles.css               # Warstwa wizualna i pozycjonowanie (Flat CSS)
 ├── content.js               # Listener żądań skanowania w piaskownicy strony
 ├── popup.js                 # Główny koordynator cyklu życia skanowania (AppController)
+├── icons/                   # Źródło SVG i ikony PNG dla Chrome (16, 32, 48, 128 px)
 └── src/
     ├── constants/
     │   └── brands.js        # Konfiguracja bazowa znanych marek i domen oficjalnych

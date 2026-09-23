@@ -5,7 +5,8 @@
  * oraz nadawanie statusów bezpieczeństwa na podstawie zebranych indykatorów.
  */
 
-import { brandDomains } from '../constants/brands.js';
+import { brandsMap, brandDomains } from '../constants/brands.js';
+import { isSameOrSubdomain } from '../utils/urlUtils.js';
 
 export const RiskCalculator = {
   /**
@@ -75,8 +76,8 @@ export const RiskCalculator = {
         let mismatchedBrands = [];
 
         pageAnalysis.detectedBrandKeywords.forEach(brand => {
-          const official = brandDomains[brand];
-          if (official && !currentHostname.endsWith(official) && !currentHostname.endsWith(official + ".pl")) {
+          const officialDomains = brandsMap[brand] || (brandDomains[brand] ? [brandDomains[brand]] : []);
+          if (officialDomains.length > 0 && !officialDomains.some(domain => isSameOrSubdomain(currentHostname, domain))) {
             mismatchDetected = true;
             mismatchedBrands.push(brand.toUpperCase());
           }

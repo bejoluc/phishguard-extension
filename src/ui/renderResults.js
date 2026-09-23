@@ -74,7 +74,7 @@ export const UiRenderer = {
         
         // Renderowanie szczegółów wskaźnika
         if (indicator && typeof indicator === "object") {
-          li.innerHTML = `<strong>${indicator.label}</strong> (Waga: ${indicator.riskWeight}%): <span style="color: var(--text-sub);">${indicator.explanation}</span>`;
+          li.innerHTML = `<strong>${indicator.label}</strong> (Waga: ${indicator.riskWeight} pkt): <span style="color: var(--text-sub);">${indicator.explanation}</span>`;
         } else {
           li.textContent = indicator;
         }

@@ -27,7 +27,7 @@ Każdy rodzaj wskaźnika jest dodawany najwyżej raz dla badanego adresu.
 | --- | --- | ---: | --- |
 | `insecure-protocol` | Protokół różni się od `https:`. | 25 | Dotyczy m.in. HTTP i lokalnego `file://`; brak HTTPS sam w sobie nie dowodzi phishingu. |
 | `ip-hostname` | Host pasuje do prostego wzorca IPv4 albo adresu IPv6 w nawiasach. | 30 | Wykorzystywane jest dopasowanie wzorca, bez osobnej oceny reputacji IP. |
-| `excessive-subdomains` | Host ma co najmniej cztery segmenty rozdzielone kropkami po odrzuceniu segmentu `www`. | 15 | Liczone są segmenty całego hosta, łącznie z domeną końcową. |
+| `excessive-subdomains` | Host nie jest adresem IP i ma co najmniej cztery segmenty rozdzielone kropkami po odrzuceniu segmentu `www`. | 15 | Liczone są segmenty całego hosta, łącznie z domeną końcową; części adresu IPv4 nie są subdomenami. |
 | `suspicious-keywords` | Host lub ścieżka zawiera `login`, `verify`, `secure`, `account`, `update` albo `password`. | 10 | Parametry zapytania URL nie są sprawdzane; kilka słów daje łącznie 10 pkt. |
 | `brand-typosquatting` | Host zawiera nazwę monitorowanej marki, ale nie jest jej oficjalnym hostem ani subdomeną, **lub** pasuje do jednego z zapisanych wzorców literówek. | 40 | Nazwa wskaźnika jest szersza niż algorytm: kod nie oblicza odległości Levenshteina. |
 
@@ -67,7 +67,7 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 | RF-05 | Pokazanie użytkownikowi wyniku, statusu, wykrytych cech i ich objaśnień. | Zrealizowane w popupie. |
 | RF-06 | Pokazanie stanu skanowania oraz jawne oznaczenie braku danych DOM lub strony niedostępnej do analizy. | Zrealizowane; część zachowań ma testy automatyczne. |
 | RF-07 | Ponowienie skanu przyciskiem bez przeładowywania rozszerzenia. | Zrealizowane w `popup.js`. |
-| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; obecne 8 testów automatycznych i 5 stron demonstracyjnych nie mierzą jeszcze skuteczności. |
+| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; obecne 15 testów automatycznych i 5 stron demonstracyjnych nie mierzą jeszcze skuteczności. |
 
 ## 7. Wymagania niefunkcjonalne i weryfikacja
 
@@ -78,7 +78,7 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 | RNF-03 | Powtarzalność: dla tego samego URL i tych samych danych DOM wynik oraz lista reguł mają być identyczne. | Wynika ze stałych reguł; do sprawdzenia na szerszym zestawie przypadków. |
 | RNF-04 | Czytelność: wynik ma odróżniać obserwację heurystyczną od gwarancji bezpieczeństwa. | Częściowo: interfejs pokazuje wskaźniki i stan niepełny, lecz etykieta „Bezpieczny” wymaga sprawdzenia na scenariuszach oraz objaśnienia w pracy. |
 | RNF-05 | Mierzalny czas odpowiedzi na stronach testowych. | Nie zmierzono. Przed badaniem ustalić warunki Chrome i liczbę prób; zapisać medianę i 95. percentyl czasu od rozpoczęcia skanu do wyniku. |
-| RNF-06 | Kod z rozdzieleniem detekcji URL, detekcji DOM, punktacji i interfejsu. | Zrealizowane strukturalnie; 8 obecnych testów nie stanowi pełnego pokrycia przypadków. |
+| RNF-06 | Kod z rozdzieleniem detekcji URL, detekcji DOM, punktacji i interfejsu. | Zrealizowane strukturalnie; 15 obecnych testów nie stanowi pełnego pokrycia przypadków. |
 
 ## 8. Ustalenia do następnego etapu
 
@@ -87,6 +87,6 @@ Format przypadków i sposób oddzielenia danych rozwojowych od pomiaru opisuje [
 - Przygotować oznaczone scenariusze i przed pomiarem oddzielić przypadki używane do poprawek od przypadków oceny końcowej. Przypadek testowy może łączyć adres i zestaw cech DOM; nie musi oznaczać osobnego pliku HTML.
 - Sprawdzić fałszywe alarmy dla legalnych formularzy spoza logowania, zewnętrznych dostawców uwierzytelniania i różnych subdomen tej samej organizacji.
 - Sprawdzić, czy dwa zliczone wystąpienia marki rzeczywiście pochodzą z różnych fragmentów strony: ten sam nagłówek może trafić do tekstu analizy osobno oraz jako część tekstu formularza.
-- Dodać testy graniczne słów w URL, marek, niedostępnego DOM i protokołu stron demonstracyjnych. Uruchomienie strony przez `http://localhost` samo dodaje 25 pkt za HTTP.
+- Rozszerzyć testy DOM i ręczne próby w Chrome o niedostępny DOM oraz wpływ protokołu stron demonstracyjnych. Granice słów w URL, marek i hostów IP sprawdzają już testy automatyczne; uruchomienie strony przez `http://localhost` samo dodaje 25 pkt za HTTP.
 - Ustalić, jak w pracy nazwać wynik „Bezpieczny”, by jasno opisać, że jest to brak wykrytych cech w badanym zakresie.
 - Traktować testy na stronach symulowanych jako ocenę prototypu w kontrolowanych warunkach; nie wyciągać z nich wniosków o skuteczności wobec wszystkich prawdziwych kampanii phishingowych.

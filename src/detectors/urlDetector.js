@@ -33,7 +33,8 @@ export const UrlHeuristicsEngine = {
     // --- 2. Użycie surowego adresu IP (IP address used as hostname: +30) ---
     const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/;
     const ipv6Pattern = /^\[[0-9a-fA-F:]+\]$/;
-    if (ipv4Pattern.test(hostname) || ipv6Pattern.test(hostname)) {
+    const isIpHost = ipv4Pattern.test(hostname) || ipv6Pattern.test(hostname);
+    if (isIpHost) {
       detectedIndicators.push({
         id: "ip-hostname",
         label: "Użycie adresu IP jako nazwy hosta",
@@ -43,8 +44,9 @@ export const UrlHeuristicsEngine = {
     }
 
     // --- 3. Sprawdzanie nadmiernej liczby subdomen (Excessive subdomains: +15) ---
+    // Cztery części adresu IPv4 nie oznaczają czterech segmentów domeny.
     const segments = hostname.split(".").filter(s => s !== "www");
-    if (segments.length >= 4) {
+    if (!isIpHost && segments.length >= 4) {
       detectedIndicators.push({
         id: "excessive-subdomains",
         label: "Nadmierna liczba subdomen",

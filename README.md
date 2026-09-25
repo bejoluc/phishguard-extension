@@ -65,7 +65,7 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 | :--- | :--- | :---: | :--- |
 | **URL** | Brak protokołu HTTPS | **+25** | Protokół witryny jest inny niż `https:` (np. `http:`). |
 | **URL** | Adres IP jako nazwa hosta | **+30** | Hostname pasuje do wzorca adresu IPv4 lub IPv6. |
-| **URL** | Nadmierna liczba subdomen | **+15** | Hostname zawiera 4 lub więcej dot-segmentów (bez www). |
+| **URL** | Nadmierna liczba subdomen | **+15** | Host inny niż IP zawiera co najmniej 4 segmenty rozdzielone kropkami (bez `www`). |
 | **URL** | Podejrzane słowo w URL | **+10** | URL zawiera słowa: *login, verify, secure, account, update, password*. |
 | **URL** | Typosquatting | **+40** | Domena zniekształca pisownię monitorowanej marki (np. g00gle, alegro). |
 | **DOM** | Obecność pola hasła | **+15** | Drzewo DOM zawiera przynajmniej jeden element `input[type="password"]`. |
@@ -102,7 +102,7 @@ W celach demonstracyjnych w projekcie utworzono katalog `test-pages` zawierając
 
 *Wskazówka badawcza: Testy domen i celów formularzy wymagają podania stron przez serwer (np. `python -m http.server` i `http://localhost:8000/test-pages/...`). Serwer HTTP dodaje 25 punktów za brak HTTPS i może zmieniać kategorię wyniku. Do porównania skuteczności należy oddzielić wpływ protokołu od badanej cechy lub użyć serwera HTTPS. Nie wpisuj prawdziwych danych do formularzy testowych.*
 
-Regresję dopasowywania domen można uruchomić przez `node --test tests/*.test.mjs` (Node.js 24). Testy obejmują podszywające się hosty, domeny oficjalne i próbkę analizy DOM; nie zastępują sprawdzenia rozszerzenia w Chrome.
+Regresję można uruchomić przez `node --test tests/*.test.mjs` (Node.js 24). Testy obejmują domeny oficjalne i podszywające się hosty, wzorce literówek, słowa i strukturę URL, adresy IP oraz wybrane zachowania DOM i punktacji; nie zastępują sprawdzenia rozszerzenia w Chrome.
 
 ---
 

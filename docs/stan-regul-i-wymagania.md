@@ -82,7 +82,7 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 
 ## 8. Ustalenia do następnego etapu
 
-Format przypadków i sposób oddzielenia danych rozwojowych od pomiaru opisuje [protokół testów](protokol-testow.md).
+Format przypadków i sposób oddzielenia danych rozwojowych od pomiaru opisuje [protokół testów](protokol-testow.md). Przygotowano również [40 scenariuszy modelowych](scenariusze-40.md); nadal wymagają stron testowych i pomiaru.
 
 - Przygotować oznaczone scenariusze i przed pomiarem oddzielić przypadki używane do poprawek od przypadków oceny końcowej. Przypadek testowy może łączyć adres i zestaw cech DOM; nie musi oznaczać osobnego pliku HTML.
 - Sprawdzić fałszywe alarmy dla legalnych formularzy spoza logowania, zewnętrznych dostawców uwierzytelniania i różnych subdomen tej samej organizacji.

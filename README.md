@@ -4,6 +4,7 @@ Niniejszy projekt stanowi prototyp rozszerzenia dla przeglądarki Google Chrome,
 
 Aktualny wykaz zaimplementowanych reguł, wymagań i ograniczeń: [Stan reguł i wymagania projektu](docs/stan-regul-i-wymagania.md).
 Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/protokol-testow.md) oraz [tabela przypadków CSV](docs/przypadki-testowe.csv).
+Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
 
 ---

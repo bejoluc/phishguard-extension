@@ -25,3 +25,12 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - **Weryfikacja:** skontrolowano 13 początkowych wierszy względem `UrlHeuristicsEngine` i `RiskCalculator`; wszystkie ID wskaźników, punkty URL, końcowe wyniki, statusy i poziomy wiarygodności zgadzają się z bieżącą implementacją. Pola obserwacji są puste.
 - **Granica dowodu:** przypadki te sprawdzają reguły i punktację; skaner DOM oraz interfejs Chrome wymagają odrębnej weryfikacji na stronach testowych. Nie uzyskano jeszcze żadnych wyników do macierzy pomyłek.
 - **Następny krok:** dopisać oznaczone scenariusze oraz uruchomić kontrolowane próby w Chrome z zapisem warunków i wersji kodu.
+
+## 25.09.2026 — przyspieszony punkt planu z poniedziałku: zestaw 40 scenariuszy
+
+- **Cel:** określić przed pomiarem zrównoważony zestaw stron logowania na podstawie URL i DOM.
+- **Ślad:** [opis zestawu i konstrukcji stron](scenariusze-40.md) oraz wiersze C01–C40 w [CSV](przypadki-testowe.csv). Dla każdej pozycji zapisano URL, typ formularza, markę w DOM, adres `action`, niezależną etykietę i jej uzasadnienie.
+- **Podział:** 10 legalnych i 10 symulujących phishing w `rozwoj`; taki sam podział w odłożonym `ocena`. Wcześniejsze U/D pozostają poza tym bilansem.
+- **Weryfikacja:** sprawdzono liczby, unikalność ID, składnię URL i kompletność specyfikacji. Pola oczekiwanych punktów i faktycznych obserwacji dla C01–C40 są puste.
+- **Granica dowodu:** modelowe URL i profile DOM nie są jeszcze stronami w Chrome. Do badania skuteczności potrzeba uruchamialnych stron lub jawnie opisanego laboratorium oraz zapisu metody wykonania każdej próby.
+- **Materiały do pracy:** zachować CSV, opis scenariuszy, protokół i ten dziennik; na tym etapie nie ma zrzutów ekranu ani wyników do rozdziału badawczego.

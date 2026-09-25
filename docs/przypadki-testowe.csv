@@ -1,14 +1,54 @@
-id;zbior;tryb;referencja;wejscie;profil_dom;oczekiwane_id;oczekiwane_pkt_url;oczekiwany_score;oczekiwany_status;oczekiwana_wiarygodnosc;faktyczne_id;faktyczne_pkt_url;faktyczny_score;faktyczny_status;faktyczna_wiarygodnosc;data;commit;warunki_uwagi
-U01;rozwoj;unit_url;nie_dotyczy;https://paypal.com/;;brak;0;;;;;;;;;;;
-U02;rozwoj;unit_url;nie_dotyczy;https://secure.paypal.com/login;;suspicious-keywords;10;;;;;;;;;;;
-U03;rozwoj;unit_url;nie_dotyczy;https://fakepaypal.test/login;;suspicious-keywords|brand-typosquatting;50;;;;;;;;;;;
-U04;rozwoj;unit_url;nie_dotyczy;https://g00gle.test/;;brand-typosquatting;40;;;;;;;;;;;
-U05;rozwoj;unit_url;nie_dotyczy;https://paypal.com.evil.test/;;excessive-subdomains|brand-typosquatting;55;;;;;;;;;;;Podszycie i cztery segmenty hosta
-U06;rozwoj;unit_url;nie_dotyczy;https://example.test/?next=/login;;brak;0;;;;;;;;;;;Slowo login wystepuje tylko w zapytaniu
-U07;rozwoj;unit_url;nie_dotyczy;https://a.b.example.test/;;excessive-subdomains;15;;;;;;;;;;;
-U08;rozwoj;unit_url;nie_dotyczy;http://example.test/login;;insecure-protocol|suspicious-keywords;35;;;;;;;;;;;
-D01;rozwoj;score_fixture;legalna_symulacja;https://example.test/login;P1;suspicious-keywords|password-field-present;10;25;Safe;Medium;;;;;;;;
-D02;rozwoj;score_fixture;legalna_symulacja;https://portal.example.test/login;P2;suspicious-keywords|password-field-present|external-form-action;10;60;Suspicious;High;;;;;;;;Potencjalny falszywy alarm przy legalnej subdomenie
-D03;rozwoj;score_fixture;phishing_symulowany;https://paypal-login.test/;P3;suspicious-keywords|brand-typosquatting|password-field-present|insecure-form-action|external-form-action|brand-mismatch;50;100;Dangerous;High;;;;;;;;
-D04;rozwoj;score_fixture;poza_logowaniem;https://example.test/;P4;insecure-form-action;0;30;Safe;Medium;;;;;;;;Zwykly formularz HTTP punktowany bez pola hasla
-D05;rozwoj;score_fixture;brak_dom;https://example.test/;BRAK_DOM;brak;0;0;Incomplete;Incomplete;;;;;;;;Analiza niepelna - poza macierza pomylek
+id;zbior;tryb;referencja;wejscie;profil_dom;oczekiwane_id;oczekiwane_pkt_url;oczekiwany_score;oczekiwany_status;oczekiwana_wiarygodnosc;faktyczne_id;faktyczne_pkt_url;faktyczny_score;faktyczny_status;faktyczna_wiarygodnosc;data;commit;warunki_uwagi;typ_dom;marka_w_dom;cel_formularza;przycisk_oauth;uzasadnienie_etykiety
+U01;rozwoj;unit_url;nie_dotyczy;https://paypal.com/;;brak;0;;;;;;;;;;;;;;;;
+U02;rozwoj;unit_url;nie_dotyczy;https://secure.paypal.com/login;;suspicious-keywords;10;;;;;;;;;;;;;;;;
+U03;rozwoj;unit_url;nie_dotyczy;https://fakepaypal.test/login;;suspicious-keywords|brand-typosquatting;50;;;;;;;;;;;;;;;;
+U04;rozwoj;unit_url;nie_dotyczy;https://g00gle.test/;;brand-typosquatting;40;;;;;;;;;;;;;;;;
+U05;rozwoj;unit_url;nie_dotyczy;https://paypal.com.evil.test/;;excessive-subdomains|brand-typosquatting;55;;;;;;;;;;;Podszycie i cztery segmenty hosta;;;;;
+U06;rozwoj;unit_url;nie_dotyczy;https://example.test/?next=/login;;brak;0;;;;;;;;;;;Slowo login wystepuje tylko w zapytaniu;;;;;
+U07;rozwoj;unit_url;nie_dotyczy;https://a.b.example.test/;;excessive-subdomains;15;;;;;;;;;;;;;;;;
+U08;rozwoj;unit_url;nie_dotyczy;http://example.test/login;;insecure-protocol|suspicious-keywords;35;;;;;;;;;;;;;;;;
+D01;rozwoj;score_fixture;legalna_symulacja;https://example.test/login;P1;suspicious-keywords|password-field-present;10;25;Safe;Medium;;;;;;;;;;;;;
+D02;rozwoj;score_fixture;legalna_symulacja;https://portal.example.test/login;P2;suspicious-keywords|password-field-present|external-form-action;10;60;Suspicious;High;;;;;;;;Potencjalny falszywy alarm przy legalnej subdomenie;;;;;
+D03;rozwoj;score_fixture;phishing_symulowany;https://paypal-login.test/;P3;suspicious-keywords|brand-typosquatting|password-field-present|insecure-form-action|external-form-action|brand-mismatch;50;100;Dangerous;High;;;;;;;;;;;;;
+D04;rozwoj;score_fixture;poza_logowaniem;https://example.test/;P4;insecure-form-action;0;30;Safe;Medium;;;;;;;;Zwykly formularz HTTP punktowany bez pola hasla;;;;;
+D05;rozwoj;score_fixture;brak_dom;https://example.test/;BRAK_DOM;brak;0;0;Incomplete;Incomplete;;;;;;;;Analiza niepelna - poza macierza pomylek;;;;;
+C01;rozwoj;planowany_przypadek;legalna_symulacja;https://www.paypal.com/signin;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;PayPal;/auth;;Model autoryzowanego logowania na oficjalnym hoście PayPal
+C02;rozwoj;planowany_przypadek;legalna_symulacja;https://accounts.google.com/signin;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Google;/session;;Model autoryzowanego logowania na subdomenie Google
+C03;rozwoj;planowany_przypadek;legalna_symulacja;https://allegro.pl/moje-konto;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Allegro;/auth/login;;Model autoryzowanego logowania na hoście Allegro
+C04;rozwoj;planowany_przypadek;legalna_symulacja;https://olx.pl/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;OLX;/signin;;Model autoryzowanego logowania na hoście OLX
+C05;rozwoj;planowany_przypadek;legalna_symulacja;https://www.microsoft.com/secure/account;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Microsoft;/auth;;Model autoryzowanego logowania na subdomenie Microsoft
+C06;rozwoj;planowany_przypadek;legalna_symulacja;https://login.example.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/session;;Model własnego portalu z formularzem na tym samym hoście
+C07;rozwoj;planowany_przypadek;legalna_symulacja;https://portal.example.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;https://auth.example.test/session;;Model autoryzowanego uwierzytelniania na innej subdomenie organizacji
+C08;rozwoj;planowany_przypadek;legalna_symulacja;https://members.example.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;;;Model własnego portalu z pustym action formularza
+C09;rozwoj;planowany_przypadek;legalna_symulacja;http://legacy.example.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/auth;;Model autoryzowanej choć nieszyfrowanej strony logowania
+C10;rozwoj;planowany_przypadek;legalna_symulacja;https://example.test/access;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;oauth_only;;/oauth/start;Zaloguj przez Google;Model autoryzowanego logowania OAuth bez pola hasła na stronie
+C11;rozwoj;planowany_przypadek;phishing_symulowany;https://fakepaypal.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;PayPal;http://collector.test/submit;;Nieuprawnione podszycie pod PayPal i cel formularza operatora ataku
+C12;rozwoj;planowany_przypadek;phishing_symulowany;https://paypa1.test/signin;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;PayPal;/session;;Nieuprawnione podszycie pod PayPal z literówką hosta
+C13;rozwoj;planowany_przypadek;phishing_symulowany;https://google-account.test/verify;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Google;https://collector.test/submit;;Nieuprawnione podszycie pod Google i obcy cel formularza
+C14;rozwoj;planowany_przypadek;phishing_symulowany;https://g00gle.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Google;/session;;Nieuprawnione podszycie pod Google z cyframi zamiast liter
+C15;rozwoj;planowany_przypadek;phishing_symulowany;https://allegro-secure.test/account;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Allegro;https://collector.test/receive;;Nieuprawnione podszycie pod Allegro i obcy cel formularza
+C16;rozwoj;planowany_przypadek;phishing_symulowany;https://login.portal-check.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Microsoft;/session;;Nieuprawnione podszycie pod Microsoft na obcym hoście
+C17;rozwoj;planowany_przypadek;phishing_symulowany;https://update-user.test/password;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;http://collector.test/save;;Symulacja nieuprawnionego zbierania haseł bez nazwy monitorowanej marki
+C18;rozwoj;planowany_przypadek;phishing_symulowany;http://198.51.100.42/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/capture;;Symulacja nieuprawnionego zbierania haseł na hoście IP
+C19;rozwoj;planowany_przypadek;phishing_symulowany;https://secure-account.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Apple;/session;;Nieuprawnione podszycie pod Apple z formularzem na obcym hoście
+C20;rozwoj;planowany_przypadek;phishing_symulowany;https://netfl1x.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Netflix;/session;;Nieuprawnione podszycie pod Netflix z literówką hosta
+C21;ocena;planowany_przypadek;legalna_symulacja;https://paypal.pl/logowanie;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;PayPal;/session;;Model autoryzowanego logowania na alternatywnej oficjalnej domenie PayPal
+C22;ocena;planowany_przypadek;legalna_symulacja;https://google.pl/access;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Google;/auth;;Model autoryzowanego logowania na alternatywnej oficjalnej domenie Google
+C23;ocena;planowany_przypadek;legalna_symulacja;https://facebook.com/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Facebook;/session;;Model autoryzowanego logowania na oficjalnym hoście Facebook
+C24;ocena;planowany_przypadek;legalna_symulacja;https://netflix.com/account/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Netflix;/signin;;Model autoryzowanego logowania na oficjalnym hoście Netflix
+C25;ocena;planowany_przypadek;legalna_symulacja;https://www.allegro.pl/moje-konto;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Allegro;/auth;;Model autoryzowanego logowania na subdomenie Allegro
+C26;ocena;planowany_przypadek;legalna_symulacja;https://olx.pl/secure;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;OLX;/session;;Model autoryzowanego logowania na oficjalnym hoście OLX
+C27;ocena;planowany_przypadek;legalna_symulacja;https://accounts.example.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;https://id.example.test/verify;;Model autoryzowanego uwierzytelniania między hostami organizacji
+C28;ocena;planowany_przypadek;legalna_symulacja;https://example.test/secure/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/session;;Model własnego logowania ze słowami bezpieczeństwa w ścieżce
+C29;ocena;planowany_przypadek;legalna_symulacja;https://partner.example.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;oauth_only;;/connect;Sign in with Google;Model autoryzowanego logowania z przyciskiem OAuth
+C30;ocena;planowany_przypadek;legalna_symulacja;https://a.b.portal.example.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/session;;Model własnego logowania pod wielopoziomową subdomeną
+C31;ocena;planowany_przypadek;phishing_symulowany;https://paypal.com.portal-check.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;PayPal;/session;;Nieuprawniony host zawiera pełną nazwę oficjalnej domeny PayPal
+C32;ocena;planowany_przypadek;phishing_symulowany;https://m1crosoft.test/secure;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Microsoft;/session;;Nieuprawnione podszycie pod Microsoft z cyfrą w hoście
+C33;ocena;planowany_przypadek;phishing_symulowany;https://login-facebook.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Facebook;https://receive.test/submit;;Nieuprawnione podszycie pod Facebook i obcy cel formularza
+C34;ocena;planowany_przypadek;phishing_symulowany;https://account-netflix.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Netflix;/session;;Nieuprawnione podszycie pod Netflix z celem na tym samym fałszywym hoście
+C35;ocena;planowany_przypadek;phishing_symulowany;https://alegro.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Allegro;/session;;Nieuprawnione podszycie pod Allegro z literówką hosta
+C36;ocena;planowany_przypadek;phishing_symulowany;https://0lx.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;OLX;/session;;Nieuprawnione podszycie pod OLX z cyfrą w hoście
+C37;ocena;planowany_przypadek;phishing_symulowany;https://cloud-invite.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;Google;/session;;Nieuprawnione podszycie pod Google tylko w treści strony
+C38;ocena;planowany_przypadek;phishing_symulowany;https://secure-payments.test/;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;/session;;Symulacja nieuprawnionego zbierania haseł bez znanej marki i bez obcego action
+C39;ocena;planowany_przypadek;phishing_symulowany;https://auth-pay.test/verify;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;;https://receive.test/submit;;Symulacja nieuprawnionego zbierania haseł z obcym celem formularza
+C40;ocena;planowany_przypadek;phishing_symulowany;https://mbank-pomoc.test/login;SPEC_40;;;;;;;;;;;;;Model strony - brak uruchomienia w Chrome;haslo;mBank;/session;;Nieuprawnione podszycie pod mBank nieuwzględniony w słowniku marek

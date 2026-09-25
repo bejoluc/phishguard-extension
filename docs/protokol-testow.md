@@ -1,6 +1,6 @@
 # PhishGuard — protokół i wzorzec tabeli przypadków testowych
 
-Stan na 25.09.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników obecnego kodu**: commit `82c7290`. Dane wynikowe z Chrome nie zostały jeszcze zebrane. Szczegóły przykładowych przypadków i puste pola na obserwacje znajdują się w [tabeli CSV](przypadki-testowe.csv).
+Stan na 25.09.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników pierwszych 13 przykładów**: commit `82c7290`. Dane wynikowe z Chrome nie zostały jeszcze zebrane. [Tabela CSV](przypadki-testowe.csv) zawiera te 13 przypadków rozwojowych oraz [40 zaplanowanych scenariuszy URL + DOM](scenariusze-40.md).
 
 ## 1. Rozróżnienie trzech rzeczy
 
@@ -8,7 +8,7 @@ Stan na 25.09.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.
 2. **Wynik oczekiwany z bieżącego kodu** podaje konkretne ID wskaźników, punkty i status, jakie powinny wynikać z aktualnych reguł. To punkt odniesienia dla testu regresji, nawet jeśli zachowanie okaże się niepożądane.
 3. **Wynik zaobserwowany** zapisujemy dopiero po wykonaniu próby, razem z wersją kodu, datą i środowiskiem. Puste komórki w CSV oznaczają „nie wykonano”, a nie zero punktów.
 
-Przypadki `unit_url` sprawdzają sam detektor URL i mają tylko sumę punktów URL; nie przypisujemy im końcowego statusu całej strony. Przypadki `score_fixture` podają kontrolowane cechy DOM bez uruchamiania przeglądarki, więc sprawdzają łączenie sygnałów i punktację, lecz nie dowodzą poprawności zbierania DOM. Dopiero `chrome_e2e` bada rozszerzenie jako całość na stronie testowej.
+Przypadki `unit_url` sprawdzają sam detektor URL i mają tylko sumę punktów URL; nie przypisujemy im końcowego statusu całej strony. Przypadki `score_fixture` podają kontrolowane cechy DOM bez uruchamiania przeglądarki, więc sprawdzają łączenie sygnałów i punktację, lecz nie dowodzą poprawności zbierania DOM. `planowany_przypadek` oznacza specyfikację strony bez uruchomienia; dopiero `chrome_e2e` bada rozszerzenie jako całość na stronie testowej.
 
 ## 2. Format zapisu i zasady oceny
 
@@ -16,12 +16,13 @@ Plik CSV ma kodowanie UTF-8 i separator `;`, wygodny do otwarcia w polskim Excel
 
 | Pole | Znaczenie |
 | --- | --- |
-| `id`, `zbior`, `tryb` | Stały identyfikator, etap (`rozwoj` albo `ocena`) i poziom próby (`unit_url`, `score_fixture`, `chrome_e2e`). |
+| `id`, `zbior`, `tryb` | Stały identyfikator, etap (`rozwoj` albo `ocena`) i rodzaj próby (`unit_url`, `score_fixture`, `planowany_przypadek`, później ewentualnie `chrome_e2e` lub opisany model laboratoryjny). |
 | `referencja` | Etykieta scenariusza nadana bez znajomości wyniku programu; `nie_dotyczy` dla testów pojedynczych reguł. |
 | `wejscie`, `profil_dom` | Dokładny URL lub ścieżka strony i opis kontrolowanych cech DOM. |
 | `oczekiwane_id`, `oczekiwane_pkt_url`, `oczekiwany_score`, `oczekiwany_status`, `oczekiwana_wiarygodnosc` | Wynik przewidziany na podstawie kodu; status i wiarygodność dotyczą wyłącznie pełnej punktacji. |
 | `faktyczne_*` | Wartości odczytane po przeprowadzeniu próby; nigdy nie kopiować tu wyniku oczekiwanego. |
 | `data`, `commit`, `warunki_uwagi` | Czas próby, wersja testowanego kodu oraz przeglądarka, sposób podania strony, protokół i odstępstwa. |
+| `typ_dom`, `marka_w_dom`, `cel_formularza`, `przycisk_oauth`, `uzasadnienie_etykiety` | Specyfikacja 40 planowanych stron i zapis podstawy ich niezależnej etykiety. W starszych U/D pola pozostają puste. |
 
 Na etapie analizy skuteczności alertem jest wynik `Suspicious` albo `Dangerous`; `Safe` jest brakiem alertu. Każdą próbę z niepełnym DOM, także gdy sam URL daje alert, liczymy osobno jako **niekompletną** i nie mieszamy z macierzą pomyłek pełnych analiz. Z oznaczonych pełnych scenariuszy liczymy TP, FP, FN, TN, a następnie precyzję, czułość i odsetek fałszywych alarmów. Podajemy liczniki i mianowniki; nie wyciągamy ogólnego procentu skuteczności z pojedynczych przykładów.
 
@@ -73,6 +74,6 @@ Do prób nie wprowadzamy prawdziwych haseł i nie wysyłamy formularzy. Zapisuje
 
 ## 5. Przygotowanie pomiaru właściwego
 
-Propozycja na kolejny etap: 40 oznaczonych scenariuszy, wstępnie 20 legalnych i 20 symulujących phishing. Przypadki używane do poprawek trafią do `rozwoj`; odrębne przypadki `ocena` zostaną ustalone **przed** zamrożeniem wersji kodu i uruchomione dopiero po poprawkach. Docelowa liczba oraz warunki pomiaru mogą zostać skorygowane po ocenie nakładu, ale podział i jego zmiany trzeba zapisać w tym protokole. Scenariusze `unit_url` i `score_fixture` są testami reguł, nie wchodzą do późniejszego pomiaru skuteczności rozszerzenia jako całości.
+Zapisano 40 oznaczonych scenariuszy: 20 legalnych i 20 symulujących phishing. W każdej klasie 10 trafiło do `rozwoj`, a 10 do `ocena`. Wszystkie są obecnie tylko specyfikacją (`planowany_przypadek`); nie policzono dla nich wyniku oczekiwanego ani uzyskanego. Oddzielne przypadki `ocena` ustalono **przed** zamrożeniem wersji kodu i uruchomimy je po pracy na zbiorze rozwojowym. Warunki wykonania i ewentualne zmiany trzeba zapisać w tym protokole. Scenariusze `unit_url` i `score_fixture` są testami reguł, nie wchodzą do późniejszego pomiaru skuteczności rozszerzenia jako całości.
 
 Wyniki na kontrolowanych stronach pozwolą opisać ograniczenia prototypu. Ich próba i sposób doboru muszą zostać podane w pracy; nie będziemy przedstawiać ich jako pomiaru wszystkich rzeczywistych kampanii phishingowych.

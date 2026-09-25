@@ -1,4 +1,6 @@
 # KOMPENDIUM PROJEKTU INŻYNIERSKIEGO: PHISHGUARD
+**Uwaga (25.09.2026): poniższe kopie kodu są historyczną migawką i nie opisują już w całości aktualnego rozszerzenia. Stan bieżący należy sprawdzać w plikach źródłowych repozytorium; wykaz reguł i wymagań znajduje się w [docs/stan-regul-i-wymagania.md](docs/stan-regul-i-wymagania.md).**
+
 **Plik transferu kontekstu technicznego dla modeli AI**
 
 Niniejszy dokument stanowi kompletne podsumowanie prac projektowych i implementacyjnych nad rozszerzeniem przeglądarki **PhishGuard**. Został przygotowany jako skumulowany plik kontekstu, który można bezpośrednio załadować do dowolnego modelu AI w celu kontynuacji prac programistycznych lub pisania rozdziałów teoretycznych pracy dyplomowej.

@@ -2,6 +2,8 @@
 
 Niniejszy projekt stanowi prototyp rozszerzenia dla przeglądarki Google Chrome, służącego do oceny ryzyka phishingu po otwarciu panelu rozszerzenia. Kod rozdziela analizę adresu URL, analizę DOM, obliczenie wyniku oraz prezentację raportu.
 
+Aktualny wykaz zaimplementowanych reguł, wymagań i ograniczeń: [Stan reguł i wymagania projektu](docs/stan-regul-i-wymagania.md).
+
 ---
 
 ## 1. Cel Główny Projektu

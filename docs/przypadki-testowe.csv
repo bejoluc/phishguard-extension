@@ -1,0 +1,14 @@
+id;zbior;tryb;referencja;wejscie;profil_dom;oczekiwane_id;oczekiwane_pkt_url;oczekiwany_score;oczekiwany_status;oczekiwana_wiarygodnosc;faktyczne_id;faktyczne_pkt_url;faktyczny_score;faktyczny_status;faktyczna_wiarygodnosc;data;commit;warunki_uwagi
+U01;rozwoj;unit_url;nie_dotyczy;https://paypal.com/;;brak;0;;;;;;;;;;;
+U02;rozwoj;unit_url;nie_dotyczy;https://secure.paypal.com/login;;suspicious-keywords;10;;;;;;;;;;;
+U03;rozwoj;unit_url;nie_dotyczy;https://fakepaypal.test/login;;suspicious-keywords|brand-typosquatting;50;;;;;;;;;;;
+U04;rozwoj;unit_url;nie_dotyczy;https://g00gle.test/;;brand-typosquatting;40;;;;;;;;;;;
+U05;rozwoj;unit_url;nie_dotyczy;https://paypal.com.evil.test/;;excessive-subdomains|brand-typosquatting;55;;;;;;;;;;;Podszycie i cztery segmenty hosta
+U06;rozwoj;unit_url;nie_dotyczy;https://example.test/?next=/login;;brak;0;;;;;;;;;;;Slowo login wystepuje tylko w zapytaniu
+U07;rozwoj;unit_url;nie_dotyczy;https://a.b.example.test/;;excessive-subdomains;15;;;;;;;;;;;
+U08;rozwoj;unit_url;nie_dotyczy;http://example.test/login;;insecure-protocol|suspicious-keywords;35;;;;;;;;;;;
+D01;rozwoj;score_fixture;legalna_symulacja;https://example.test/login;P1;suspicious-keywords|password-field-present;10;25;Safe;Medium;;;;;;;;
+D02;rozwoj;score_fixture;legalna_symulacja;https://portal.example.test/login;P2;suspicious-keywords|password-field-present|external-form-action;10;60;Suspicious;High;;;;;;;;Potencjalny falszywy alarm przy legalnej subdomenie
+D03;rozwoj;score_fixture;phishing_symulowany;https://paypal-login.test/;P3;suspicious-keywords|brand-typosquatting|password-field-present|insecure-form-action|external-form-action|brand-mismatch;50;100;Dangerous;High;;;;;;;;
+D04;rozwoj;score_fixture;poza_logowaniem;https://example.test/;P4;insecure-form-action;0;30;Safe;Medium;;;;;;;;Zwykly formularz HTTP punktowany bez pola hasla
+D05;rozwoj;score_fixture;brak_dom;https://example.test/;BRAK_DOM;brak;0;0;Incomplete;Incomplete;;;;;;;;Analiza niepelna - poza macierza pomylek

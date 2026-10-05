@@ -7,6 +7,7 @@ Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/prot
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
 Pierwsze pięć prób w Chrome na stronach demonstracyjnych: [Wyniki i zrzuty z 25.09.2026](docs/proby-chrome-2026-09-25.md).
+Zrzut panelu po instrukcji próby E06: [obserwacja z 05.10.2026](docs/proba-chrome-2026-10-05.md) z ograniczeniami identyfikacji otwartej strony i wersji rozszerzenia.
 Nowe testy DOM i poprawki z 05.10.2026: [Przegląd usterek i weryfikacja](docs/przeglad-dom-2026-10-05.md).
 
 ---
@@ -101,7 +102,7 @@ W celach demonstracyjnych w projekcie utworzono katalog `test-pages` zawierając
 3.  **`external-form.html`**: Formularz wysyłający dane na obcą domenę. Na lokalnym serwerze HTTP otrzymuje 75 pkt i status **Zagrożenie**; na HTTPS bez innych wskaźników 50 pkt i status **Podejrzany**.
 4.  **`oauth-false-positive-test.html`**: Formularz z pojedynczym przyciskiem „Zaloguj przez Google” obok formularza pozwala sprawdzić brak fałszywego wskaźnika niezgodności marki.
 5.  **`suspicious-keywords.html`**: Materiał do sprawdzenia ograniczenia prototypu: słowa ostrzegawcze występują w treści, ale bieżący detektor słów kluczowych sprawdza wyłącznie host i ścieżkę URL.
-6.  **`oauth-inside-form.html`**: Strona do powtórnej próby pojedynczej wzmianki „Google” w przycisku wewnątrz formularza. Przy `http://localhost:8000/test-pages/oauth-inside-form.html` aktualny kod przewiduje 25 pkt, status **Bezpieczny**, bez `brand-mismatch`. To przewidywanie, a nie zaobserwowany wynik Chrome.
+6.  **`oauth-inside-form.html`**: Strona do powtórnej próby pojedynczej wzmianki „Google” w przycisku wewnątrz formularza. Przy `http://localhost:8000/test-pages/oauth-inside-form.html` kod przewiduje 25 pkt, status **Bezpieczny**, bez `brand-mismatch`. Przesłany po instrukcji zrzut panelu na `localhost` pokazuje takie wartości, lecz nie zawiera paska adresu ani samej strony; [raport E06](docs/proba-chrome-2026-10-05.md) rozdziela obserwację od założonego URL.
 
 *Wskazówka badawcza: Testy domen i celów formularzy wymagają podania stron przez serwer (np. `python -m http.server` i `http://localhost:8000/test-pages/...`). Serwer HTTP dodaje 25 punktów za brak HTTPS i może zmieniać kategorię wyniku. Do porównania skuteczności należy oddzielić wpływ protokołu od badanej cechy lub użyć serwera HTTPS. Nie wpisuj prawdziwych danych do formularzy testowych.*
 

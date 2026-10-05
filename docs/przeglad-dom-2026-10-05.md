@@ -1,6 +1,6 @@
 # Testy DOM, przegląd usterek i poprawki — 05.10.2026
 
-Ten zapis realizuje zaległe punkty harmonogramu z 01.10 (testy DOM), 03.10 (kontrolowane uruchomienie i lista usterek) oraz 05.10 (poprawki). Wszystkie opisane poniżej **nowe obserwacje** pochodzą z uruchomienia kodu w Node.js z kontrolowanymi obiektami DOM, nie z nowej próby w Chrome. Poprzednie pięć zrzutów Chrome z 25.09 dotyczy wcześniejszej wersji kodu.
+Ten zapis realizuje zaległe punkty harmonogramu z 01.10 (testy DOM), 03.10 (kontrolowane uruchomienie i lista usterek) oraz 05.10 (poprawki). Wyniki odtwarzania usterek pochodzą z uruchomienia kodu w Node.js z kontrolowanymi obiektami DOM. Późniejszy zrzut panelu E06 opisano osobno i oddzielono od testów Node. Poprzednie pięć zrzutów Chrome z 25.09 dotyczy wcześniejszej wersji kodu.
 
 ## Środowisko i metoda
 
@@ -23,7 +23,7 @@ Przy odczycie tekstu formularza kolejne węzły tekstowe są rozdzielane spacją
 
 [`test-pages/oauth-inside-form.html`](../test-pages/oauth-inside-form.html) odtwarza DOM-01 na lokalnej stronie z formularzem e-mail i pojedynczym przyciskiem OAuth. Dla dokładnego adresu `http://localhost:8000/test-pages/oauth-inside-form.html` poprawiony kod **przewiduje** tylko `insecure-protocol`, 25/100, status `Safe` i wiarygodność `Low`. Formularz ma cel `https://localhost/session`, aby jego docelowy protokół HTTP nie wprowadzał dodatkowego wskaźnika. To przewidywanie wyliczone z kodu, **nie wynik zaobserwowany w Chrome**.
 
-Nowej próby Chrome nie wykonano w tym środowisku: dostępna przeglądarka odrzuciła otwarcie lokalnego pliku `file://` ze względu na politykę dozwolonych adresów. Nie zastępowano jej inną drogą dostępu. Pozostaje ręczna próba w Chrome użytkownika z uruchomionym lokalnym serwerem, po przeładowaniu rozszerzenia. W zapisie próby trzeba podać pełny URL, SHA załadowanej wersji repozytorium, wersję Chrome, datę oraz zrzut całego panelu; dopiero potem wpisać **zaobserwowane** wartości do osobnego wiersza protokołu. Nie wpisywać prawdziwych danych i nie wysyłać formularza.
+Nowej próby Chrome nie wykonano w tym środowisku: dostępna przeglądarka odrzuciła otwarcie lokalnego pliku `file://` ze względu na politykę dozwolonych adresów. Później użytkownik przesłał w odpowiedzi na instrukcję próby [zrzut panelu E06](proba-chrome-2026-10-05.md). Widoczne 25/100, „Bezpieczny”, „Niska” i jedynie brak HTTPS zgadzają się z przewidywaniem. Kadr pokazuje host `localhost`, ale nie pasek adresu i stronę; konkretnego pliku HTML, portu, wersji Chrome i SHA załadowanego rozszerzenia nie potwierdzono. W zapisie próby wartości obserwowane oddzielono od oczekiwanych. Nie wpisywać prawdziwych danych i nie wysyłać formularza.
 
 ## Otwarte ograniczenia
 

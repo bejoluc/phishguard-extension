@@ -58,7 +58,7 @@ Osobny poziom „Niska/Średnia/Wysoka” jest wyliczany z liczby i rodzaju wykr
 
 Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wystarczających wyników testów, a nie brak kodu.
 
-| ID | Wymaganie i kryterium sprawdzenia | Stan na 25.09.2026 |
+| ID | Wymaganie i kryterium sprawdzenia | Stan na 05.10.2026 |
 | --- | --- | --- |
 | RF-01 | Odczyt aktywnej karty i przedstawienie jej hosta w popupie. | Zrealizowane w `popup.js` i rendererze. |
 | RF-02 | Wykrycie i objaśnienie cech ryzyka w URL zgodnie z jawnie określonymi regułami. | Zrealizowane; zakres reguł w sekcji 3. |
@@ -67,7 +67,7 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 | RF-05 | Pokazanie użytkownikowi wyniku, statusu, wykrytych cech i ich objaśnień. | Zrealizowane w popupie. |
 | RF-06 | Pokazanie stanu skanowania oraz jawne oznaczenie braku danych DOM lub strony niedostępnej do analizy. | Zrealizowane; część zachowań ma testy automatyczne. |
 | RF-07 | Ponowienie skanu przyciskiem bez przeładowywania rozszerzenia. | Zrealizowane w `popup.js`. |
-| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; 22 testy automatyczne i 5 wcześniejszych stron demonstracyjnych nie mierzą jeszcze skuteczności. |
+| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; 22 testy automatyczne, pięć wcześniejszych prób i ograniczony zrzut E06 nie mierzą jeszcze skuteczności. |
 
 ## 7. Wymagania niefunkcjonalne i weryfikacja
 

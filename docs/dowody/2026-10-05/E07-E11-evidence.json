@@ -36,5 +36,8 @@
       "saved_name": "chrome-version-restart-pending.png",
       "sha256": "b3573a3d27e0e314d9585cac525363a3edb6996a61c516536e08847682e60b72"
     }
-  ]
+  ],
+  "user_reported_checkout_commit": "c695cf337769d77edfd3839776edc9bb132154bb",
+  "checkout_evidence": "Wynik git rev-parse HEAD przekazany przez użytkownika 05.10.2026 po zrzutach i przed kolejnym git pull.",
+  "extension_reload_confirmed": false
 }

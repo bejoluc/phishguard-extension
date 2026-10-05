@@ -87,3 +87,17 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - **Metadane:** pełne kadry identyfikują ścieżki i port 8000. Zrzut informacji Chrome pokazuje 154.0.8037.95, 64-bit i aktualizację oczekującą restartu. Wersja aktywnego procesu oraz załadowany SHA niepotwierdzone; c695cf3 był zadany w instrukcji.
 - **Materiały do pracy:** dodano tabelę powtórzonych obserwacji i omówienie warunków HTTP; jest to dokumentacja prób funkcjonalnych, bez metryk skuteczności.
 - **Dalszy krok:** uzyskać SHA z komputera testowego i dolny kadr E11; potem kontynuować przypadki rozwojowe i analizę ograniczenia C07.
+
+## 05.10.2026 — potwierdzenie lokalnego SHA dla E07–E11
+
+- Użytkownik przekazał wynik `git rev-parse HEAD`: `c695cf337769d77edfd3839776edc9bb132154bb`, po zrzutach i przed kolejnym pobraniem zmian.
+- Uzupełniono pole `commit` w pięciu wierszach CSV jako wersję lokalnego checkoutu, raport, protokół i metadane dowodów. Nie przypisano temu wynikowi potwierdzenia przeładowania rozszerzenia ani aktywnej wersji procesu Chrome.
+- Odczyty panelu pozostają takie same; dodatkowy dolny kadr E11 i potwierdzenie przeładowania uzupełnią opis prób.
+
+## 05.10.2026 — pełny zbiór rozwojowy C01–C20
+
+- **Wykonanie:** rzeczywiste moduły URL, DOM i punktacji na kontrolowanym SPEC_40; [raport i dane](zbior-rozwojowy-2026-10-05.md). Kod aplikacji: 2a56948, reguły bez zmian.
+- **Wyniki:** TP=10, FP=2, FN=0, TN=8. Wszystkie 10 symulacji phishingu daje alarm; 8 z 10 legalnych nie daje alarmu. C07 i C09 opisano osobno. Jest to wynik zbioru rozwojowego, bez uruchomienia C21–C40 i bez nowych prób Chrome.
+- **Decyzja C07:** różnica hostów jest wykrywana prawidłowo; autoryzacja docelowej subdomeny nie wynika z wejścia URL/DOM. Zachowano regułę, opisano ograniczenie.
+- **Decyzja C09:** legalna konstrukcja i ryzykowny HTTP współistnieją; nie usunięto alarmu dla transmisji hasła przez HTTP.
+- **Materiał do pracy:** podano liczniki i miary opisowe z mianownikami oraz ograniczenia uproszczonego modelu. Pilot pięciu przypadków i pełny przebieg mają wspólne scenariusze, więc nie sumujemy ich jako 25 niezależnych obserwacji.

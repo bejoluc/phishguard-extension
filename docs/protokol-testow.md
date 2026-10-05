@@ -86,4 +86,8 @@ Nową stronę [`oauth-inside-form.html`](../test-pages/oauth-inside-form.html) p
 
 ## 7. Powtórzenie 05.10.2026 — pełne kadry E07–E11
 
-Pięć nowych obserwacji Chrome zapisano jako E07–E11 w CSV i [raporcie z powtórzenia](proby-chrome-powtorzenie-2026-10-05.md). Pełne kadry identyfikują strony i port 8000; wyniki to 25, 70, 80, 75 i 100 pkt. Nie zastępują historycznych E01–E06. Zrzut informacji Chrome pokazuje 154.0.8037.95 i restart oczekujący po aktualizacji. SHA załadowanego rozszerzenia nadal nie jest potwierdzony; `commit` w CSV pozostaje pusty. W E11 lista wskaźników jest ucięta, dlatego kompletne `faktyczne_id` pozostaje puste. Próby nie wchodzą do pomiaru C21–C40.
+Pięć nowych obserwacji Chrome zapisano jako E07–E11 w CSV i [raporcie z powtórzenia](proby-chrome-powtorzenie-2026-10-05.md). Pełne kadry identyfikują strony i port 8000; wyniki to 25, 70, 80, 75 i 100 pkt. Nie zastępują historycznych E01–E06. Zrzut informacji Chrome pokazuje 154.0.8037.95 i restart oczekujący po aktualizacji. Użytkownik następnie przekazał wynik `git rev-parse HEAD`: `c695cf337769d77edfd3839776edc9bb132154bb`. Pole `commit` w CSV uzupełniono jako SHA lokalnego checkoutu; przeładowanie rozszerzenia przed próbami pozostaje niepotwierdzone. W E11 lista wskaźników jest ucięta, dlatego kompletne `faktyczne_id` pozostaje puste. Próby nie wchodzą do pomiaru C21–C40.
+
+## 8. Pełny przebieg rozwojowy C01–C20
+
+Wykonano wszystkie 20 modeli rozwojowych i zapisano [raport](zbior-rozwojowy-2026-10-05.md) oraz [surowy JSON](dowody/2026-10-05/C01-C20-development-model.json). TP=10, FP=2, FN=0, TN=8; alarm oznacza Suspicious lub Dangerous. Miary raportu odnoszą się wyłącznie do zbioru rozwojowego w modelu. Pierwsze pięć przypadków jest powtórzeniem pilota, nie dodatkową próbą. CSV zachowuje specyfikację C01–C40; wykonane wyniki modelowe przechowuje JSON. C21–C40 nie wykonano. C07 i C09 omówiono bez osłabiania reguł pod etykiety testów.

@@ -4,7 +4,7 @@
 
 Użytkownik przekazał pięć pełnych kadrów stron z panelem PhishGuard oraz zrzut ekranu informacji o Chrome. Materiał zapisano jako E07–E11; wcześniejszy E06 zachowuje własne ograniczenia. Nowe kadry pokazują host `localhost`, port `8000`, ścieżki plików oraz strony i panel. Wskaźnik braku HTTPS potwierdza warunek HTTP; pasek Chrome pomija zapis schematu.
 
-Próby wykonano po instrukcji pobrania commitu `c695cf3`. Jest to **wersja zadana w instrukcji**, a nie potwierdzony SHA kodu załadowanego u użytkownika: nie przekazano wyniku `git rev-parse HEAD`. Oczekiwania odnoszą się do kodu tej wersji. Zrzut informacji Chrome pokazuje **154.0.8037.95, wersja 64-bitowa**, i komunikat o aktualizacji oczekującej na ponowne uruchomienie. Wersję zapisujemy jako widoczną na zrzucie informacji; aktywnej wersji procesu podczas każdej próby nie da się na tej podstawie jednoznacznie ustalić.
+Próby wykonano po instrukcji pobrania commitu `c695cf3`. Po przekazaniu zrzutów, przed kolejnym pobraniem zmian, użytkownik przesłał wynik `git rev-parse HEAD`: **`c695cf337769d77edfd3839776edc9bb132154bb`**. Potwierdza to SHA lokalnego checkoutu zgodny z instrukcją; nie potwierdza samodzielnie przeładowania rozszerzenia w Chrome. W CSV pole `commit` oznacza ten checkout. Oczekiwania odnoszą się do kodu tej wersji. Zrzut informacji Chrome pokazuje **154.0.8037.95, wersja 64-bitowa**, i komunikat o aktualizacji oczekującej na ponowne uruchomienie. Wersję zapisujemy jako widoczną na zrzucie informacji; aktywnej wersji procesu podczas każdej próby nie da się na tej podstawie jednoznacznie ustalić.
 
 ## Zaobserwowane wyniki
 
@@ -34,4 +34,4 @@ Punkty, status i poziom we wszystkich pięciu próbach odpowiadają przewidywani
 
 Kadry dokumentują działanie panelu na pięciu lokalnych stronach i zgodność obserwowanych wartości z regułami dla tych adresów. Są to próby funkcjonalne `chrome_e2e`, odrębne od modelowego pilota C01/C07/C10/C11/C16. Nie stanowią odłożonego zbioru C21–C40 ani pomiaru czułości, precyzji czy odsetka fałszywych alarmów.
 
-Do pełnego zapisu wersji potrzebne są SHA z komputera użytkownika i potwierdzenie przeładowania rozszerzenia. Dodatkowy zrzut E11 po przewinięciu do końca listy pozwoli sprawdzić alarm marki. Po restarcie Chrome można zanotować aktywną wersję, lecz nie przypisywać jej wstecz tym kadrom. Data 05.10.2026 jest datą przekazania dowodów; godziny wykonania poszczególnych prób nie są dostępne.
+SHA lokalnego checkoutu został potwierdzony wynikiem terminala przekazanym przez użytkownika. Do powiązania go z rozszerzeniem w Chrome pozostaje potwierdzenie przeładowania rozszerzenia przed próbami. Dodatkowy zrzut E11 po przewinięciu do końca listy pozwoli sprawdzić alarm marki. Po restarcie Chrome można zanotować aktywną wersję, lecz nie przypisywać jej wstecz tym kadrom. Data 05.10.2026 jest datą przekazania dowodów; godziny wykonania poszczególnych prób nie są dostępne.

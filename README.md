@@ -7,6 +7,7 @@ Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/prot
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
 Pierwsze pięć prób w Chrome na stronach demonstracyjnych: [Wyniki i zrzuty z 25.09.2026](docs/proby-chrome-2026-09-25.md).
+Nowe testy DOM i poprawki z 05.10.2026: [Przegląd usterek i weryfikacja](docs/przeglad-dom-2026-10-05.md).
 
 ---
 
@@ -70,7 +71,7 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 | **URL** | Podejrzane słowo w URL | **+10** | URL zawiera słowa: *login, verify, secure, account, update, password*. |
 | **URL** | Typosquatting | **+40** | Domena zniekształca pisownię monitorowanej marki (np. g00gle, alegro). |
 | **DOM** | Obecność pola hasła | **+15** | Drzewo DOM zawiera przynajmniej jeden element `input[type="password"]`. |
-| **DOM** | Nieszyfrowany formularz | **+30** | Atrybut `action` formularza zaczyna się od nieszyfrowanego protokołu `http://`. |
+| **DOM** | Nieszyfrowany formularz | **+30** | Niepusty `action`, po rozwiązaniu względem URL strony, wskazuje na HTTP. |
 | **DOM** | Zewnętrzny cel formularza | **+35** | Atrybut `action` formularza wskazuje na host inny niż domena strony. |
 | **DOM** | Niezgodność marki | **+40** | Strona zawiera nazwę marki, ale domena nie jest powiązana z tą marką. |
 
@@ -96,14 +97,15 @@ Klasyfikacja „Bezpieczny” dotyczy wyłącznie stron, dla których udało si�
 W celach demonstracyjnych w projekcie utworzono katalog `test-pages` zawierający szablony HTML (bez prawdziwych danych logowania i logotypów) do weryfikacji działania silnika:
 
 1.  **`safe-login.html`**: Formularz logowania wysyłający dane na tę samą domenę. Samo pole hasła jest punktowane (+15); na serwerze HTTP dodatkowe punkty pochodzą od protokołu i słowa „login” w ścieżce.
-2.  **`fake-paypal-login.html`**: Atrapa strony PayPal. Wykrywa pole hasła, typosquatting/mismatch marki oraz nieszyfrowaną i zewnętrzną wysyłkę formularza. Generuje status **Zagrożenie**.
+2.  **`fake-paypal-login.html`**: Atrapa strony PayPal. Na `localhost` wskazuje pole hasła, niezgodność marki w DOM oraz nieszyfrowaną i zewnętrzną wysyłkę formularza. Wskaźnik typosquattingu hosta wymaga osobnego adresu testowego z nazwą marki.
 3.  **`external-form.html`**: Formularz wysyłający dane na obcą domenę. Na lokalnym serwerze HTTP otrzymuje 75 pkt i status **Zagrożenie**; na HTTPS bez innych wskaźników 50 pkt i status **Podejrzany**.
-4.  **`oauth-false-positive-test.html`**: Formularz z pojedynczym przyciskiem „Zaloguj przez Google” pozwala sprawdzić brak fałszywego wskaźnika niezgodności marki.
+4.  **`oauth-false-positive-test.html`**: Formularz z pojedynczym przyciskiem „Zaloguj przez Google” obok formularza pozwala sprawdzić brak fałszywego wskaźnika niezgodności marki.
 5.  **`suspicious-keywords.html`**: Materiał do sprawdzenia ograniczenia prototypu: słowa ostrzegawcze występują w treści, ale bieżący detektor słów kluczowych sprawdza wyłącznie host i ścieżkę URL.
+6.  **`oauth-inside-form.html`**: Strona do powtórnej próby pojedynczej wzmianki „Google” w przycisku wewnątrz formularza. Przy `http://localhost:8000/test-pages/oauth-inside-form.html` aktualny kod przewiduje 25 pkt, status **Bezpieczny**, bez `brand-mismatch`. To przewidywanie, a nie zaobserwowany wynik Chrome.
 
 *Wskazówka badawcza: Testy domen i celów formularzy wymagają podania stron przez serwer (np. `python -m http.server` i `http://localhost:8000/test-pages/...`). Serwer HTTP dodaje 25 punktów za brak HTTPS i może zmieniać kategorię wyniku. Do porównania skuteczności należy oddzielić wpływ protokołu od badanej cechy lub użyć serwera HTTPS. Nie wpisuj prawdziwych danych do formularzy testowych.*
 
-Regresję można uruchomić przez `node --test tests/*.test.mjs` (Node.js 24). Testy obejmują domeny oficjalne i podszywające się hosty, wzorce literówek, słowa i strukturę URL, adresy IP oraz wybrane zachowania DOM i punktacji; nie zastępują sprawdzenia rozszerzenia w Chrome.
+Regresję można uruchomić przez `node --test --test-isolation=none tests/*.test.mjs` (Node.js 24). Stan na 05.10.2026: 22 zaliczone testy, w tym siedem nowych przypadków DOM. Testy obejmują domeny oficjalne i podszywające się hosty, wzorce literówek, słowa i strukturę URL, adresy IP oraz wybrane zachowania DOM i punktacji; nie zastępują sprawdzenia rozszerzenia w Chrome.
 
 ---
 

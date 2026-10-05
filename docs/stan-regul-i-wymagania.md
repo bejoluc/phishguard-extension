@@ -1,6 +1,6 @@
 # PhishGuard — aktualne reguły i wymagania projektu
 
-Stan na 25.09.2026. Dokument roboczy opracowany na podstawie aktualnego kodu repozytorium oraz tytułu z dokumentu pracy. Oznaczenie „zrealizowane” potwierdza obecność funkcji w kodzie, a nie jej skuteczność wykrywania phishingu w rzeczywistym ruchu.
+Stan na 05.10.2026. Dokument roboczy opracowany na podstawie aktualnego kodu repozytorium oraz tytułu z dokumentu pracy. Oznaczenie „zrealizowane” potwierdza obecność funkcji w kodzie, a nie jej skuteczność wykrywania phishingu w rzeczywistym ruchu.
 
 ## 1. Zatwierdzony temat i granice projektu
 
@@ -44,7 +44,7 @@ Detektor zbiera liczbę formularzy i pól `input[type="password"]`, sprawdza `ac
 | `external-form-action` | Co najmniej jeden formularz ma `action` z nazwą hosta różną od hosta strony. | 35 | Porównanie dotyczy pełnej nazwy hosta: legalna subdomena lub zewnętrzny dostawca logowania również może zostać oznaczony. |
 | `brand-mismatch` | Detektor znalazł nazwę monitorowanej marki w kontekście logowania, a aktualny host nie należy do jej oficjalnych domen. | 40 | Sygnał jest naliczany raz, nawet gdy rozpoznano więcej marek. |
 
-Kontekst logowania oznacza formularz z polem hasła lub polem, którego `name`, `id` albo `placeholder` zawiera słowo związane z logowaniem, bądź obecność pola hasła gdziekolwiek na stronie. Jeśli taki kontekst istnieje, detektor bada tytuł strony, nagłówki przy znalezionych formularzach logowania, etykiety, legendy, placeholdery, tekst tych formularzy oraz przyciski uwierzytelniania. Nazwa marki musi wystąpić co najmniej dwa razy w zebranym tekście, a host nie może być oficjalną domeną tej marki. Detektor obejmuje dziewięć marek: siedem wymienionych przy URL oraz Apple i Amazon. Nie analizuje całej treści strony jako jednego bloku.
+Kontekst logowania oznacza formularz z polem hasła lub polem, którego `name`, `id` albo `placeholder` zawiera słowo związane z logowaniem, bądź obecność pola hasła gdziekolwiek na stronie. Jeśli taki kontekst istnieje, detektor bada tytuł strony, nagłówki przy znalezionych formularzach logowania, placeholdery, tekst tych formularzy oraz zewnętrzne przyciski uwierzytelniania. Tekst formularza obejmuje również jego nagłówki, etykiety, legendy i przyciski; od 05.10 nie zlicza się ich ponownie jako tych samych fragmentów. Fragmenty węzłów tekstowych oddzielane są spacją, a nazwa marki musi wystąpić jako samodzielne słowo co najmniej dwa razy. Host nie może być oficjalną domeną tej marki. Detektor obejmuje dziewięć marek: siedem wymienionych przy URL oraz Apple i Amazon. Nie analizuje całej treści strony jako jednego bloku.
 
 Źródła: [`domDetector.js`](../src/detectors/domDetector.js), [`riskScoring.js`](../src/scoring/riskScoring.js). Detektor nie zwraca osobnej etykiety „to jest strona logowania”; pole hasła i rozpoznanie formularza logowania służą dziś do wybranych reguł.
 
@@ -62,12 +62,12 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 | --- | --- | --- |
 | RF-01 | Odczyt aktywnej karty i przedstawienie jej hosta w popupie. | Zrealizowane w `popup.js` i rendererze. |
 | RF-02 | Wykrycie i objaśnienie cech ryzyka w URL zgodnie z jawnie określonymi regułami. | Zrealizowane; zakres reguł w sekcji 3. |
-| RF-03 | Odczyt cech DOM istotnych dla logowania i formularzy bez pobierania wartości pól. | Zrealizowane w kodzie; potrzebne szersze testy zachowania w Chrome. |
+| RF-03 | Odczyt cech DOM istotnych dla logowania i formularzy bez pobierania wartości pól. | Zrealizowane w kodzie; siedem nowych testów DOM (05.10), nadal potrzebne szersze próby w Chrome. |
 | RF-04 | Połączenie wskaźników URL i DOM w powtarzalną punktację 0–100 i status. | Zrealizowane; wagi i progi w sekcjach 3–5. |
 | RF-05 | Pokazanie użytkownikowi wyniku, statusu, wykrytych cech i ich objaśnień. | Zrealizowane w popupie. |
 | RF-06 | Pokazanie stanu skanowania oraz jawne oznaczenie braku danych DOM lub strony niedostępnej do analizy. | Zrealizowane; część zachowań ma testy automatyczne. |
 | RF-07 | Ponowienie skanu przyciskiem bez przeładowywania rozszerzenia. | Zrealizowane w `popup.js`. |
-| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; obecne 15 testów automatycznych i 5 stron demonstracyjnych nie mierzą jeszcze skuteczności. |
+| RF-08 | Ocena na oznaczonych scenariuszach legalnych i podejrzanych stron logowania, z zapisem błędnych alarmów i przeoczeń. | Do wykonania; 22 testy automatyczne i 5 wcześniejszych stron demonstracyjnych nie mierzą jeszcze skuteczności. |
 
 ## 7. Wymagania niefunkcjonalne i weryfikacja
 
@@ -78,7 +78,7 @@ Status określa obecny stan implementacji; „do sprawdzenia” oznacza brak wys
 | RNF-03 | Powtarzalność: dla tego samego URL i tych samych danych DOM wynik oraz lista reguł mają być identyczne. | Wynika ze stałych reguł; do sprawdzenia na szerszym zestawie przypadków. |
 | RNF-04 | Czytelność: wynik ma odróżniać obserwację heurystyczną od gwarancji bezpieczeństwa. | Częściowo: interfejs pokazuje wskaźniki i stan niepełny, lecz etykieta „Bezpieczny” wymaga sprawdzenia na scenariuszach oraz objaśnienia w pracy. |
 | RNF-05 | Mierzalny czas odpowiedzi na stronach testowych. | Nie zmierzono. Przed badaniem ustalić warunki Chrome i liczbę prób; zapisać medianę i 95. percentyl czasu od rozpoczęcia skanu do wyniku. |
-| RNF-06 | Kod z rozdzieleniem detekcji URL, detekcji DOM, punktacji i interfejsu. | Zrealizowane strukturalnie; 15 obecnych testów nie stanowi pełnego pokrycia przypadków. |
+| RNF-06 | Kod z rozdzieleniem detekcji URL, detekcji DOM, punktacji i interfejsu. | Zrealizowane strukturalnie; 22 obecne testy nie stanowią pełnego pokrycia przypadków. |
 
 ## 8. Ustalenia do następnego etapu
 
@@ -86,7 +86,7 @@ Format przypadków i sposób oddzielenia danych rozwojowych od pomiaru opisuje [
 
 - Przygotować oznaczone scenariusze i przed pomiarem oddzielić przypadki używane do poprawek od przypadków oceny końcowej. Przypadek testowy może łączyć adres i zestaw cech DOM; nie musi oznaczać osobnego pliku HTML.
 - Sprawdzić fałszywe alarmy dla legalnych formularzy spoza logowania, zewnętrznych dostawców uwierzytelniania i różnych subdomen tej samej organizacji.
-- Sprawdzić, czy dwa zliczone wystąpienia marki rzeczywiście pochodzą z różnych fragmentów strony: ten sam nagłówek może trafić do tekstu analizy osobno oraz jako część tekstu formularza.
+- Na dalszych stronach sprawdzić trafność progu dwóch wzmianek o marce. Zduplikowane liczenie jednego nagłówka lub przycisku wewnątrz formularza poprawiono i objęto regresją; tytuł dokumentu oraz treść formularza pozostają odrębnymi źródłami tekstu.
 - Rozszerzyć testy DOM i ręczne próby w Chrome o niedostępny DOM oraz wpływ protokołu stron demonstracyjnych. Granice słów w URL, marek i hostów IP sprawdzają już testy automatyczne; uruchomienie strony przez `http://localhost` samo dodaje 25 pkt za HTTP.
 - Ustalić, jak w pracy nazwać wynik „Bezpieczny”, by jasno opisać, że jest to brak wykrytych cech w badanym zakresie.
 - Traktować testy na stronach symulowanych jako ocenę prototypu w kontrolowanych warunkach; nie wyciągać z nich wniosków o skuteczności wobec wszystkich prawdziwych kampanii phishingowych.

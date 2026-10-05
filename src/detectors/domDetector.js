@@ -77,17 +77,26 @@ function getHeadingsNearForm(form) {
  * Zapobiega to fałszywym analizom przycisków koszyka, nawigacji itp.
  * 
  * @param {HTMLElement} btn - Element przycisku.
- * @param {boolean} isInsideLoginForm - Czy przycisk znajduje się wewnątrz formularza logowania.
  * @returns {boolean} Prawda, jeśli przycisk jest związany z autoryzacją/OAuth.
  */
-function isAuthButton(btn, isInsideLoginForm) {
-  if (isInsideLoginForm) return true;
-  
+function isAuthButton(btn) {
   const text = (btn.tagName === 'INPUT' ? (btn.getAttribute('value') || '') : (btn.textContent || '')).toLowerCase();
   const idClass = ((btn.getAttribute('id') || '') + ' ' + (btn.getAttribute('class') || '')).toLowerCase();
   
   const authKeywords = ['login', 'sign', 'loguj', 'auth', 'oauth', 'zaloguj', 'sso', 'connect', 'partner'];
   return authKeywords.some(keyword => text.includes(keyword) || idClass.includes(keyword));
+}
+
+// Granice węzłów tekstowych zachowujemy jako odstęp: sklejone textContent
+// dwóch sąsiednich elementów mogłoby ukryć dwie osobne wzmianki o marce.
+function getFormText(form) {
+  const walker = document.createTreeWalker(form, NodeFilter.SHOW_TEXT);
+  const fragments = [];
+  let node;
+  while ((node = walker.nextNode())) {
+    fragments.push(node.textContent || '');
+  }
+  return fragments.join(' ');
 }
 
 const DomDetector = {
@@ -179,34 +188,34 @@ const DomDetector = {
 
     if (hasLoginForm) {
       let authRelatedText = (document.title || '').toLowerCase();
+      const countedHeadings = new Set();
 
-      // Dodanie nagłówków w pobliżu formularzy logowania
+      // Tekst wewnątrz formularza jest dodawany raz w całości. Nagłówki
+      // poza formularzem dodajemy osobno, bez ponownego liczenia tego samego węzła.
       loginForms.forEach(form => {
         const headings = getHeadingsNearForm(form);
         headings.forEach(h => {
-          authRelatedText += ' ' + (h.textContent || '').toLowerCase();
+          if (!form.contains(h) && !countedHeadings.has(h)) {
+            authRelatedText += ' ' + (h.textContent || '').toLowerCase();
+            countedHeadings.add(h);
+          }
         });
 
-        // Dodanie etykiet i legend wewnątrz formularza logowania
-        form.querySelectorAll('label, legend').forEach(el => {
-          authRelatedText += ' ' + (el.textContent || '').toLowerCase();
-        });
-
-        // Dodanie wartości placeholderów pól wejściowych wewnątrz formularza logowania
+        // Placeholdery nie są częścią textContent formularza.
         form.querySelectorAll('input').forEach(input => {
           const placeholder = (input.getAttribute('placeholder') || '').toLowerCase();
           authRelatedText += ' ' + placeholder;
         });
 
-        // Dodanie pełnego tekstu samego formularza logowania
-        authRelatedText += ' ' + (form.textContent || '').toLowerCase();
+        // Obejmuje nagłówki, etykiety, legendy i przyciski wewnątrz formularza.
+        authRelatedText += ' ' + getFormText(form).toLowerCase();
       });
 
-      // Dodanie przycisków uwierzytelniania (zarówno wewnątrz formularzy logowania, jak i zewnętrzne OAuth)
+      // Przyciski wewnętrzne są już uwzględnione w textContent formularza.
       const allButtons = document.querySelectorAll('button, [role="button"], input[type="submit"], input[type="button"]');
       allButtons.forEach(btn => {
         const isInside = loginForms.some(form => form.contains(btn));
-        if (isInside || isAuthButton(btn, false)) {
+        if (!isInside && isAuthButton(btn)) {
           const text = btn.tagName === 'INPUT' ? (btn.getAttribute('value') || '') : (btn.textContent || '');
           authRelatedText += ' ' + text.toLowerCase();
         }
@@ -227,7 +236,7 @@ const DomDetector = {
 
       // Pomocnicza funkcja zliczająca dopasowania słowa kluczowego
       const countOccurrences = (text, word) => {
-        const regex = new RegExp('\\b' + word + '\\b|' + word, 'gi');
+        const regex = new RegExp('\\b' + word + '\\b', 'gi');
         const matches = text.match(regex);
         return matches ? matches.length : 0;
       };

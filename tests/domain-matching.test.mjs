@@ -42,13 +42,21 @@ test('the DOM scanner does not suppress a PayPal mention on fakepaypal.com', () 
     const window = { location: { hostname, href: `https://${hostname}/login` } };
     const document = {
       title: 'PayPal Secure Login',
+      createTreeWalker() {
+        let pending = true;
+        return { nextNode() {
+          if (!pending) return null;
+          pending = false;
+          return { textContent: 'PayPal' };
+        } };
+      },
       querySelectorAll(selector) {
         if (selector === 'input[type="password"]') return [passwordInput];
         if (selector === 'form') return [form];
         return [];
       },
     };
-    runInNewContext(script, { window, document, URL });
+    runInNewContext(script, { window, document, URL, NodeFilter: { SHOW_TEXT: 4 } });
     const brands = window.DomDetector.scan().detectedBrandKeywords;
     assert.equal(brands.includes('paypal'), expected, hostname);
   }

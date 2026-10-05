@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Panel logowania portalu</title>
+  <style>
+    body { font: 16px system-ui, sans-serif; max-width: 420px; margin: 15vh auto; padding: 1rem; }
+    form { display: grid; gap: 1rem; padding: 1.5rem; border: 1px solid #ccd4df; border-radius: 10px; }
+    input, button { padding: .7rem; font: inherit; }
+  </style>
+</head>
+<body>
+  <form action="https://localhost/session" method="post">
+    <h1>Logowanie do portalu</h1>
+    <label for="email">Adres e-mail</label>
+    <input type="email" id="email" name="email" autocomplete="off">
+    <button type="button">Zaloguj przez Google</button>
+  </form>
+  <p>Strona laboratoryjna. Nie wpisuj danych i nie wysyłaj formularza.</p>
+</body>
+</html>

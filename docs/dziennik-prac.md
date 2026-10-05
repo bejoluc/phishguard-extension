@@ -78,3 +78,12 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - **Obserwacja:** C01: 15/Safe, C07: 60/Suspicious, C10: 0/Safe, C11: 100/Dangerous, C16: 65/Suspicious. C07 jest fałszywym alarmem w modelu legalnego przepływu między subdomenami. Nie liczono procentów skuteczności z celowego pilota pięciu przypadków.
 - **Granica dowodu:** to wyniki kodu na uproszczonym DOM, a nie pięć prób Chrome ani wyniki C21–C40. Planowane wiersze CSV zachowano bez pól `faktyczne_*`; oddzielny JSON przechowuje obserwacje modelowe. Nie zmieniano reguł aplikacji.
 - **Następny krok:** przeładować rozszerzenie na komputerze użytkownika i powtórzyć kontrolowane próby Chrome z pełnymi kadrami oraz wersjami; dokończyć przypadki rozwojowe przed zamrożeniem kodu 10.10.
+
+## 05.10.2026 — powtórzenie pięciu prób Chrome z pełnymi kadrami
+
+- **Dowody:** E07–E11, zrzut informacji Chrome i hashe plików w [raporcie](proby-chrome-powtorzenie-2026-10-05.md); obserwacje dodano do CSV.
+- **Odczyt:** OAuth wewnątrz formularza 25/Safe/Low, OAuth obok 70/Suspicious/High, własny formularz HTTP 80/Dangerous/High, zewnętrzny cel 75/Dangerous/High, atrapa PayPal 100/Dangerous/High.
+- **Wniosek:** punkty i statusy odpowiadają oczekiwaniom dla pokazanych adresów. E07 i E08 nie pokazują alarmu marki; E11 nie potwierdza go osobno, ponieważ dolna lista znajduje się poza kadrem.
+- **Metadane:** pełne kadry identyfikują ścieżki i port 8000. Zrzut informacji Chrome pokazuje 154.0.8037.95, 64-bit i aktualizację oczekującą restartu. Wersja aktywnego procesu oraz załadowany SHA niepotwierdzone; c695cf3 był zadany w instrukcji.
+- **Materiały do pracy:** dodano tabelę powtórzonych obserwacji i omówienie warunków HTTP; jest to dokumentacja prób funkcjonalnych, bez metryk skuteczności.
+- **Dalszy krok:** uzyskać SHA z komputera testowego i dolny kadr E11; potem kontynuować przypadki rozwojowe i analizę ograniczenia C07.

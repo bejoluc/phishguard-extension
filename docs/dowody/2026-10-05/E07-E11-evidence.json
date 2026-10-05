@@ -1,0 +1,40 @@
+{
+  "received_date": "2026-10-05",
+  "instruction_commit": "c695cf337769d77edfd3839776edc9bb132154bb",
+  "loaded_extension_commit": null,
+  "chrome_about_version": "154.0.8037.95",
+  "chrome_restart_pending": true,
+  "active_process_version": null,
+  "files": [
+    {
+      "source_name": "image(1).png",
+      "saved_name": "E07-oauth-inside-form-full.png",
+      "sha256": "4af569f79fcc8a92cecbe473c39cddf2a54317605a65baa4d4d574d8e4907fb6"
+    },
+    {
+      "source_name": "image(2).png",
+      "saved_name": "E08-oauth-false-positive-full.png",
+      "sha256": "035bf1cf18b1a6cacf19261743837cd0b0987b33f166d0fb25cbf494fe56ed32"
+    },
+    {
+      "source_name": "image(3).png",
+      "saved_name": "E09-safe-login-full.png",
+      "sha256": "e8d46fc3885c7cd7417d57d4d431ff0f322d457bab8985cdabc454345b7f22b0"
+    },
+    {
+      "source_name": "image(4).png",
+      "saved_name": "E10-external-form-full.png",
+      "sha256": "b2d339c04469343e3cf5daf7cde10ae0e7dc8df6f5d584153854baef36a2a2fa"
+    },
+    {
+      "source_name": "image(5).png",
+      "saved_name": "E11-fake-paypal-login-full.png",
+      "sha256": "7ce33b7b654885fa80ed6963718d024a038f18a4c622e2714010d11ee754bf2d"
+    },
+    {
+      "source_name": "image(6).png",
+      "saved_name": "chrome-version-restart-pending.png",
+      "sha256": "b3573a3d27e0e314d9585cac525363a3edb6996a61c516536e08847682e60b72"
+    }
+  ]
+}

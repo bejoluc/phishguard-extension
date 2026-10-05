@@ -6,6 +6,7 @@ Aktualny wykaz zaimplementowanych reguł, wymagań i ograniczeń: [Stan reguł i
 Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/protokol-testow.md) oraz [tabela przypadków CSV](docs/przypadki-testowe.csv).
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
+Pierwsze pięć prób w Chrome na stronach demonstracyjnych: [Wyniki i zrzuty z 25.09.2026](docs/proby-chrome-2026-09-25.md).
 
 ---
 

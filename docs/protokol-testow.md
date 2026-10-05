@@ -1,6 +1,6 @@
 # PhishGuard — protokół i wzorzec tabeli przypadków testowych
 
-Stan na 25.09.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników pierwszych 13 przykładów**: commit `82c7290`. Dane wynikowe z Chrome nie zostały jeszcze zebrane. [Tabela CSV](przypadki-testowe.csv) zawiera te 13 przypadków rozwojowych oraz [40 zaplanowanych scenariuszy URL + DOM](scenariusze-40.md).
+Stan na 25.09.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników pierwszych 13 przykładów**: commit `82c7290`. Zebrano też pięć wstępnych prób Chrome [opisanych osobno](proby-chrome-2026-09-25.md). [Tabela CSV](przypadki-testowe.csv) zawiera 13 przykładów reguł, pięć prób demonstracyjnych i [40 zaplanowanych scenariuszy URL + DOM](scenariusze-40.md).
 
 ## 1. Rozróżnienie trzech rzeczy
 
@@ -12,7 +12,7 @@ Przypadki `unit_url` sprawdzają sam detektor URL i mają tylko sumę punktów U
 
 ## 2. Format zapisu i zasady oceny
 
-Plik CSV ma kodowanie UTF-8 i separator `;`, wygodny do otwarcia w polskim Excelu. Jeden wiersz to jeden scenariusz. Pola `oczekiwane_*` i `faktyczne_*` pozostają oddzielne. Lista ID wskaźników jest rozdzielana znakiem `|`; pusty wynik wskaźników po wykonaniu zapisujemy jawnie jako `brak`. W polach wyników bieżących niczego nie wpisujemy, dopóki próba nie zostanie wykonana.
+Plik CSV ma kodowanie UTF-8 i separator `;`, wygodny do otwarcia w polskim Excelu. Jeden wiersz to jeden scenariusz. Pola `oczekiwane_*` i `faktyczne_*` pozostają oddzielne. Lista ID wskaźników jest rozdzielana znakiem `|`; pusty wynik wskaźników po wykonaniu zapisujemy jawnie jako `brak`. W polach wyników bieżących niczego nie wpisujemy, dopóki próba nie zostanie wykonana. W wykonanej próbie pole, którego nie widać w dostarczonym dowodzie, także pozostaje puste, z podaniem przyczyny w `warunki_uwagi`.
 
 | Pole | Znaczenie |
 | --- | --- |
@@ -60,7 +60,7 @@ Powyższe oczekiwania zostały wstępnie przeliczone przy tworzeniu protokołu p
 
 ## 4. Osobna ścieżka prób w Chrome
 
-Istniejące strony demonstracyjne są materiałem startowym dla `chrome_e2e`; wpisy z wynikami zostaną dodane po ustaleniu ich adresów i sposobu uruchomienia.
+Istniejące strony demonstracyjne są materiałem startowym dla `chrome_e2e`. Wstępne wyniki z pięciu zrzutów Chrome zapisano jako E01–E05 i [opisano z ograniczeniami dowodu](proby-chrome-2026-09-25.md). Pełny URL i wersja testowana na komputerze użytkownika czekają na potwierdzenie.
 
 | Strona | Co sprawdzamy | Ograniczenie przed podaniem oczekiwanego wyniku |
 | --- | --- | --- |

@@ -45,4 +45,4 @@ Zmienność **URL** wynika z pola `wejscie`: protokół, host, głębokość sub
 
 ## Materiały do zachowania po tej sesji
 
-Zachować repozytorium po `git pull` z aktualną [tabelą CSV](przypadki-testowe.csv), tym opisem, [protokołem](protokol-testow.md) i [dziennikiem prac](dziennik-prac.md). Dziś nie powstały zrzuty ekranu ani wyniki eksperymentu do wklejenia do pracy; zestaw jest podstawą przyszłego rozdziału o metodyce testów.
+Zachować repozytorium po `git pull` z aktualną [tabelą CSV](przypadki-testowe.csv), tym opisem, [protokołem](protokol-testow.md) i [dziennikiem prac](dziennik-prac.md). Przy przygotowaniu zestawu 40 scenariuszy nie powstały ich wyniki ani zrzuty ekranu; zestaw jest podstawą przyszłego rozdziału o metodyce testów. Późniejsze [pięć prób na stronach demonstracyjnych](proby-chrome-2026-09-25.md) to odrębna weryfikacja prototypu, nie wykonanie żadnego ze scenariuszy C01–C40.

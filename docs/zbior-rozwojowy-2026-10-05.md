@@ -50,5 +50,5 @@ Miary dla tego zbioru wynoszą: precyzja 10/12 = 83,33%, czułość 10/10 = 100%
 
 ## Decyzja i dalszy etap
 
-Zachowano punktację i reguły. Zapisano pełny przebieg rozwojowy oraz ograniczenia C07/C09. Kolejna próba w Chrome powinna objąć kontrolowany HTTPS, aby osobno zbadać pole hasła i cel formularza bez punktów za HTTP. E07–E11 pozostają odrębnymi obserwacjami ekranowymi; SHA lokalnego checkoutu użytkownika c695cf3 został potwierdzony wynikiem terminala, a przeładowanie rozszerzenia i dolny kadr PayPal czekają na uzupełnienie. Po uzgodnieniu polityki i zamrożeniu reguł można uruchomić C21–C40 i podać osobne wyniki oceny.
+Zachowano punktację i reguły. Zapisano pełny przebieg rozwojowy oraz ograniczenia C07/C09. Kolejna próba w Chrome powinna objąć kontrolowany HTTPS, aby osobno zbadać pole hasła i cel formularza bez punktów za HTTP. E07–E11 pozostają odrębnymi obserwacjami ekranowymi; SHA lokalnego checkoutu użytkownika c695cf3 został potwierdzony wynikiem terminala, a nowy pełny kadr PayPal po przeładowaniu zapisano osobno jako E12. Potwierdzenie przeładowania dotyczy E12; wcześniejsze ograniczenia metadanych pozostają jawne. Po uzgodnieniu polityki i zamrożeniu reguł można uruchomić C21–C40 i podać osobne wyniki oceny.
 

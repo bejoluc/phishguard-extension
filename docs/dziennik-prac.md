@@ -101,3 +101,10 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - **Decyzja C07:** różnica hostów jest wykrywana prawidłowo; autoryzacja docelowej subdomeny nie wynika z wejścia URL/DOM. Zachowano regułę, opisano ograniczenie.
 - **Decyzja C09:** legalna konstrukcja i ryzykowny HTTP współistnieją; nie usunięto alarmu dla transmisji hasła przez HTTP.
 - **Materiał do pracy:** podano liczniki i miary opisowe z mianownikami oraz ograniczenia uproszczonego modelu. Pilot pięciu przypadków i pełny przebieg mają wspólne scenariusze, więc nie sumujemy ich jako 25 niezależnych obserwacji.
+
+## 05.10.2026 — E12 po przeładowaniu i uzupełnienie punktu 06.10
+
+- Zapisano nową obserwację E12 z potwierdzeniem przeładowania od użytkownika, pełnym adresem lokalnym i sześcioma wskaźnikami.
+- Niezgodność marki PayPal (+40) jest widoczna bezpośrednio. Suma 155 ograniczona do 100; panel Zagrożenie/Wysoka.
+- Dodano zrzut, SHA-256, osobny wiersz CSV, raport i opis w pracy. E11 zachowano jako wcześniejszy niepełny kadr. Aktualny SHA oraz aktywna wersja Chrome niepodane; nie przypisano nowych metadanych wstecz.
+- Kod aplikacji i punktacja bez zmian. Nie uruchamiano zbioru oceny ani nowych testów automatycznych dla zmiany dokumentacyjnej. Następny etap: kontrolowane próby HTTPS.

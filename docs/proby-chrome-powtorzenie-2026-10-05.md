@@ -34,4 +34,23 @@ Punkty, status i poziom we wszystkich pięciu próbach odpowiadają przewidywani
 
 Kadry dokumentują działanie panelu na pięciu lokalnych stronach i zgodność obserwowanych wartości z regułami dla tych adresów. Są to próby funkcjonalne `chrome_e2e`, odrębne od modelowego pilota C01/C07/C10/C11/C16. Nie stanowią odłożonego zbioru C21–C40 ani pomiaru czułości, precyzji czy odsetka fałszywych alarmów.
 
-SHA lokalnego checkoutu został potwierdzony wynikiem terminala przekazanym przez użytkownika. Do powiązania go z rozszerzeniem w Chrome pozostaje potwierdzenie przeładowania rozszerzenia przed próbami. Dodatkowy zrzut E11 po przewinięciu do końca listy pozwoli sprawdzić alarm marki. Po restarcie Chrome można zanotować aktywną wersję, lecz nie przypisywać jej wstecz tym kadrom. Data 05.10.2026 jest datą przekazania dowodów; godziny wykonania poszczególnych prób nie są dostępne.
+SHA lokalnego checkoutu został potwierdzony wynikiem terminala przekazanym przez użytkownika. Do powiązania go z rozszerzeniem w Chrome pozostaje potwierdzenie przeładowania rozszerzenia przed próbami. Nową obserwację po przeładowaniu z pełną listą wskaźników zapisano poniżej jako E12. Po restarcie Chrome można zanotować aktywną wersję, lecz nie przypisywać jej wstecz tym kadrom. Data 05.10.2026 jest datą przekazania dowodów; godziny wykonania poszczególnych prób nie są dostępne.
+
+## E12 — pełna lista PayPal po przeładowaniu
+
+Użytkownik przekazał kolejny zrzut ze słowami „Tak wygląda po przeładowaniu”. Zapisano go jako nową obserwację E12, powiązaną z E11. Kadr identyfikuje `localhost:8000/test-pages/fake-paypal-login.html`; HTTP potwierdza wskaźnik braku HTTPS. Panel pokazuje 100/100, „Zagrożenie” i „Wysoka” oraz wszystkie sześć wskaźników.
+
+| Wskaźnik | Punkty |
+| --- | ---: |
+| Brak HTTPS (`insecure-protocol`) | 25 |
+| Słowo login w URL (`suspicious-keywords`) | 10 |
+| Pole hasła (`password-field-present`) | 15 |
+| Cel formularza HTTP (`insecure-form-action`) | 30 |
+| Obcy host celu (`external-form-action`) | 35 |
+| Niezgodność marki PayPal (`brand-mismatch`) | 40 |
+
+Suma wynosi 155 punktów; wynik końcowy jest ograniczony do 100. Tym razem alarm marki jest bezpośrednio widoczny. „Wysoka” jest etykietą heurystyczną panelu, a nie zmierzonym prawdopodobieństwem phishingu.
+
+[Zrzut E12](dowody/2026-10-05/E12-fake-paypal-after-reload.png) i [metadane z SHA-256](dowody/2026-10-05/E12-evidence.json) zachowano obok wcześniejszych dowodów. Potwierdzenie przeładowania dotyczy nowej obserwacji. Nie przypisano go wstecz do E07–E11. Nie podano nowego SHA lokalnego checkoutu ani aktywnej wersji Chrome; pole commit dla E12 pozostaje puste. Oczekiwania zapisano według niezmienionych reguł wersji c695cf3.
+
+Uzupełniono dokumentację funkcjonalną planowaną na 06.10, wykonując tę część 05.10. Pozostałe ograniczenia metadanych są jawne. Kolejny etap to odrębne próby przez kontrolowany HTTPS; E12 nie wchodzi do C21–C40 ani do metryk zbioru rozwojowego.

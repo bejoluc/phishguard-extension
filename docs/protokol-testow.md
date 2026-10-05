@@ -91,3 +91,7 @@ Pięć nowych obserwacji Chrome zapisano jako E07–E11 w CSV i [raporcie z powt
 ## 8. Pełny przebieg rozwojowy C01–C20
 
 Wykonano wszystkie 20 modeli rozwojowych i zapisano [raport](zbior-rozwojowy-2026-10-05.md) oraz [surowy JSON](dowody/2026-10-05/C01-C20-development-model.json). TP=10, FP=2, FN=0, TN=8; alarm oznacza Suspicious lub Dangerous. Miary raportu odnoszą się wyłącznie do zbioru rozwojowego w modelu. Pierwsze pięć przypadków jest powtórzeniem pilota, nie dodatkową próbą. CSV zachowuje specyfikację C01–C40; wykonane wyniki modelowe przechowuje JSON. C21–C40 nie wykonano. C07 i C09 omówiono bez osłabiania reguł pod etykiety testów.
+
+## 9. E12 — PayPal po przeładowaniu
+
+Nowa obserwacja z 05.10 ma potwierdzenie przeładowania od użytkownika i pełną listę sześciu wskaźników, w tym brand-mismatch (+40). Suma 155 daje wynik 100/Dangerous/High po ograniczeniu. Zapisano osobny wiersz E12, zrzut i metadane w [raporcie](proby-chrome-powtorzenie-2026-10-05.md#e12--pełna-lista-paypal-po-przeładowaniu). Nie uzupełniano wstecz listy E11 ani potwierdzenia przeładowania E07–E11. Aktualny SHA i aktywna wersja Chrome niepodane. Kolejny warunek do zbadania to HTTPS.

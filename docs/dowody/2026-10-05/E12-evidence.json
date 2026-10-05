@@ -1,0 +1,37 @@
+{
+  "id": "E12",
+  "date_received": "2026-10-05",
+  "source_filename": "image(7).png",
+  "evidence_path": "docs/dowody/2026-10-05/E12-fake-paypal-after-reload.png",
+  "sha256": "41e702aaa0c5823cc8bf5b01b7cb303a248be6b1deddbb5b2bb8221bb63e03cd",
+  "url": "http://localhost:8000/test-pages/fake-paypal-login.html",
+  "scheme_evidence": "HTTP confirmed by insecure-protocol indicator; browser address omits scheme",
+  "extension_reload_confirmed": true,
+  "reload_evidence": "User: Tak wygląda po przeładowaniu",
+  "loaded_extension_commit": null,
+  "current_checkout_commit": null,
+  "prior_reported_checkout_commit": "c695cf337769d77edfd3839776edc9bb132154bb",
+  "active_chrome_version": null,
+  "observed_indicator_ids": [
+    "insecure-protocol",
+    "suspicious-keywords",
+    "password-field-present",
+    "insecure-form-action",
+    "external-form-action",
+    "brand-mismatch"
+  ],
+  "observed_weights": [
+    25,
+    10,
+    15,
+    30,
+    35,
+    40
+  ],
+  "uncapped_sum": 155,
+  "score": 100,
+  "status": "Dangerous",
+  "confidence": "High",
+  "follows_up": "E11",
+  "limits": "New observation after reload. Does not retrospectively confirm reload for E07–E11. No current SHA or active Chrome version supplied."
+}

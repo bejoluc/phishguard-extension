@@ -6,6 +6,7 @@ Aktualny wykaz zaimplementowanych reguł, wymagań i ograniczeń: [Stan reguł i
 Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/protokol-testow.md) oraz [tabela przypadków CSV](docs/przypadki-testowe.csv).
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Wykonany zbiór rozwojowy: [C01–C20 i analiza C07/C09](docs/zbior-rozwojowy-2026-10-05.md).
+Pierwsze porównanie w Chrome: [E13/E14 — własny formularz HTTP/HTTPS](docs/proby-http-https-2026-10-05.md).
 Przygotowanie porównania transportu: [Instrukcja HTTP/HTTPS w Windows](docs/proby-https-instrukcja-2026-10-05.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
 Pierwsze pięć prób w Chrome na stronach demonstracyjnych: [Wyniki i zrzuty z 25.09.2026](docs/proby-chrome-2026-09-25.md).

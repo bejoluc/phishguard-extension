@@ -115,3 +115,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Sprawdzono serwowanie tych samych plików HTTP/HTTPS, walidację certyfikatu przez klienta laboratoryjnego, brak cache, ograniczenie do stron HTML i odrzucenie POST. Surowy zapis: dowody/2026-10-05/https-server-smoke.json.
 - Przeliczono oczekiwania URL/punktacji z jawnymi cechami formularzy; safe-login: 80 na HTTP, 25 na HTTPS. Jest to prognoza kodu, nie odczyt Chrome.
 - Kod rozszerzenia, strony i wagi bez zmian. Nie wykonano prób użytkownika HTTPS ani C21–C40. Do pracy dopiszemy odczyty po otrzymaniu dowodów; przygotowanie opisano w dokumentacji projektu.
+
+## 05.10.2026 — pierwsza wykonana para HTTP/HTTPS E13/E14
+
+- Odczytano safe-login: HTTP 80/Zagrożenie/Wysoka, HTTPS 25/Bezpieczny/Średnia. Obie pełne listy zgodne z oczekiwaniami; znikają dwa wskaźniki warte 55 pkt.
+- Zachowano cztery oryginalne kadry i ich SHA-256. Terminal potwierdza checkout a19bb2c; ekran informacji Chrome pokazuje 154.0.8037.98 64-bit bez oczekującego restartu. Pozostałe granice metadanych opisano w raporcie.
+- Dodano dwa wiersze CSV i opis do pracy. Kod aplikacji bez zmian. Jedna para nie stanowi pomiaru skuteczności phishingu. Kolejna para: external-form HTTP/HTTPS.

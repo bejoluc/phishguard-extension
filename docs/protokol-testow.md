@@ -99,3 +99,7 @@ Nowa obserwacja z 05.10 ma potwierdzenie przeładowania od użytkownika i pełn�
 ## 10. Przygotowanie prób HTTP/HTTPS
 
 [Procedura Windows](proby-https-instrukcja-2026-10-05.md) opisuje pary tych samych pięciu stron, metadane, oczekiwaną punktację i zapis dowodów. [Szablon CSV](https-observations-template.csv) zawiera 10 planowanych warunków P01–P10 z pustymi obserwacjami. Sprawdzenie serwera HTTPS w Linux jest osobnym sprawdzeniem infrastruktury, nie próbą Chrome. Aktualnie nie ma wyników HTTPS użytkownika; reguły i C21–C40 pozostają bez zmian.
+
+## 11. E13 i E14 — wykonana para safe-login HTTP/HTTPS
+
+Odczytano 80/Dangerous/High na HTTP i 25/Safe/Medium na HTTPS. Pełne listy odpowiadają oczekiwaniom; różnica 55 pkt wynika z braku dwóch wskaźników HTTP. Zapisano [raport, dowody i ograniczenia metadanych](proby-http-https-2026-10-05.md). Checkout użytkownika a19bb2c potwierdza terminal; informacja Chrome pokazuje 154.0.8037.98 64-bit bez oczekującego restartu. To jedna para prób funkcjonalnych, nie ocena C21–C40. Cztery pozostałe pary nadal do wykonania.

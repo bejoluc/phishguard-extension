@@ -1,0 +1,60 @@
+{
+  "date_received": "2026-10-05",
+  "files": [
+    {
+      "source": "image(8).png",
+      "path": "docs/dowody/2026-10-05/E13-safe-login-http.png",
+      "sha256": "74df71fe8b7429cf293990fa8a3d442eaf2c92be834d62e42a70f68fd0ef723a"
+    },
+    {
+      "source": "image(9).png",
+      "path": "docs/dowody/2026-10-05/E14-safe-login-https.png",
+      "sha256": "3929f8e7698d3e524198d30d9a84e9bdce8b95ac7df623ae412ee25c74c1453f"
+    },
+    {
+      "source": "image(10).png",
+      "path": "docs/dowody/2026-10-05/E13-E14-checkout.png",
+      "sha256": "72c6b0aefa866861c19d9a1053cc218f1933ffea2946e93f927de5d8fdc626af"
+    },
+    {
+      "source": "image(20261005-183557).png",
+      "path": "docs/dowody/2026-10-05/E13-E14-chrome-about.png",
+      "sha256": "4ae7337043e9765b3d61277177c13a0df7e173698d2a30aee82971d0a507128b"
+    }
+  ],
+  "user_reported_checkout_commit": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+  "loaded_extension_commit": null,
+  "extension_reload_confirmed": null,
+  "chrome_about_version": "154.0.8037.98",
+  "chrome_about_64_bit": true,
+  "chrome_about_restart_pending": false,
+  "active_process_version_independently_verified": false,
+  "system_evidence": "Windows-style path in PowerShell terminal; OS version unspecified",
+  "observations": [
+    {
+      "id": "E13",
+      "url": "http://localhost:8000/test-pages/safe-login.html",
+      "score": 80,
+      "status": "Dangerous",
+      "confidence": "High",
+      "ids": [
+        "insecure-protocol",
+        "suspicious-keywords",
+        "password-field-present",
+        "insecure-form-action"
+      ]
+    },
+    {
+      "id": "E14",
+      "url": "https://localhost:8443/test-pages/safe-login.html",
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "ids": [
+        "suspicious-keywords",
+        "password-field-present"
+      ]
+    }
+  ],
+  "limits": "Address bar omits scheme. Full URLs reconstructed from test procedure, ports, browser site icon and protocol indicators. No independent certificate-chain inspection or explicit reload statement in this submission. Checkout SHA is not proof of loaded extension SHA. Not held-out assessment."
+}

@@ -1,6 +1,6 @@
 # PhishGuard — protokół i wzorzec tabeli przypadków testowych
 
-Stan na 05.10.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników pierwszych 13 przykładów**: commit `82c7290`. Zebrano też pięć wstępnych prób Chrome [opisanych osobno](proby-chrome-2026-09-25.md) oraz ograniczony [zrzut panelu E06](proba-chrome-2026-10-05.md). [Tabela CSV](przypadki-testowe.csv) zawiera 13 przykładów reguł, sześć wierszy demonstracyjnych i [40 zaplanowanych scenariuszy URL + DOM](scenariusze-40.md).
+Stan na 05.10.2026. Uzupełnia [wykaz reguł i wymagań](stan-regul-i-wymagania.md), zwłaszcza RF-08. Punkt odniesienia dla **oczekiwanych wyników pierwszych 13 przykładów**: commit `82c7290`. Zebrano też pięć wstępnych prób Chrome [opisanych osobno](proby-chrome-2026-09-25.md), ograniczony [zrzut panelu E06](proba-chrome-2026-10-05.md) i [pięć prób rozwojowych w kontrolowanym modelu URL + DOM](metodyka-i-pilot-2026-10-05.md). [Tabela CSV](przypadki-testowe.csv) zawiera 13 przykładów reguł, sześć wierszy demonstracyjnych i [40 scenariuszy URL + DOM](scenariusze-40.md); pięć wyników modelowych zapisano oddzielnie od wierszy CSV.
 
 ## 1. Rozróżnienie trzech rzeczy
 
@@ -74,7 +74,7 @@ Do prób nie wprowadzamy prawdziwych haseł i nie wysyłamy formularzy. Zapisuje
 
 ## 5. Przygotowanie pomiaru właściwego
 
-Zapisano 40 oznaczonych scenariuszy: 20 legalnych i 20 symulujących phishing. W każdej klasie 10 trafiło do `rozwoj`, a 10 do `ocena`. Wszystkie są obecnie tylko specyfikacją (`planowany_przypadek`); nie policzono dla nich wyniku oczekiwanego ani uzyskanego. Oddzielne przypadki `ocena` ustalono **przed** zamrożeniem wersji kodu i uruchomimy je po pracy na zbiorze rozwojowym. Warunki wykonania i ewentualne zmiany trzeba zapisać w tym protokole. Scenariusze `unit_url` i `score_fixture` są testami reguł, nie wchodzą do późniejszego pomiaru skuteczności rozszerzenia jako całości.
+Zapisano 40 oznaczonych scenariuszy: 20 legalnych i 20 symulujących phishing. W każdej klasie 10 trafiło do `rozwoj`, a 10 do `ocena`. Wiersze w CSV nadal mają `planowany_przypadek` oraz puste pola oczekiwanego i zaobserwowanego wyniku. **Pięć obserwacji z 05.10** pochodzi z osobnego, powtarzalnego pilota `model_url_dom` dla C01/C07/C10/C11/C16 i nie jest wykonaniem próby Chrome; [metoda i zapis wyników](metodyka-i-pilot-2026-10-05.md). Oddzielne przypadki `ocena` ustalono **przed** zamrożeniem wersji kodu i uruchomimy je po pracy na zbiorze rozwojowym. Warunki wykonania i ewentualne zmiany trzeba zapisać w tym protokole. Scenariusze `unit_url` i `score_fixture` są testami reguł, nie wchodzą do późniejszego pomiaru skuteczności rozszerzenia jako całości.
 
 Wyniki na kontrolowanych stronach pozwolą opisać ograniczenia prototypu. Ich próba i sposób doboru muszą zostać podane w pracy; nie będziemy przedstawiać ich jako pomiaru wszystkich rzeczywistych kampanii phishingowych.
 

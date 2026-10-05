@@ -69,3 +69,12 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - **Obserwacja:** panel pokazuje `localhost`, 25/100, „Bezpieczny”, „Niska” i jedynie brak HTTPS (+25 pkt), bez alarmu marki. Widoczne wartości zgadzają się z oczekiwaniem dla przygotowanego przypadku.
 - **Granica dowodu:** zrzut obejmuje panel, bez strony i paska adresu. Nie potwierdza dokładnej ścieżki, portu, załadowanego SHA ani wersji Chrome. Nie stanowi pomiaru skuteczności; wiersz E06 w CSV oddziela wynik widoczny od oczekiwania wyliczonego dla podanego URL.
 - **Następny krok:** uzyskać pełny kadr strony z paskiem adresu i panelem oraz wersje Chrome i kodu, a następnie doprecyzować E06 w protokole.
+
+## 05.10.2026 — wykonanie z wyprzedzeniem części punktu 07.10: metodyka i pilot
+
+- **Cel:** ustalić powtarzalną metodę dla syntetycznych adresów i stron `SPEC_40`, a następnie zbadać pięć wcześniej oznaczonych przypadków rozwojowych bez uruchamiania odłożonego zbioru oceny.
+- **Ślad:** [metodyka i raport C01/C07/C10/C11/C16](metodyka-i-pilot-2026-10-05.md), [skrypt modelowy](../scripts/run-development-model.mjs) i [surowy JSON](dowody/2026-10-05/C01-C07-C10-C11-C16-model.json). Aplikacja odpowiadała commitowi `a84635d`; JSON zawiera także hashe plików użytych przez skrypt. Node.js v24.19.0, Linux.
+- **Metoda:** kontrolowany model `document` według pól `SPEC_40` i `window.location` według `wejscie`; wykonano rzeczywisty kod detektora DOM, silnika URL i punktacji. Nie łączono z Chrome ani z prawdziwymi domenami.
+- **Obserwacja:** C01: 15/Safe, C07: 60/Suspicious, C10: 0/Safe, C11: 100/Dangerous, C16: 65/Suspicious. C07 jest fałszywym alarmem w modelu legalnego przepływu między subdomenami. Nie liczono procentów skuteczności z celowego pilota pięciu przypadków.
+- **Granica dowodu:** to wyniki kodu na uproszczonym DOM, a nie pięć prób Chrome ani wyniki C21–C40. Planowane wiersze CSV zachowano bez pól `faktyczne_*`; oddzielny JSON przechowuje obserwacje modelowe. Nie zmieniano reguł aplikacji.
+- **Następny krok:** przeładować rozszerzenie na komputerze użytkownika i powtórzyć kontrolowane próby Chrome z pełnymi kadrami oraz wersjami; dokończyć przypadki rozwojowe przed zamrożeniem kodu 10.10.

@@ -1,6 +1,6 @@
 # PhishGuard — zestaw 40 zaplanowanych scenariuszy URL + DOM
 
-Zestaw opracowano 25.09.2026 jako materiał do następnego etapu pracy. **Pełna lista C01–C40 i podstawa każdej etykiety są zapisane w [tabeli przypadków CSV](przypadki-testowe.csv).** To modele stron, a nie wyniki pomiaru: pola oczekiwane i zaobserwowane dla tych 40 wierszy pozostają puste, a `tryb` ma wartość `planowany_przypadek`. Poprzednie U01–U08 oraz D01–D05 są odrębnymi testami rozwojowymi reguł i nie wchodzą do liczby 40.
+Zestaw opracowano 25.09.2026 jako materiał do następnego etapu pracy. **Pełna lista C01–C40 i podstawa każdej etykiety są zapisane w [tabeli przypadków CSV](przypadki-testowe.csv).** Wiersze CSV nadal są specyfikacjami (`planowany_przypadek`) z pustymi polami wyniku. Pięć wybranych przypadków C01, C07, C10, C11 i C16 wykonano osobno 05.10 w [pilocie na modelu DOM](metodyka-i-pilot-2026-10-05.md); surowych wyników modelu nie przeniesiono do pól prób Chrome w CSV. Pozostałe scenariusze, w tym cały zbiór `ocena`, nie mają obserwacji. Poprzednie U01–U08 oraz D01–D05 są odrębnymi testami rozwojowymi reguł i nie wchodzą do liczby 40.
 
 ## 1. Podział ustalony przed uruchomieniem przypadków
 
@@ -39,10 +39,10 @@ Zmienność **URL** wynika z pola `wejscie`: protokół, host, głębokość sub
 ## 4. Jak użyć zestawu bez zawyżania wyników
 
 1. Najpierw przygotować powtarzalny sposób wygenerowania i uruchomienia stron zgodnych z `SPEC_40`. Dla modelowych adresów trzeba zapewnić kontrolowany kontekst hosta i protokołu albo wykonać analizę URL + DOM w jawnie opisanym środowisku laboratoryjnym. Samo otwarcie pliku HTML z `localhost` **nie testuje** domeny podanej w `wejscie`.
-2. Na przypadkach `rozwoj` uruchamiać testy, zapisywać rzeczywiste wyniki i poprawiać kod. Zbiór `ocena` pozostawić bez wyników i bez dostrajania reguł pod konkretne przypadki do chwili zamrożenia wersji.
+2. Na przypadkach `rozwoj` uruchamiać testy, zapisywać rzeczywiste wyniki i poprawiać kod. Pięć pierwszych obserwacji modelowych zapisano w osobnym pliku dowodowym. Zbiór `ocena` pozostawić bez wyników i bez dostrajania reguł pod konkretne przypadki do chwili zamrożenia wersji.
 3. Przed pomiarem zdecydować, które przypadki da się zbadać jako rzeczywiste `chrome_e2e`. Jeśli zamiast Chrome użyto kontrolowanego modelu DOM, oznaczyć inny `tryb` i raportować takie wyniki oddzielnie. Nie nazywać ich skutecznością całego rozszerzenia w przeglądarce.
 4. Zarejestrować wersję kodu, warunki badania oraz ewentualne zmiany zestawu. Dla scenariuszy pełnych, rzeczywiście wykonanych i z kompletnym DOM policzyć macierz pomyłek zgodnie z [protokołem](protokol-testow.md). Ograniczenie: etykiety i strony są syntetyczne, dlatego wyniku nie uogólniamy na internetowe kampanie phishingowe.
 
 ## Materiały do zachowania po tej sesji
 
-Zachować repozytorium po `git pull` z aktualną [tabelą CSV](przypadki-testowe.csv), tym opisem, [protokołem](protokol-testow.md) i [dziennikiem prac](dziennik-prac.md). Przy przygotowaniu zestawu 40 scenariuszy nie powstały ich wyniki ani zrzuty ekranu; zestaw jest podstawą przyszłego rozdziału o metodyce testów. Późniejsze [pięć prób na stronach demonstracyjnych](proby-chrome-2026-09-25.md) to odrębna weryfikacja prototypu, nie wykonanie żadnego ze scenariuszy C01–C40.
+Zachować repozytorium po `git pull` z aktualną [tabelą CSV](przypadki-testowe.csv), tym opisem, [protokołem](protokol-testow.md), [pilotem modelowym](metodyka-i-pilot-2026-10-05.md) i [dziennikiem prac](dziennik-prac.md). Samo przygotowanie zestawu 25.09 nie dało wyników; pilot pięciu wierszy wykonano 05.10. [Pięć prób na stronach demonstracyjnych](proby-chrome-2026-09-25.md) to odrębna weryfikacja prototypu, a nie wykonanie któregokolwiek scenariusza C01–C40 w Chrome.

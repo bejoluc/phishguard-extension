@@ -9,6 +9,7 @@ Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).
 Pierwsze pięć prób w Chrome na stronach demonstracyjnych: [Wyniki i zrzuty z 25.09.2026](docs/proby-chrome-2026-09-25.md).
 Zrzut panelu po instrukcji próby E06: [obserwacja z 05.10.2026](docs/proba-chrome-2026-10-05.md) z ograniczeniami identyfikacji otwartej strony i wersji rozszerzenia.
 Nowe testy DOM i poprawki z 05.10.2026: [Przegląd usterek i weryfikacja](docs/przeglad-dom-2026-10-05.md).
+Wykonany z wyprzedzeniem pilot pięciu scenariuszy rozwojowych w kontrolowanym modelu URL + DOM: [Metodyka i wyniki z 05.10.2026](docs/metodyka-i-pilot-2026-10-05.md). To odrębny tryb od prób Chrome.
 
 ---
 

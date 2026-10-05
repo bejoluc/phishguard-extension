@@ -1,0 +1,167 @@
+{
+  "method": "controlled-dom-model",
+  "browser": "not-used",
+  "generatedAt": "2026-10-05T13:13:53.361Z",
+  "node": "v24.19.0",
+  "sourcesSha256": {
+    "src/detectors/domDetector.js": "8d9edb459ca987446c852f85055d2cafe0732b2f28c79ca6dcef78ad567f0402",
+    "src/detectors/urlDetector.js": "851ec299c55d352b377fab7c15192cb1a6eee8fc5a4050d2aa20b0504cae8bd2",
+    "src/scoring/riskScoring.js": "8760e1f5b3b0923d45e44cd2f0d5bdece260618f7282c2773e3d903a8003faff",
+    "src/constants/brands.js": "54e7fb0f2feb82a9311dd70440f857ab63c5067df51a83d0ee970d626d3a449e",
+    "src/utils/urlUtils.js": "e2f6a8c5c03c2a017b802223a8c21770e7f37ea659a2bad565d875e23144b517",
+    "docs/przypadki-testowe.csv": "3e9a0f9ec9f4dbeb0fc85ef7b0f0dd9a0c84aba44e67a98ae62e979f707a438f"
+  },
+  "results": [
+    {
+      "id": "C01",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://www.paypal.com/signin",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "password-field-present"
+      ],
+      "score": 15,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C07",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://portal.example.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [
+          {
+            "action": "https://auth.example.test/session",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present",
+        "external-form-action"
+      ],
+      "score": 60,
+      "status": "Suspicious",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C10",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://example.test/access",
+      "domProfile": "SPEC_40",
+      "domType": "oauth_only",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 0,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [],
+      "score": 0,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C11",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://fakepaypal.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 50,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [
+          {
+            "action": "http://collector.test/submit",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "externalFormActions": [
+          {
+            "action": "http://collector.test/submit",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "detectedBrandKeywords": [
+          "paypal"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting",
+        "password-field-present",
+        "insecure-form-action",
+        "external-form-action",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C16",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://login.portal-check.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "microsoft"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 65,
+      "status": "Suspicious",
+      "confidence": "High",
+      "analysisComplete": true
+    }
+  ]
+}

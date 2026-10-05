@@ -108,3 +108,10 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Niezgodność marki PayPal (+40) jest widoczna bezpośrednio. Suma 155 ograniczona do 100; panel Zagrożenie/Wysoka.
 - Dodano zrzut, SHA-256, osobny wiersz CSV, raport i opis w pracy. E11 zachowano jako wcześniejszy niepełny kadr. Aktualny SHA oraz aktywna wersja Chrome niepodane; nie przypisano nowych metadanych wstecz.
 - Kod aplikacji i punktacja bez zmian. Nie uruchamiano zbioru oceny ani nowych testów automatycznych dla zmiany dokumentacyjnej. Następny etap: kontrolowane próby HTTPS.
+
+## 05.10.2026 — przygotowanie kolejnego etapu HTTP/HTTPS
+
+- Dodano lokalny serwer scripts/serve-test-pages.py (Python, biblioteka standardowa), procedurę Windows z mkcert oraz pusty szablon obserwacji 10 warunków: pięć stron w dwóch transportach.
+- Sprawdzono serwowanie tych samych plików HTTP/HTTPS, walidację certyfikatu przez klienta laboratoryjnego, brak cache, ograniczenie do stron HTML i odrzucenie POST. Surowy zapis: dowody/2026-10-05/https-server-smoke.json.
+- Przeliczono oczekiwania URL/punktacji z jawnymi cechami formularzy; safe-login: 80 na HTTP, 25 na HTTPS. Jest to prognoza kodu, nie odczyt Chrome.
+- Kod rozszerzenia, strony i wagi bez zmian. Nie wykonano prób użytkownika HTTPS ani C21–C40. Do pracy dopiszemy odczyty po otrzymaniu dowodów; przygotowanie opisano w dokumentacji projektu.

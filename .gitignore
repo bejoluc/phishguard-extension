@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+# Local TLS material is generated outside the repository.
+*.pem
+*.key
+*.pfx
+*.p12

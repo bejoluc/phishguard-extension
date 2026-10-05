@@ -95,3 +95,7 @@ Wykonano wszystkie 20 modeli rozwojowych i zapisano [raport](zbior-rozwojowy-202
 ## 9. E12 — PayPal po przeładowaniu
 
 Nowa obserwacja z 05.10 ma potwierdzenie przeładowania od użytkownika i pełną listę sześciu wskaźników, w tym brand-mismatch (+40). Suma 155 daje wynik 100/Dangerous/High po ograniczeniu. Zapisano osobny wiersz E12, zrzut i metadane w [raporcie](proby-chrome-powtorzenie-2026-10-05.md#e12--pełna-lista-paypal-po-przeładowaniu). Nie uzupełniano wstecz listy E11 ani potwierdzenia przeładowania E07–E11. Aktualny SHA i aktywna wersja Chrome niepodane. Kolejny warunek do zbadania to HTTPS.
+
+## 10. Przygotowanie prób HTTP/HTTPS
+
+[Procedura Windows](proby-https-instrukcja-2026-10-05.md) opisuje pary tych samych pięciu stron, metadane, oczekiwaną punktację i zapis dowodów. [Szablon CSV](https-observations-template.csv) zawiera 10 planowanych warunków P01–P10 z pustymi obserwacjami. Sprawdzenie serwera HTTPS w Linux jest osobnym sprawdzeniem infrastruktury, nie próbą Chrome. Aktualnie nie ma wyników HTTPS użytkownika; reguły i C21–C40 pozostają bez zmian.

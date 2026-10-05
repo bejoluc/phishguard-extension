@@ -1,0 +1,11 @@
+plan_id;url;expected_score;expected_status;expected_confidence;observed_score;observed_status;observed_confidence;observed_indicator_ids;checkout_sha;reload_confirmed;chrome_version;system;date_time;screenshot;notes
+P01;http://localhost:8000/test-pages/safe-login.html;80;Dangerous;High;;;;;;;;;;;
+P02;https://localhost:8443/test-pages/safe-login.html;25;Safe;Medium;;;;;;;;;;;
+P03;http://localhost:8000/test-pages/oauth-false-positive-test.html;70;Suspicious;High;;;;;;;;;;;
+P04;https://localhost:8443/test-pages/oauth-false-positive-test.html;15;Safe;Low;;;;;;;;;;;
+P05;http://localhost:8000/test-pages/oauth-inside-form.html;25;Safe;Low;;;;;;;;;;;
+P06;https://localhost:8443/test-pages/oauth-inside-form.html;0;Safe;Low;;;;;;;;;;;
+P07;http://localhost:8000/test-pages/external-form.html;75;Dangerous;High;;;;;;;;;;;
+P08;https://localhost:8443/test-pages/external-form.html;50;Suspicious;High;;;;;;;;;;;
+P09;http://localhost:8000/test-pages/fake-paypal-login.html;100;Dangerous;High;;;;;;;;;;;
+P10;https://localhost:8443/test-pages/fake-paypal-login.html;100;Dangerous;High;;;;;;;;;;;

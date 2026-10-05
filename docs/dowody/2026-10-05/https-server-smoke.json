@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-05",
+  "method": "local-server-smoke-check",
+  "platform": "linux",
+  "python": "3.12.14",
+  "browser": "not-used",
+  "certificate": "temporary OpenSSL certificate with localhost SAN; client validates certificate and hostname; no system trust installed",
+  "results": [
+    {
+      "transport": "http",
+      "five_pages_byte_identical": true,
+      "cache_no_store": true,
+      "non_page_and_traversal_requests_404": true,
+      "post_405": true,
+      "head_200": true,
+      "tls_certificate_and_hostname_verified": false
+    },
+    {
+      "transport": "https",
+      "five_pages_byte_identical": true,
+      "cache_no_store": true,
+      "non_page_and_traversal_requests_404": true,
+      "post_405": true,
+      "head_200": true,
+      "tls_certificate_and_hostname_verified": true
+    }
+  ],
+  "missing_key_and_bad_certificate_fail_before_serving": true,
+  "limits": "Does not verify mkcert setup on Windows, Chrome extension output or C21-C40."
+}

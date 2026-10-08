@@ -193,3 +193,7 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Dwa kadry atrapy PayPal HTTPS: 100/Zagrożenie/Wysoka, pięć wskaźników, suma 130 ograniczona do 100. Nowy opis celu HTTP widoczny w całości; brak dowodu faktycznej transmisji.
 - Dopisano transkrypcję, CSV i raport; checkout eae3011 przekazany po próbie, załadowany SHA niepotwierdzony. E26–E28 zakończone w zakresie trzech kontrolowanych prezentacji.
 - Kod bez zmian. Kolejny etap: zamrożenie reguł oraz osobny przebieg C21–C40 w jawnym modelu DOM, bez przedstawiania go jako pomiaru Chrome. Następnie analiza błędów i rozbudowa rozdziału testowego.
+
+## 08.10.2026 — ocena C21–C40
+
+Zamrożono kod 71f16e7 i wejścia przed przebiegiem. Wykonano 20 modeli: TP=8, FP=2, FN=2, TN=8; precyzja/czułość/trafność 80%, FPR 20%. Reguły bez zmian, 22 testy zaliczone, regresja C01–C20 identyczna. [Raport](ocena-modelowa-2026-10-08.md) rozdziela model od Chrome i opisuje C27/C30/C38/C40. Kolejny etap: opis architektury i literatury oraz szersze testy ograniczeń, bez strojenia pod ten zbiór.

@@ -8,7 +8,19 @@ import { RiskCalculator } from '../src/scoring/riskScoring.js';
 // This runner reproduces SPEC_40 in a small DOM model. It does not open Chrome,
 // resolve the model hostnames, send forms, or assert the reference label.
 const defaultIds = ['C01', 'C07', 'C10', 'C11', 'C16'];
-const ids = process.argv.slice(2).length ? process.argv.slice(2) : defaultIds;
+const args = process.argv.slice(2);
+const evaluation = args[0] === '--evaluation';
+if (evaluation && args.length !== 1) throw new Error('Evaluation runs the full frozen C21-C40 set');
+const ids = evaluation ? Array.from({ length: 20 }, (_, i) => `C${i + 21}`)
+  : (args.length ? args : defaultIds);
+const freeze = evaluation ? JSON.parse(readFileSync(new URL(
+  '../docs/dowody/2026-10-08/C21-C40-freeze.json', import.meta.url), 'utf8')) : null;
+if (freeze) {
+  if (JSON.stringify(ids) !== JSON.stringify(freeze.evaluationIds)) throw new Error('Frozen ID mismatch');
+  for (const [path, expected] of Object.entries(freeze.sourcesSha256)) {
+    if (sha256(`../${path}`) !== expected) throw new Error(`Frozen source changed: ${path}`);
+  }
+}
 const csvUrl = new URL('../docs/przypadki-testowe.csv', import.meta.url);
 const detectorUrl = new URL('../src/detectors/domDetector.js', import.meta.url);
 const csv = readFileSync(csvUrl, 'utf8').replace(/^\uFEFF/, '');
@@ -106,9 +118,9 @@ function makeDocument(row) {
 }
 
 function run(row) {
-  if (row.zbior !== 'rozwoj' || row.profil_dom !== 'SPEC_40' ||
+  if (row.zbior !== (evaluation ? 'ocena' : 'rozwoj') || row.profil_dom !== 'SPEC_40' ||
       row.tryb !== 'planowany_przypadek') {
-    throw new Error(`${row.id}: only planned development cases with SPEC_40 are allowed`);
+    throw new Error(`${row.id}: only planned cases from the selected set with SPEC_40 are allowed`);
   }
   const url = new URL(row.wejscie);
   const window = { location: { href: url.href, hostname: url.hostname } };
@@ -143,6 +155,7 @@ const sourceFiles = [
   '../src/detectors/domDetector.js', '../src/detectors/urlDetector.js',
   '../src/scoring/riskScoring.js', '../src/constants/brands.js',
   '../src/utils/urlUtils.js', '../docs/przypadki-testowe.csv',
+  '../scripts/run-development-model.mjs',
 ];
 if (new Set(ids).size !== ids.length) throw new Error('Duplicate scenario ID');
 const results = ids.map(id => {
@@ -153,6 +166,9 @@ const results = ids.map(id => {
 console.log(JSON.stringify({
   method: 'controlled-dom-model',
   browser: 'not-used',
+  dataset: evaluation ? 'ocena' : 'rozwoj',
+  applicationCheckout: freeze?.applicationCheckout ?? null,
+  freezeFile: evaluation ? 'docs/dowody/2026-10-08/C21-C40-freeze.json' : null,
   generatedAt: new Date().toISOString(),
   node: process.version,
   sourcesSha256: Object.fromEntries(sourceFiles.map(path => [path.slice(3), sha256(path)])),

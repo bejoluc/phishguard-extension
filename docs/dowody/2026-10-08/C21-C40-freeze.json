@@ -1,0 +1,42 @@
+{
+  "frozenAt": "2026-10-08T17:04:37.796679+00:00",
+  "applicationCheckout": "71f16e76f68499d02215be3df8ef8006f3a69b79",
+  "method": "controlled-dom-model",
+  "evaluationIds": [
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "C26",
+    "C27",
+    "C28",
+    "C29",
+    "C30",
+    "C31",
+    "C32",
+    "C33",
+    "C34",
+    "C35",
+    "C36",
+    "C37",
+    "C38",
+    "C39",
+    "C40"
+  ],
+  "positiveLabel": "phishing_symulowany",
+  "alarmStatuses": [
+    "Suspicious",
+    "Dangerous"
+  ],
+  "threshold": "score > 30 with complete model analysis",
+  "policy": "No changes to rules, weights, labels or cases during evaluation. Exclude incomplete results from confusion matrix and report separately. These are synthetic scenarios known in specification, not a blind or representative real-world sample.",
+  "sourcesSha256": {
+    "src/detectors/domDetector.js": "8d9edb459ca987446c852f85055d2cafe0732b2f28c79ca6dcef78ad567f0402",
+    "src/detectors/urlDetector.js": "324115430d75616579ad8474ee8529d067918c1c3ee81786915cd6724aa5dfbe",
+    "src/scoring/riskScoring.js": "a52062e883e5b24921e89a71253c0ab5b3cc12a3c35097fdfef5c6d0abeb266f",
+    "src/constants/brands.js": "54e7fb0f2feb82a9311dd70440f857ab63c5067df51a83d0ee970d626d3a449e",
+    "src/utils/urlUtils.js": "e2f6a8c5c03c2a017b802223a8c21770e7f37ea659a2bad565d875e23144b517",
+    "docs/przypadki-testowe.csv": "1bacb26972bb6cfe37e4314a96b350cce834508fd2c2c90ca373eb5fdaa1e852"
+  }
+}

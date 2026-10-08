@@ -1,0 +1,577 @@
+{
+  "method": "controlled-dom-model",
+  "browser": "not-used",
+  "dataset": "ocena",
+  "applicationCheckout": "71f16e76f68499d02215be3df8ef8006f3a69b79",
+  "freezeFile": "docs/dowody/2026-10-08/C21-C40-freeze.json",
+  "generatedAt": "2026-10-08T17:04:37.874Z",
+  "node": "v24.19.0",
+  "sourcesSha256": {
+    "src/detectors/domDetector.js": "8d9edb459ca987446c852f85055d2cafe0732b2f28c79ca6dcef78ad567f0402",
+    "src/detectors/urlDetector.js": "324115430d75616579ad8474ee8529d067918c1c3ee81786915cd6724aa5dfbe",
+    "src/scoring/riskScoring.js": "a52062e883e5b24921e89a71253c0ab5b3cc12a3c35097fdfef5c6d0abeb266f",
+    "src/constants/brands.js": "54e7fb0f2feb82a9311dd70440f857ab63c5067df51a83d0ee970d626d3a449e",
+    "src/utils/urlUtils.js": "e2f6a8c5c03c2a017b802223a8c21770e7f37ea659a2bad565d875e23144b517",
+    "docs/przypadki-testowe.csv": "1bacb26972bb6cfe37e4314a96b350cce834508fd2c2c90ca373eb5fdaa1e852",
+    "scripts/run-development-model.mjs": "3e19876071ccceef8c44840d42ca8f2689caf3a99e7cfcf2939c57d825bb2afa"
+  },
+  "results": [
+    {
+      "id": "C21",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://paypal.pl/logowanie",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "password-field-present"
+      ],
+      "score": 15,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C22",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://google.pl/access",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "password-field-present"
+      ],
+      "score": 15,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C23",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://facebook.com/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C24",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://netflix.com/account/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C25",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://www.allegro.pl/moje-konto",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "password-field-present"
+      ],
+      "score": 15,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C26",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://olx.pl/secure",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C27",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://accounts.example.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [
+          {
+            "action": "https://id.example.test/verify",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present",
+        "external-form-action"
+      ],
+      "score": 60,
+      "status": "Suspicious",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C28",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://example.test/secure/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C29",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://partner.example.test/",
+      "domProfile": "SPEC_40",
+      "domType": "oauth_only",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 0,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [],
+      "score": 0,
+      "status": "Safe",
+      "confidence": "Low",
+      "analysisComplete": true
+    },
+    {
+      "id": "C30",
+      "referenceLabel": "legalna_symulacja",
+      "modelUrl": "https://a.b.portal.example.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "excessive-subdomains",
+        "suspicious-keywords"
+      ],
+      "urlPoints": 25,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "excessive-subdomains",
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 40,
+      "status": "Suspicious",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C31",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://paypal.com.portal-check.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "excessive-subdomains",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 55,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "paypal"
+        ]
+      },
+      "indicatorIds": [
+        "excessive-subdomains",
+        "brand-typosquatting",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C32",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://m1crosoft.test/secure",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 50,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "microsoft"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C33",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://login-facebook.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 50,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [
+          {
+            "action": "https://receive.test/submit",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "detectedBrandKeywords": [
+          "facebook"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting",
+        "password-field-present",
+        "external-form-action",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C34",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://account-netflix.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 50,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "netflix"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C35",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://alegro.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "brand-typosquatting"
+      ],
+      "urlPoints": 40,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "allegro"
+        ]
+      },
+      "indicatorIds": [
+        "brand-typosquatting",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 95,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C36",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://0lx.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting"
+      ],
+      "urlPoints": 50,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "olx"
+        ]
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "brand-typosquatting",
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 100,
+      "status": "Dangerous",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C37",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://cloud-invite.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [],
+      "urlPoints": 0,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": [
+          "google"
+        ]
+      },
+      "indicatorIds": [
+        "password-field-present",
+        "brand-mismatch"
+      ],
+      "score": 55,
+      "status": "Suspicious",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C38",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://secure-payments.test/",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    },
+    {
+      "id": "C39",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://auth-pay.test/verify",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [
+          {
+            "action": "https://receive.test/submit",
+            "hasPassword": true,
+            "method": "post"
+          }
+        ],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present",
+        "external-form-action"
+      ],
+      "score": 60,
+      "status": "Suspicious",
+      "confidence": "High",
+      "analysisComplete": true
+    },
+    {
+      "id": "C40",
+      "referenceLabel": "phishing_symulowany",
+      "modelUrl": "https://mbank-pomoc.test/login",
+      "domProfile": "SPEC_40",
+      "domType": "haslo",
+      "urlIndicatorIds": [
+        "suspicious-keywords"
+      ],
+      "urlPoints": 10,
+      "domTelemetry": {
+        "passwordFieldCount": 1,
+        "formCount": 1,
+        "insecureFormActions": [],
+        "externalFormActions": [],
+        "detectedBrandKeywords": []
+      },
+      "indicatorIds": [
+        "suspicious-keywords",
+        "password-field-present"
+      ],
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Medium",
+      "analysisComplete": true
+    }
+  ]
+}

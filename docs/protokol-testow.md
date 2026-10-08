@@ -123,3 +123,7 @@ Oba wyniki 100/Dangerous/High; sześć wskaźników HTTP i pięć HTTPS widoczne
 ## 16. E23 — strona wewnętrzna
 
 Na chrome://settings odczytano --/100, Nie oceniono, Nie dotyczy i komunikat niedostępności. [Raport](proba-strony-wewnetrznej-2026-10-08.md) opisuje powiązanie z oryginałem i ograniczenia. Próba wykluczenia zgodna z oczekiwaniem; nie jest próbą braku DOM na zwykłej stronie. Kod i C21–C40 bez zmian.
+
+## 17. Ocena modelowa C21–C40 z 08.10.2026
+
+Wykonano odłożone 20 scenariuszy w kontrolowanym modelu DOM po zamrożeniu źródeł. TP=8, FP=2, FN=2, TN=8. [Metoda, wyniki i ograniczenia](ocena-modelowa-2026-10-08.md). Nie są to próby Chrome ani ślepa walidacja zewnętrzna. Wcześniejsze zapisy o niewykonaniu są historycznym stanem kolejnych etapów.

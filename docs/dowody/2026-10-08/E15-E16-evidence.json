@@ -1,0 +1,47 @@
+{
+  "date_received": "2026-10-08",
+  "files": [
+    {
+      "source": "image(20261008-112936).png",
+      "path": "docs/dowody/2026-10-08/E15-external-form-http.png",
+      "sha256": "1d4b7ca6d921f02183103c77df8edf886a953a9ea4ffac48da593bb2b2d04ad2"
+    },
+    {
+      "source": "image(20261008-112946).png",
+      "path": "docs/dowody/2026-10-08/E16-external-form-https.png",
+      "sha256": "d64bdc8b4c7cbb41b406817e7adb08114926fd775b8406845234645d5c8d21b0"
+    }
+  ],
+  "checkout_commit": null,
+  "loaded_extension_commit": null,
+  "extension_reload_confirmed": null,
+  "chrome_version": null,
+  "system_version": null,
+  "expected_rules_source": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+  "observations": [
+    {
+      "id": "E15",
+      "url": "http://localhost:8000/test-pages/external-form.html",
+      "score": 75,
+      "status": "Dangerous",
+      "confidence": "High",
+      "ids": [
+        "insecure-protocol",
+        "password-field-present",
+        "external-form-action"
+      ]
+    },
+    {
+      "id": "E16",
+      "url": "https://localhost:8443/test-pages/external-form.html",
+      "score": 50,
+      "status": "Suspicious",
+      "confidence": "High",
+      "ids": [
+        "password-field-present",
+        "external-form-action"
+      ]
+    }
+  ],
+  "limits": "Schemes reconstructed from instructed URLs, ports, browser icons and protocol indicators; address bars omit scheme. No new checkout/Chrome metadata or explicit reload confirmation supplied. Metadata from 2026-10-05 not assigned to these new observations. No form submission or certificate-chain test inferred from screenshots."
+}

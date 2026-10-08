@@ -121,3 +121,10 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczytano safe-login: HTTP 80/Zagrożenie/Wysoka, HTTPS 25/Bezpieczny/Średnia. Obie pełne listy zgodne z oczekiwaniami; znikają dwa wskaźniki warte 55 pkt.
 - Zachowano cztery oryginalne kadry i ich SHA-256. Terminal potwierdza checkout a19bb2c; ekran informacji Chrome pokazuje 154.0.8037.98 64-bit bez oczekującego restartu. Pozostałe granice metadanych opisano w raporcie.
 - Dodano dwa wiersze CSV i opis do pracy. Kod aplikacji bez zmian. Jedna para nie stanowi pomiaru skuteczności phishingu. Kolejna para: external-form HTTP/HTTPS.
+
+## 08.10.2026 — druga para HTTP/HTTPS E15/E16
+
+- Odczytano external-form: HTTP 75/Zagrożenie/Wysoka i HTTPS 50/Podejrzany/Wysoka. Pełne listy odpowiadają przewidywaniom; obcy cel utrzymuje się w obu warunkach.
+- Zapisano oryginalne kadry, SHA-256, raport, dwa wiersze CSV i opis w pracy. Nowego SHA użytkownika i wersji Chrome nie podano; metadane poprzedniej sesji nie są przypisywane wstecz.
+- Ostrzeżenie o obcym celu jest odczytem cech DOM, bez obserwacji faktycznej wysyłki. Nie wyliczano nowych metryk skuteczności i nie zmieniano kodu.
+- Wykonane są dwie z pięciu par; następna to oauth-inside-form HTTP/HTTPS.

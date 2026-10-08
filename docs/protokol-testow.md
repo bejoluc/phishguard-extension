@@ -103,3 +103,7 @@ Nowa obserwacja z 05.10 ma potwierdzenie przeładowania od użytkownika i pełn�
 ## 11. E13 i E14 — wykonana para safe-login HTTP/HTTPS
 
 Odczytano 80/Dangerous/High na HTTP i 25/Safe/Medium na HTTPS. Pełne listy odpowiadają oczekiwaniom; różnica 55 pkt wynika z braku dwóch wskaźników HTTP. Zapisano [raport, dowody i ograniczenia metadanych](proby-http-https-2026-10-05.md). Checkout użytkownika a19bb2c potwierdza terminal; informacja Chrome pokazuje 154.0.8037.98 64-bit bez oczekującego restartu. To jedna para prób funkcjonalnych, nie ocena C21–C40. Cztery pozostałe pary nadal do wykonania.
+
+## 12. E15 i E16 — obcy cel formularza HTTP/HTTPS
+
+8 października otrzymano dwa pełne kadry: HTTP 75/Dangerous/High, HTTPS 50/Suspicious/High. W HTTPS pozostają hasło (+15) i obcy cel (+35), znika jedynie insecure-protocol (+25). [Raport i dowody](proby-http-https-2026-10-08.md) opisują metadane bez przypisywania wersji z wcześniejszej sesji. To druga para z pięciu; pozostałe trzy pozostają niewykonane. Kod i punktacja bez zmian, C21–C40 nie uruchomiono.

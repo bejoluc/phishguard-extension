@@ -2,7 +2,7 @@
 
 ## Stan i cel
 
-Przygotowano serwer laboratoryjny oraz procedurę porównania tych samych plików HTML przez HTTP i HTTPS. Kod rozszerzenia, wagi i strony testowe pozostają bez zmian. Poniższa tabela zawiera oczekiwania wynikające z kodu, nie obserwacje Chrome. Pierwszą parę safe-login użytkownika zapisano jako E13/E14 w [raporcie wyników](proby-http-https-2026-10-05.md). Pozostałe cztery pary pozostają niewykonane. Nie wchodzą do odłożonego zbioru C21–C40.
+Przygotowano serwer laboratoryjny oraz procedurę porównania tych samych plików HTML przez HTTP i HTTPS. Kod rozszerzenia, wagi i strony testowe pozostają bez zmian. Poniższa tabela zawiera oczekiwania wynikające z kodu, nie obserwacje Chrome. Pierwszą parę safe-login użytkownika zapisano jako E13/E14 w [raporcie wyników](proby-http-https-2026-10-05.md). Drugą parę external-form zapisano 08.10 jako E15/E16 w [raporcie](proby-http-https-2026-10-08.md). Pozostałe trzy pary pozostają niewykonane. Nie wchodzą do odłożonego zbioru C21–C40.
 
 Serwer `scripts/serve-test-pages.py` korzysta wyłącznie z biblioteki standardowej Python 3.9+. Nasłuchuje na 127.0.0.1; udostępnia pliki HTML z test-pages pod dotychczasową ścieżką, wyłącza cache i odrzuca POST. Nie służy do wdrożenia aplikacji. Certyfikat i klucz przechowujemy poza repozytorium. Lokalne odrzucenie POST nie blokuje zewnętrznych celów zapisanych w HTML: nie klikamy przycisków wysłania i nie wpisujemy danych.
 

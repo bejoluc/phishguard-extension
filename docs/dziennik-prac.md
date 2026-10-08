@@ -187,3 +187,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczyt external-form HTTP: 75/Zagrożenie/Wysoka, trzy oczekiwane wskaźniki (25+15+35). Widoczne nowe opisy action i pola hasła, pełna lista po przewinięciu. Zapisano transkrypcję, CSV i raport; kod bez zmian.
 - Dodano zasady katalogów i nazw E##_data_scenariusz_warunek_kadr. Dotychczasowych plików autora nie zmieniano ani nie przypisywano na podstawie miniatur do powtarzanych prób. Od kolejnych instrukcji podawana jest dokładna nazwa zapisu.
 - Następna próba: E28 fake-paypal-login HTTPS, nowe komunikaty. Jeszcze niewykonana.
+
+## 08.10.2026 — E28 i zakończenie kontroli komunikatów
+
+- Dwa kadry atrapy PayPal HTTPS: 100/Zagrożenie/Wysoka, pięć wskaźników, suma 130 ograniczona do 100. Nowy opis celu HTTP widoczny w całości; brak dowodu faktycznej transmisji.
+- Dopisano transkrypcję, CSV i raport; checkout eae3011 przekazany po próbie, załadowany SHA niepotwierdzony. E26–E28 zakończone w zakresie trzech kontrolowanych prezentacji.
+- Kod bez zmian. Kolejny etap: zamrożenie reguł oraz osobny przebieg C21–C40 w jawnym modelu DOM, bez przedstawiania go jako pomiaru Chrome. Następnie analiza błędów i rozbudowa rozdziału testowego.

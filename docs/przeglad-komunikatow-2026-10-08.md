@@ -43,3 +43,9 @@ Zrzut external-form na localhost:8000 pokazuje 75/100, Zagrożenie i siłę Wyso
 Panel jest przewinięty: nagłówek aplikacji znajduje się powyżej widocznego obszaru, lecz wynik, nota, wszystkie trzy wskaźniki i przycisk są czytelne. Nie widać poziomego ucięcia. Nie jest to dowód rzeczywistej transmisji. Nowego SHA i wersji Chrome nie przekazano. [Transkrypcja E27](dowody/2026-10-08/E27-external-form-copy-evidence.json). Pozostała kontrola celu HTTP na atrapie PayPal przez HTTPS.
 
 Sposób zapisywania plików i nazwa tego zrzutu: [organizacja materiałów](organizacja-materialow-pracy.md).
+
+## Otrzymana kontrola E28 i zamknięcie przeglądu
+
+Dwa kadry fake-paypal-login na localhost:8443 pokazują 100/100, Zagrożenie i siłę Wysoka. Lista zawiera suspicious-keywords (10), password-field-present (15), insecure-form-action (30), external-form-action (35) i brand-mismatch (40). Suma 130 jest ograniczona do 100. Stronę otwarto według procedury HTTPS; cel action pozostaje HTTP. Nie występuje insecure-protocol. Widoczne nowe opisy, nota heurystyczna oraz pełna lista po przewinięciu nie mają widocznego poziomego ucięcia. Nie obserwowano wysłania danych.
+
+[Transkrypcja E28](dowody/2026-10-08/E28-paypal-https-copy-evidence.json). Po próbie użytkownik przekazał checkout eae3011d596cb74100d4eb39dc834cca751d9614; nie jest to dowód SHA załadowanego rozszerzenia. E26–E28 zamykają trzy zaplanowane kontrole prezentacji. Nie obejmują wszystkich rozdzielczości ani stanów interfejsu. C21–C40 pozostają niewykonane.

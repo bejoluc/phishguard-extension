@@ -1,0 +1,37 @@
+{
+  "observation_id": "E28",
+  "evidence_received_date": "2026-10-08",
+  "evidence_kind": "two_screenshot_transcription",
+  "url": "https://localhost:8443/test-pages/fake-paypal-login.html",
+  "scheme_basis": "requested HTTPS procedure, port 8443 and absence of insecure-protocol; browser hides scheme",
+  "checkout_reported_after_observation": "eae3011d596cb74100d4eb39dc834cca751d9614",
+  "loaded_extension_sha": null,
+  "reload_confirmed": false,
+  "observed": {
+    "score": 100,
+    "status_label": "Zagrożenie",
+    "signal_strength_label": "Wysoka",
+    "indicator_ids": [
+      "suspicious-keywords",
+      "password-field-present",
+      "insecure-form-action",
+      "external-form-action",
+      "brand-mismatch"
+    ],
+    "weights": [
+      10,
+      15,
+      30,
+      35,
+      40
+    ],
+    "uncapped_weight_sum": 130,
+    "heuristic_note_visible": true,
+    "http_form_label": "Cel formularza przez HTTP",
+    "http_form_explanation": "Atrybut action formularza wskazuje na adres HTTP. Taki cel nie zapewnia szyfrowania HTTPS; nie potwierdzono wysłania danych.",
+    "scan_button_visible": true
+  },
+  "matches_expected_condition": true,
+  "layout_scope": "top and bottom frames jointly show full five-indicator list, wrapped text without apparent horizontal clipping",
+  "limitations": "synthetic functional and copy check, not held-out evaluation; no observed transmission; checkout does not prove loaded Chrome code"
+}

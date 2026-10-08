@@ -9,3 +9,7 @@ SHA opisuje checkout użytkownika. Nie stanowi niezależnego potwierdzenia wersj
 Zapisano transkrypcję potrzebnych danych, bez publikowania kadru terminala ani identyfikatorów prywatnego materiału.
 
 Następna przygotowana próba: [kontrolowana niedostępność DOM](proba-braku-dom-instrukcja-2026-10-08.md). Jej wynik nie został jeszcze otrzymany; nie dopisano nowego wyniku do pracy dyplomowej.
+
+## Aktualizacja po E28
+
+Kolejny odczyt terminala potwierdza eae3011d596cb74100d4eb39dc834cca751d9614. Przekazano go po dwóch kadrach E28. To aktualizacja checkoutu, nie wsteczne potwierdzenie wersji załadowanej podczas E26–E28. Wyniki E24–E25 i E26–E28 są już opisane w odrębnych raportach; wcześniejsze zapisy o oczekiwaniu na nie dotyczą wcześniejszych etapów sesji.

@@ -49,7 +49,7 @@ test('a missing DOM scan never presents a clean URL as safe', () => {
   assert.equal(ui.statusBadge.textContent, 'Niepełna');
   assert.equal(ui.confidenceBadge.textContent, 'Niepełna');
   assert.match(ui.indicatorsList.children[0].textContent, /tylko adres URL/);
-  assert.doesNotMatch(ui.indicatorsList.innerHTML, /Brak anomalii|Bezpieczny/);
+  assert.doesNotMatch(ui.indicatorsList.innerHTML, /Brak anomalii|Bezpieczny|Niskie ryzyko/);
 });
 
 test('a dangerous URL still warns even if the DOM scan failed', () => {
@@ -78,7 +78,7 @@ test('a complete scan can still return zero detected indicators', () => {
 
   assert.equal(assessment.analysisComplete, true);
   assert.equal(assessment.status, 'Safe');
-  assert.equal(ui.statusBadge.textContent, 'Bezpieczny');
+  assert.equal(ui.statusBadge.textContent, 'Niskie ryzyko');
   assert.match(ui.indicatorsList.innerHTML, /Nie wykryto wskaźników/);
   assert.equal(ui.indicatorsList.children.length, 0);
 });

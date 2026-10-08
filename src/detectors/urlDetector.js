@@ -26,7 +26,7 @@ export const UrlHeuristicsEngine = {
         id: "insecure-protocol",
         label: "Brak szyfrowania HTTPS",
         riskWeight: 25,
-        explanation: "Połączenie z tą witryną nie jest szyfrowane (brak protokołu HTTPS)."
+        explanation: "Adres strony nie używa protokołu HTTPS. Ten wskaźnik sam nie potwierdza phishingu."
       });
     }
 
@@ -51,7 +51,7 @@ export const UrlHeuristicsEngine = {
         id: "excessive-subdomains",
         label: "Nadmierna liczba subdomen",
         riskWeight: 15,
-        explanation: "Adres zawiera 4 lub więcej poziomów subdomen, co może służyć do zmylenia użytkownika."
+        explanation: "Host zawiera co najmniej 4 segmenty rozdzielone kropkami, po pominięciu www. Rozbudowana nazwa może utrudniać rozpoznanie domeny."
       });
     }
 
@@ -63,7 +63,7 @@ export const UrlHeuristicsEngine = {
         id: "suspicious-keywords",
         label: "Podejrzane słowa kluczowe w URL",
         riskWeight: 10,
-        explanation: `W adresie wykryto słowa związane z uwierzytelnianiem i bezpieczeństwem: ${foundKeywords.join(", ")}.`
+        explanation: `W hoście lub ścieżce URL wykryto słowa: ${foundKeywords.join(", ")}. Występują one również na legalnych stronach logowania.`
       });
     }
 

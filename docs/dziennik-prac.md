@@ -169,3 +169,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Po instrukcji zamknięcia DevTools i popupu oraz ponownego otwarcia otrzymano zrzut tej samej strony: 25/100, Bezpieczny/Niska, tylko brak HTTPS, bez ostrzeżenia o DOM. Wynik odpowiada kontroli powrotu; kadr nie rejestruje samych czynności zamknięcia i otwarcia.
 - Zapisano transkrypcję, CSV i uzupełnienie raportu E24–E25. Oba zaobserwowane warunki odpowiadają oczekiwaniom; nie dodano niewidocznego nowego pomiaru bazowego sprzed awarii. Kod i wagi bez zmian.
 - Potwierdzono rozróżnienie niepełnej i pełnej analizy przy takim samym wyniku URL. Następny punkt planu: przegląd komunikatów użytkownika i zgodności ich treści z zakresem analizy.
+
+## 08.10.2026 — przegląd i korekta komunikatów
+
+- Potwierdzono checkout użytkownika 93c640f. Zmieniono Safe na etykietę Niskie ryzyko, nagłówek na Siła wskaźników i dodano objaśnienie heurystyki. Opisy formularzy odnoszą się teraz do action, bez deklaracji wykonanej transmisji; poprawiono też opisy pola hasła, segmentów hosta i słów URL.
+- Punktacja i detekcja bez zmian. Wszystkie 22 testy przeszły; diff bez błędów. Próba lokalnego podglądu nie uruchomiła się z powodu braku Chromium. Kontrola w Chrome po pobraniu i przeładowaniu czeka na zrzuty, nie przypisano nowych wyników.
+- Raport i procedura: przeglad-komunikatow-2026-10-08.md. Historycznych obserwacji nie przepisano na nowe etykiety.

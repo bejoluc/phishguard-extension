@@ -54,7 +54,7 @@ export const UiRenderer = {
     this.elements.statusBadge.className = "status-badge";
     
     if (assessment.status === "Safe") {
-      this.elements.statusBadge.textContent = "Bezpieczny";
+      this.elements.statusBadge.textContent = "Niskie ryzyko";
       this.elements.statusBadge.classList.add("safe");
     } else if (assessment.status === "Suspicious") {
       this.elements.statusBadge.textContent = "Podejrzany";
@@ -152,7 +152,7 @@ export const UiRenderer = {
       this.elements.confidenceBadge.textContent = "Nieznana";
     }
 
-    this.elements.indicatorsList.innerHTML = `<li>Bląd: ${message}</li>`;
+    this.elements.indicatorsList.innerHTML = `<li>Błąd: ${message}</li>`;
   },
 
   /**

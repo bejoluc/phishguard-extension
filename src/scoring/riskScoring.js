@@ -45,7 +45,7 @@ export const RiskCalculator = {
           id: "password-field-present",
           label: "Obecność pola hasła",
           riskWeight: 15,
-          explanation: "Strona zawiera pole wprowadzania hasła (input type='password'), co oznacza proces uwierzytelniania."
+          explanation: "W DOM wykryto pole hasła (input type='password'), które może służyć do logowania. Samo pole nie świadczy o phishingu."
         });
       }
 
@@ -54,9 +54,9 @@ export const RiskCalculator = {
         score += 30;
         indicators.push({
           id: "insecure-form-action",
-          label: "Niezabezpieczony formularz (HTTP)",
+          label: "Cel formularza przez HTTP",
           riskWeight: 30,
-          explanation: "Wykryto formularze przesyłające dane nieszyfrowanym kanałem HTTP, co umożliwia przejęcie danych."
+          explanation: "Atrybut action formularza wskazuje na adres HTTP. Taki cel nie zapewnia szyfrowania HTTPS; nie potwierdzono wysłania danych."
         });
       }
 
@@ -65,9 +65,9 @@ export const RiskCalculator = {
         score += 35;
         indicators.push({
           id: "external-form-action",
-          label: "Wysyłanie danych na obcy serwer",
+          label: "Zewnętrzny cel formularza",
           riskWeight: 35,
-          explanation: "Formularz przesyła zebrane dane użytkownika na zewnętrzny serwer poza bieżącą domeną."
+          explanation: "Atrybut action formularza wskazuje na inny host niż host strony. Może to być także legalna integracja; nie potwierdzono wysłania danych."
         });
       }
 

@@ -89,11 +89,11 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 | **DOM** | Niezgodność marki | **+40** | Strona zawiera nazwę marki, ale domena nie jest powiązana z tą marką. |
 
 ### Klasyfikacja Poziomów Bezpieczeństwa:
-- **0 - 30**: **Safe (Bezpieczny)**
+- **0 - 30**: **Safe (Niskie ryzyko)**
 - **31 - 70**: **Suspicious (Podejrzany)**
 - **71 - 100**: **Dangerous (Zagrożenie)**
 
-Klasyfikacja „Bezpieczny” dotyczy wyłącznie stron, dla których udało się zebrać dane URL i DOM. Przed zakończeniem skanu oraz po kliknięciu „Skanuj ponownie” popup pokazuje status „Skanowanie”. Gdy skanowanie DOM jest niedostępne, popup wyświetla ostrzeżenie o analizie niepełnej. Jeżeli sam URL wskazuje podejrzenie lub zagrożenie, kategoria pozostaje ostrzegawcza, ale nadal widać informację o niepełnym skanie. Strony wewnętrzne przeglądarki mają status „Nie oceniono”, bez punktacji. Wynik 0/100 oznacza brak wykrytych sygnałów w badanych cechach, a nie gwarancję bezpieczeństwa strony.
+Klasyfikacja „Niskie ryzyko” dotyczy wyłącznie stron, dla których udało się zebrać dane URL i DOM. Przed zakończeniem skanu oraz po kliknięciu „Skanuj ponownie” popup pokazuje status „Skanowanie”. Gdy skanowanie DOM jest niedostępne, popup wyświetla ostrzeżenie o analizie niepełnej. Jeżeli sam URL wskazuje podejrzenie lub zagrożenie, kategoria pozostaje ostrzegawcza, ale nadal widać informację o niepełnym skanie. Strony wewnętrzne przeglądarki mają status „Nie oceniono”, bez punktacji. Wynik 0/100 oznacza brak wykrytych sygnałów w badanych cechach, a nie gwarancję bezpieczeństwa strony.
 
 ---
 
@@ -114,7 +114,7 @@ W celach demonstracyjnych w projekcie utworzono katalog `test-pages` zawierając
 3.  **`external-form.html`**: Formularz wysyłający dane na obcą domenę. Na lokalnym serwerze HTTP otrzymuje 75 pkt i status **Zagrożenie**; na HTTPS bez innych wskaźników 50 pkt i status **Podejrzany**.
 4.  **`oauth-false-positive-test.html`**: Formularz z pojedynczym przyciskiem „Zaloguj przez Google” obok formularza pozwala sprawdzić brak fałszywego wskaźnika niezgodności marki.
 5.  **`suspicious-keywords.html`**: Materiał do sprawdzenia ograniczenia prototypu: słowa ostrzegawcze występują w treści, ale bieżący detektor słów kluczowych sprawdza wyłącznie host i ścieżkę URL.
-6.  **`oauth-inside-form.html`**: Strona do powtórnej próby pojedynczej wzmianki „Google” w przycisku wewnątrz formularza. Przy `http://localhost:8000/test-pages/oauth-inside-form.html` kod przewiduje 25 pkt, status **Bezpieczny**, bez `brand-mismatch`. Przesłany po instrukcji zrzut panelu na `localhost` pokazuje takie wartości, lecz nie zawiera paska adresu ani samej strony; [raport E06](docs/proba-chrome-2026-10-05.md) rozdziela obserwację od założonego URL.
+6.  **`oauth-inside-form.html`**: Strona do powtórnej próby pojedynczej wzmianki „Google” w przycisku wewnątrz formularza. Przy `http://localhost:8000/test-pages/oauth-inside-form.html` kod przewiduje 25 pkt, status **Niskie ryzyko**, bez `brand-mismatch`. Historyczny zrzut panelu na `localhost` pokazuje 25 pkt z wcześniejszą etykietą Bezpieczny, lecz nie zawiera paska adresu ani samej strony; [raport E06](docs/proba-chrome-2026-10-05.md) rozdziela obserwację od założonego URL.
 
 *Wskazówka badawcza: Testy domen i celów formularzy wymagają podania stron przez serwer (np. `python -m http.server` i `http://localhost:8000/test-pages/...`). Serwer HTTP dodaje 25 punktów za brak HTTPS i może zmieniać kategorię wyniku. Do porównania skuteczności należy oddzielić wpływ protokołu od badanej cechy lub użyć serwera HTTPS. Nie wpisuj prawdziwych danych do formularzy testowych.*
 
@@ -133,3 +133,5 @@ Regresję można uruchomić przez `node --test --test-isolation=none tests/*.tes
 1. **Dynamiczne aktualizacje baz**: Wdrożenie bezpiecznego mechanizmu pobierania zaktualizowanych baz sygnatur i domen marek w tle (np. poprzez serwer CDN).
 2. **Analiza reputacyjna domen**: Integracja z zewnętrznymi API reputacyjnymi (z zachowaniem anonimizacji zapytań poprzez serwery proxy w celu ochrony prywatności).
 3. **Analiza behawioralna skryptów**: Wykrywanie prób maskowania kodu źródłowego (obfuscation) lub prób blokowania otwierania konsoli deweloperskiej przez witrynę.
+
+Przegląd komunikatów z 08.10.2026: [raport i kontrola po przeładowaniu](docs/przeglad-komunikatow-2026-10-08.md). Panel opisuje poziom jako Siła wskaźników; nie jest to pomiar pewności klasyfikacji. Wskazanie celu formularza dotyczy atrybutu action, nie obserwacji wysłania danych.

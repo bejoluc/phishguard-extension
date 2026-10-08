@@ -272,3 +272,10 @@ body {
   color: var(--color-suspicious);
   border-color: var(--color-suspicious);
 }
+
+.assessment-note {
+  margin: 10px 0 0;
+  color: var(--text-sub);
+  font-size: 11px;
+  line-height: 1.4;
+}

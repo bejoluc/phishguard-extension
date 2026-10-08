@@ -181,3 +181,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczytano oauth-inside-form HTTP: 25/Niskie ryzyko/Niska, nagłówek Siła wskaźników, nota heurystyczna i nowe wyjaśnienie braku HTTPS. Brak alarmu marki oraz ostrzeżenia DOM; odczyt zgodny z oczekiwaniami.
 - Panel w całości widoczny, bez widocznego nakładania i poziomego ucięcia. To kontrola jednego kadru, bez oceny innych skalowań i długich list. Zapisano transkrypcję, CSV i raport.
 - Nowy SHA użytkownika i jawne potwierdzenie przeładowania nieprzekazane; nowe teksty potwierdzają zaktualizowany interfejs. Kod bez zmian. Pozostały kontrole opisów formularzy: external-form HTTP i atrapa PayPal HTTPS.
+
+## 08.10.2026 — E27 i organizacja plików autora
+
+- Odczyt external-form HTTP: 75/Zagrożenie/Wysoka, trzy oczekiwane wskaźniki (25+15+35). Widoczne nowe opisy action i pola hasła, pełna lista po przewinięciu. Zapisano transkrypcję, CSV i raport; kod bez zmian.
+- Dodano zasady katalogów i nazw E##_data_scenariusz_warunek_kadr. Dotychczasowych plików autora nie zmieniano ani nie przypisywano na podstawie miniatur do powtarzanych prób. Od kolejnych instrukcji podawana jest dokładna nazwa zapisu.
+- Następna próba: E28 fake-paypal-login HTTPS, nowe komunikaty. Jeszcze niewykonana.

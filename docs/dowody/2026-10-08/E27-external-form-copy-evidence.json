@@ -1,0 +1,26 @@
+{
+  "observation_id": "E27",
+  "evidence_received_date": "2026-10-08",
+  "evidence_kind": "screenshot_transcription",
+  "suggested_local_filename": "E27_2026-10-08_external-form_HTTP_nowe-komunikaty_01.png",
+  "url": "http://localhost:8000/test-pages/external-form.html",
+  "scheme_basis": "procedure, port and insecure-protocol indicator; address bar omits scheme",
+  "expected_code_commit": "c717d8e07ab1b7abdf2a32270f5d6fcba54de99b",
+  "loaded_extension_sha": null,
+  "observed": {
+    "hostname": "localhost",
+    "score": 75,
+    "status_label": "Zagrożenie",
+    "signal_strength_label": "Wysoka",
+    "indicator_ids": ["insecure-protocol", "password-field-present", "external-form-action"],
+    "weights": [25, 15, 35],
+    "external_form_label": "Zewnętrzny cel formularza",
+    "external_form_explanation": "Atrybut action formularza wskazuje na inny host niż host strony. Może to być także legalna integracja; nie potwierdzono wysłania danych.",
+    "password_explanation": "W DOM wykryto pole hasła (input type='password'), które może służyć do logowania. Samo pole nie świadczy o phishingu.",
+    "heuristic_note_visible": true,
+    "scan_button_visible": true
+  },
+  "layout_scope": "scrolled popup with heading above visible area; score, note, all three indicators and button visible without apparent horizontal clipping",
+  "matches_expected_condition": true,
+  "limitations": "no network transmission observed; no independent checkout, loaded SHA or new browser version supplied"
+}

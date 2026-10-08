@@ -35,3 +35,11 @@ Po instrukcji pobrania zmian i przeładowania otrzymano kadr oauth-inside-form n
 W tym kadrze tekst zawija się w granicach kart, panel jest widoczny w całości, bez widocznego nakładania i poziomego ucięcia. Potwierdzono prezentację jednego warunku niskiej punktacji. Nie otrzymano nowego odczytu SHA po zmianie, niezależnego załadowanego SHA ani wyraźnego potwierdzenia czynności przeładowania; nowe etykiety potwierdzają wyświetlenie zaktualizowanego interfejsu. Nie przeniesiono tego wyniku na inne strony, skalowania i stany panelu. Kolejne kontrole: external-form HTTP i fake-paypal-login HTTPS.
 
 [Transkrypcja E26](dowody/2026-10-08/E26-low-risk-copy-evidence.json) zawiera odczyt bez całego kadru i prywatnych identyfikatorów. Historyczny E25 zachowuje etykietę Bezpieczny. Kod aplikacji w tej kontroli dokumentacyjnej nie został zmieniony.
+
+## Otrzymana kontrola E27
+
+Zrzut external-form na localhost:8000 pokazuje 75/100, Zagrożenie i siłę Wysoka. Pełna lista zawiera brak HTTPS (25), pole hasła (15) i zewnętrzny cel formularza (35). Opis celu odnosi się do action i innego hosta oraz zaznacza możliwość legalnej integracji i brak potwierdzenia wysłania danych. Nowy opis pola hasła również jest widoczny. Wynik odpowiada oczekiwaniom; nie występuje wskaźnik celu HTTP.
+
+Panel jest przewinięty: nagłówek aplikacji znajduje się powyżej widocznego obszaru, lecz wynik, nota, wszystkie trzy wskaźniki i przycisk są czytelne. Nie widać poziomego ucięcia. Nie jest to dowód rzeczywistej transmisji. Nowego SHA i wersji Chrome nie przekazano. [Transkrypcja E27](dowody/2026-10-08/E27-external-form-copy-evidence.json). Pozostała kontrola celu HTTP na atrapie PayPal przez HTTPS.
+
+Sposób zapisywania plików i nazwa tego zrzutu: [organizacja materiałów](organizacja-materialow-pracy.md).

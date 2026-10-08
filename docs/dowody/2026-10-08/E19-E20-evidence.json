@@ -1,0 +1,46 @@
+{
+  "date_received": "2026-10-08",
+  "checkout_commit": null,
+  "loaded_extension_commit": null,
+  "extension_reload_confirmed": null,
+  "chrome_version": null,
+  "system_version": null,
+  "expected_rules_source": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+  "files": [
+    {
+      "source": "image(20261008-114803).png",
+      "path": "docs/dowody/2026-10-08/E19-oauth-beside-form-http.png",
+      "sha256": "120c41f7211349a3902047d519b3a3129cc45acec8199b1451b3498eb9b781eb"
+    },
+    {
+      "source": "image(20261008-114834).png",
+      "path": "docs/dowody/2026-10-08/E20-oauth-beside-form-https.png",
+      "sha256": "e9d8f60347ec1acc0ab845cbb53370c6ecd876ec3a9f402db34fe39308d80e8c"
+    }
+  ],
+  "observations": [
+    {
+      "id": "E19",
+      "url": "http://localhost:8000/test-pages/oauth-false-positive-test.html",
+      "score": 70,
+      "status": "Suspicious",
+      "confidence": "High",
+      "ids": [
+        "insecure-protocol",
+        "password-field-present",
+        "insecure-form-action"
+      ]
+    },
+    {
+      "id": "E20",
+      "url": "https://localhost:8443/test-pages/oauth-false-positive-test.html",
+      "score": 15,
+      "status": "Safe",
+      "confidence": "Low",
+      "ids": [
+        "password-field-present"
+      ]
+    }
+  ],
+  "limits": "Schemes reconstructed from instructed URLs, ports, browser icons and protocol indicators; address bars omit scheme. No new checkout/Chrome metadata or explicit reload confirmation supplied. No real OAuth login, form submission or certificate-chain test inferred."
+}

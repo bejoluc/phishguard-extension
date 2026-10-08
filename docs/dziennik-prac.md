@@ -134,3 +134,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczytano oauth-inside-form: HTTP 25/Bezpieczny/Niska i HTTPS 0/Bezpieczny/Niska. Pełne listy odpowiadają oczekiwaniom; napis Google nie uruchamia brand-mismatch w żadnym warunku.
 - Zapisano kadry, SHA-256, raport, dwa wiersze CSV i opis w pracy. Aktualnych metadanych checkoutu i Chrome nie podano.
 - To atrapa interfejsu, bez wykonania logowania OAuth. Kod i wagi bez zmian; trzy z pięciu par wykonane. Następna: oauth-false-positive-test.
+
+## 08.10.2026 — czwarta para HTTP/HTTPS E19/E20
+
+- Odczytano oauth-false-positive-test: HTTP 70/Podejrzany/Wysoka i HTTPS 15/Bezpieczny/Niska, zgodnie z oczekiwaniami. Znikają dwa wskaźniki HTTP warte 55 pkt; alarm marki nie występuje w obu warunkach.
+- Zachowano kadry, SHA-256, CSV, raport i opis w pracy. Aktualnych metadanych wersji nie podano. Nie wykonano rzeczywistego OAuth ani wysyłki formularza.
+- Kod bez zmian; cztery z pięciu par wykonane. Pozostała atrapa PayPal. C21–C40 nie uruchomiono.

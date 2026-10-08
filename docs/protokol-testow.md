@@ -119,3 +119,7 @@ Odczytano HTTP 70/Suspicious/High i HTTPS 15/Safe/Low. Pełne listy zgodne z prz
 ## 15. E21 i E22 — PayPal i komplet pięciu par
 
 Oba wyniki 100/Dangerous/High; sześć wskaźników HTTP i pięć HTTPS widoczne w całości. Znika tylko insecure-protocol, a sumy wag 155 i 130 osiągają limit 100. [Raport zbiorczy](podsumowanie-http-https-2026-10-08.md) zestawia dziesięć wykonanych warunków i ograniczenia. Pięć par zakończono, zgodnie z przewidywaniami. Nie oznacza to pomiaru skuteczności; brak DOM i C21–C40 nie są uznane za wykonane. Kod bez zmian.
+
+## 16. E23 — strona wewnętrzna
+
+Na chrome://settings odczytano --/100, Nie oceniono, Nie dotyczy i komunikat niedostępności. [Raport](proba-strony-wewnetrznej-2026-10-08.md) opisuje powiązanie z oryginałem i ograniczenia. Próba wykluczenia zgodna z oczekiwaniem; nie jest próbą braku DOM na zwykłej stronie. Kod i C21–C40 bez zmian.

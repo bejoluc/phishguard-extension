@@ -146,3 +146,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Atrapa PayPal: oba warunki 100/Zagrożenie/Wysoka. Pełne listy: sześć wskaźników HTTP (suma 155), pięć HTTPS (130), z limitem 100. Znika tylko brak HTTPS strony; jawny cel HTTP, obcy host i marka pozostają.
 - Zachowano kadry, SHA-256, CSV oraz zbiorczy raport pięciu par. Dopisano wynik i wniosek do pracy. Aktualnych metadanych użytkownika nie podano.
 - Wszystkie dziesięć obserwacji odpowiada wcześniejszym przewidywaniom. To zakończenie pięciu par funkcjonalnych, bez metryk trafności. Kod i wagi bez zmian; C21–C40 niewykonane. Kolejny etap: stany braku analizy i przegląd komunikatów.
+
+## 08.10.2026 — E23 strona wewnętrzna Chrome
+
+- Odczytano chrome://settings: --/100, Nie oceniono, Nie dotyczy, Zasób przeglądarki i komunikat niedostępności analizy. Wynik zgodny z wykluczeniem stron wewnętrznych.
+- Zapisano odczyt i CSV, bez identyfikatorów ani skrótu prywatnego pliku. Pełnego kadru nie opublikowano, ponieważ zawiera dane profilu. Dopisano potwierdzony wynik do pracy.
+- To osobny stan od braku DOM na HTTP/HTTPS; tego ostatniego nie uznano za sprawdzony w Chrome. Aktualnych metadanych nie podano. Kod bez zmian.

@@ -6,6 +6,7 @@ Aktualny wykaz zaimplementowanych reguł, wymagań i ograniczeń: [Stan reguł i
 Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/protokol-testow.md) oraz [tabela przypadków CSV](docs/przypadki-testowe.csv).
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Wykonany zbiór rozwojowy: [C01–C20 i analiza C07/C09](docs/zbior-rozwojowy-2026-10-05.md).
+Strona wewnętrzna Chrome: [E23 — brak oceny](docs/proba-strony-wewnetrznej-2026-10-08.md).
 Wykonane pięć par HTTP/HTTPS: [raport zbiorczy i E21/E22](docs/podsumowanie-http-https-2026-10-08.md).
 Pierwsze porównanie w Chrome: [E13/E14 — własny formularz HTTP/HTTPS](docs/proby-http-https-2026-10-05.md).
 Czwarta para w Chrome: [E19/E20 — przycisk Google obok formularza HTTP/HTTPS](docs/proby-oauth-obok-http-https-2026-10-08.md).

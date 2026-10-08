@@ -1,0 +1,18 @@
+{
+  "id": "E23",
+  "date_received": "2026-10-08",
+  "source_publicly_published": false,
+  "source_publication_reason": "The supplied frame includes Chrome profile identity. Only the manually transcribed panel observation is published; no private source identifiers or digests.",
+  "url": "chrome://settings",
+  "score": null,
+  "score_display": "--/100",
+  "status_display": "Nie oceniono",
+  "confidence_display": "Nie dotyczy",
+  "hostname_display": "Zasób przeglądarki",
+  "message": "Strona przeglądarki (Zasoby systemowe) nie jest dostępna do analizy.",
+  "checkout_commit": null,
+  "loaded_extension_commit": null,
+  "extension_reload_confirmed": null,
+  "chrome_version": null,
+  "limits": "Observation of internal-page exclusion only. Not a DOM communication failure on HTTP/HTTPS, not a phishing classification. Date received, no independent execution timestamp."
+}

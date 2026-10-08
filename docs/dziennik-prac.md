@@ -163,3 +163,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Po pierwszej, niewykonanej próbie w błędnym kontekście konsoli użytkownik potwierdził popup.html i dostępność chrome.tabs. Nowy zrzut potwierdza odrzucenie obu metod w popupie i uruchomienie skanowania.
 - Odczyt: 25/100, Niepełna/Niepełna, ostrzeżenie analizy wyłącznie URL i wskaźnik braku HTTPS. Warunek awarii zgodny z oczekiwaniem. Zapisano transkrypcję, raport i CSV; pełnego kadru i prywatnych identyfikatorów nie opublikowano.
 - To kontrolowana symulacja, nie natywna blokada Chrome. Kontrola powrotu po ponownym otwarciu panelu jeszcze nieprzekazana. Kod i punktacja bez zmian.
+
+## 08.10.2026 — E25 kontrola powrotu pełnej analizy
+
+- Po instrukcji zamknięcia DevTools i popupu oraz ponownego otwarcia otrzymano zrzut tej samej strony: 25/100, Bezpieczny/Niska, tylko brak HTTPS, bez ostrzeżenia o DOM. Wynik odpowiada kontroli powrotu; kadr nie rejestruje samych czynności zamknięcia i otwarcia.
+- Zapisano transkrypcję, CSV i uzupełnienie raportu E24–E25. Oba zaobserwowane warunki odpowiadają oczekiwaniom; nie dodano niewidocznego nowego pomiaru bazowego sprzed awarii. Kod i wagi bez zmian.
+- Potwierdzono rozróżnienie niepełnej i pełnej analizy przy takim samym wyniku URL. Następny punkt planu: przegląd komunikatów użytkownika i zgodności ich treści z zakresem analizy.

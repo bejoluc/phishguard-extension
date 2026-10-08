@@ -17,7 +17,9 @@
     "score": 25,
     "status_label": "Niepełna",
     "confidence_label": "Niepełna",
-    "indicator_ids": ["insecure-protocol"],
+    "indicator_ids": [
+      "insecure-protocol"
+    ],
     "warning": "Nie udało się zbadać struktury strony. Wynik obejmuje tylko adres URL i może być zaniżony."
   },
   "session_metadata": {
@@ -28,6 +30,7 @@
     "reload_confirmed": false
   },
   "new_baseline_observation_received": false,
-  "recovery_observation_received": false,
-  "fault_condition_matches_expectation": true
+  "recovery_observation_received": true,
+  "fault_condition_matches_expectation": true,
+  "recovery_observation_id": "E25"
 }

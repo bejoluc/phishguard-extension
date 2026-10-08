@@ -1,0 +1,29 @@
+{
+  "observation_id": "E25",
+  "evidence_received_date": "2026-10-08",
+  "evidence_kind": "screenshot_transcription",
+  "url": "http://localhost:8000/test-pages/oauth-inside-form.html",
+  "scheme_basis": "procedure, port and insecure-protocol indicator; address bar omits scheme",
+  "condition": "recovery screenshot supplied after instructions to close DevTools and popup and reopen popup",
+  "condition_limit": "screenshot shows the resulting panel, not the close and reopen actions",
+  "observed": {
+    "hostname": "localhost",
+    "score": 25,
+    "status_label": "Bezpieczny",
+    "confidence_label": "Niska",
+    "indicator_ids": ["insecure-protocol"],
+    "missing_dom_warning_present": false,
+    "devtools_visible": false
+  },
+  "session_metadata": {
+    "reported_browser_version": "154.0.8037.98",
+    "reported_browser_build": "official 64-bit",
+    "reported_checkout_sha": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+    "basis": "metadata reported immediately before E24 in the current session; no new metadata reported for E25",
+    "loaded_extension_sha": null,
+    "reload_confirmed": false
+  },
+  "recovery_condition_matches_expectation": true,
+  "comparison": "E24: 25/Incomplete/Incomplete with DOM warning; E25: 25/Safe/Low without DOM warning",
+  "new_pre_fault_baseline_observation_received": false
+}

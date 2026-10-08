@@ -152,3 +152,8 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczytano chrome://settings: --/100, Nie oceniono, Nie dotyczy, Zasób przeglądarki i komunikat niedostępności analizy. Wynik zgodny z wykluczeniem stron wewnętrznych.
 - Zapisano odczyt i CSV, bez identyfikatorów ani skrótu prywatnego pliku. Pełnego kadru nie opublikowano, ponieważ zawiera dane profilu. Dopisano potwierdzony wynik do pracy.
 - To osobny stan od braku DOM na HTTP/HTTPS; tego ostatniego nie uznano za sprawdzony w Chrome. Aktualnych metadanych nie podano. Kod bez zmian.
+
+## 08.10.2026 — metadane obecnej sesji i przygotowanie próby braku DOM
+
+- Użytkownik podał Chrome 154.0.8037.98, oficjalny 64-bit, oraz checkout a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1. Porównanie z 1a7832d wykazało wyłącznie zmiany dokumentacji; kod aplikacji identyczny. Nie przypisano tych danych wstecz do E15–E23 ani nie uznano ich za potwierdzenie załadowanego rozszerzenia.
+- Dodano instrukcję symulacji odrzucenia sendMessage i executeScript w konsoli popupu, z wynikiem bazowym i kontrolą po ponownym otwarciu. Oczekiwania wynikają z kodu; próba czeka na wykonanie i dowody. Plików aplikacji nie zmieniono, nowego wyniku do pracy nie dopisano.

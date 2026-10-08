@@ -27,3 +27,11 @@ Poprawiono też literówkę „Bląd”. Wagi, warunki aktywacji, identyfikatory
 4. `https://localhost:8443/test-pages/fake-paypal-login.html`: oczekiwane 100/Zagrożenie/Wysoka, z opisami celu HTTP i zewnętrznego hosta. Zachowaj zrzuty pełnych list; sprawdź zawijanie tekstów i brak poziomego ucięcia panelu.
 
 Te wartości są oczekiwaniami z niezmienionej punktacji, nie nowymi wynikami Chrome. Nie uruchamiano C21–C40. Zamrożenie wersji do ich oceny nastąpi po kontroli interfejsu.
+
+## Otrzymana kontrola E26
+
+Po instrukcji pobrania zmian i przeładowania otrzymano kadr oauth-inside-form na localhost:8000. Panel pokazuje 25/100, Niskie ryzyko i Niska. Widoczne są nagłówek Siła wskaźników, pełna nota heurystyczna, zmienione wyjaśnienie braku HTTPS i przycisk ponownego skanowania. Występuje tylko insecure-protocol; nie ma alarmu marki ani ostrzeżenia o niedostępności DOM. Odczyt odpowiada przewidywaniom z c717d8e.
+
+W tym kadrze tekst zawija się w granicach kart, panel jest widoczny w całości, bez widocznego nakładania i poziomego ucięcia. Potwierdzono prezentację jednego warunku niskiej punktacji. Nie otrzymano nowego odczytu SHA po zmianie, niezależnego załadowanego SHA ani wyraźnego potwierdzenia czynności przeładowania; nowe etykiety potwierdzają wyświetlenie zaktualizowanego interfejsu. Nie przeniesiono tego wyniku na inne strony, skalowania i stany panelu. Kolejne kontrole: external-form HTTP i fake-paypal-login HTTPS.
+
+[Transkrypcja E26](dowody/2026-10-08/E26-low-risk-copy-evidence.json) zawiera odczyt bez całego kadru i prywatnych identyfikatorów. Historyczny E25 zachowuje etykietę Bezpieczny. Kod aplikacji w tej kontroli dokumentacyjnej nie został zmieniony.

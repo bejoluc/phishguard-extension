@@ -1,0 +1,28 @@
+{
+  "observation_id": "E26",
+  "evidence_received_date": "2026-10-08",
+  "evidence_kind": "screenshot_transcription",
+  "url": "http://localhost:8000/test-pages/oauth-inside-form.html",
+  "scheme_basis": "procedure, port and insecure-protocol indicator; address bar omits scheme",
+  "expected_code_commit": "c717d8e07ab1b7abdf2a32270f5d6fcba54de99b",
+  "user_checkout_sha_after_copy_update": null,
+  "loaded_extension_sha": null,
+  "reload_explicitly_confirmed": false,
+  "version_evidence": "new UI labels, heuristic note and updated protocol explanation visible",
+  "observed": {
+    "hostname": "localhost",
+    "score": 25,
+    "status_label": "Niskie ryzyko",
+    "signal_strength_label": "Niska",
+    "strength_heading": "Siła wskaźników",
+    "heuristic_note": "Ocena heurystyczna badanych cech. Niskie ryzyko nie gwarantuje bezpieczeństwa. Siła wskaźników nie oznacza pewności oceny.",
+    "indicator_ids": ["insecure-protocol"],
+    "protocol_explanation": "Adres strony nie używa protokołu HTTPS. Ten wskaźnik sam nie potwierdza phishingu.",
+    "brand_mismatch_present": false,
+    "missing_dom_warning_present": false,
+    "scan_button_visible": true
+  },
+  "layout_scope": "complete panel in supplied screenshot; no visible overlap or horizontal clipping, note and indicator text wrap",
+  "matches_expected_condition": true,
+  "limitations": "one captured low-score condition; no form-target explanations, other zoom settings or performance verified"
+}

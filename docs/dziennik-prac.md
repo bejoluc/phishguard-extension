@@ -175,3 +175,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Potwierdzono checkout użytkownika 93c640f. Zmieniono Safe na etykietę Niskie ryzyko, nagłówek na Siła wskaźników i dodano objaśnienie heurystyki. Opisy formularzy odnoszą się teraz do action, bez deklaracji wykonanej transmisji; poprawiono też opisy pola hasła, segmentów hosta i słów URL.
 - Punktacja i detekcja bez zmian. Wszystkie 22 testy przeszły; diff bez błędów. Próba lokalnego podglądu nie uruchomiła się z powodu braku Chromium. Kontrola w Chrome po pobraniu i przeładowaniu czeka na zrzuty, nie przypisano nowych wyników.
 - Raport i procedura: przeglad-komunikatow-2026-10-08.md. Historycznych obserwacji nie przepisano na nowe etykiety.
+
+## 08.10.2026 — E26 kontrola nowych komunikatów przy niskiej punktacji
+
+- Odczytano oauth-inside-form HTTP: 25/Niskie ryzyko/Niska, nagłówek Siła wskaźników, nota heurystyczna i nowe wyjaśnienie braku HTTPS. Brak alarmu marki oraz ostrzeżenia DOM; odczyt zgodny z oczekiwaniami.
+- Panel w całości widoczny, bez widocznego nakładania i poziomego ucięcia. To kontrola jednego kadru, bez oceny innych skalowań i długich list. Zapisano transkrypcję, CSV i raport.
+- Nowy SHA użytkownika i jawne potwierdzenie przeładowania nieprzekazane; nowe teksty potwierdzają zaktualizowany interfejs. Kod bez zmian. Pozostały kontrole opisów formularzy: external-form HTTP i atrapa PayPal HTTPS.

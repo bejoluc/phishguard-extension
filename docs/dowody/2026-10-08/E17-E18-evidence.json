@@ -1,0 +1,42 @@
+{
+  "date_received": "2026-10-08",
+  "checkout_commit": null,
+  "loaded_extension_commit": null,
+  "extension_reload_confirmed": null,
+  "chrome_version": null,
+  "system_version": null,
+  "expected_rules_source": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+  "files": [
+    {
+      "source": "image(20261008-114005).png",
+      "path": "docs/dowody/2026-10-08/E17-oauth-inside-form-http.png",
+      "sha256": "5719b15f781a9d3747f2e1a0f5aa466106146fb19b7d97c525b43f4db3ffdb48"
+    },
+    {
+      "source": "image(20261008-114014).png",
+      "path": "docs/dowody/2026-10-08/E18-oauth-inside-form-https.png",
+      "sha256": "584b116f2b0fb657aef55f2a4831afcc94e0f9a4a0906bdfbeab169aa1ebba1a"
+    }
+  ],
+  "observations": [
+    {
+      "id": "E17",
+      "url": "http://localhost:8000/test-pages/oauth-inside-form.html",
+      "score": 25,
+      "status": "Safe",
+      "confidence": "Low",
+      "ids": [
+        "insecure-protocol"
+      ]
+    },
+    {
+      "id": "E18",
+      "url": "https://localhost:8443/test-pages/oauth-inside-form.html",
+      "score": 0,
+      "status": "Safe",
+      "confidence": "Low",
+      "ids": []
+    }
+  ],
+  "limits": "Schemes reconstructed from instructed URLs, ports, browser icons and protocol indicators; address bars omit scheme. No new checkout/Chrome metadata or explicit reload confirmation supplied. No real OAuth authentication or certificate-chain test inferred from screenshots."
+}

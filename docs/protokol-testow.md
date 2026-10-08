@@ -107,3 +107,7 @@ Odczytano 80/Dangerous/High na HTTP i 25/Safe/Medium na HTTPS. Pełne listy odpo
 ## 12. E15 i E16 — obcy cel formularza HTTP/HTTPS
 
 8 października otrzymano dwa pełne kadry: HTTP 75/Dangerous/High, HTTPS 50/Suspicious/High. W HTTPS pozostają hasło (+15) i obcy cel (+35), znika jedynie insecure-protocol (+25). [Raport i dowody](proby-http-https-2026-10-08.md) opisują metadane bez przypisywania wersji z wcześniejszej sesji. To druga para z pięciu; pozostałe trzy pozostają niewykonane. Kod i punktacja bez zmian, C21–C40 nie uruchomiono.
+
+## 13. E17 i E18 — przycisk Google wewnątrz formularza
+
+8 października otrzymano pełne kadry: HTTP 25/Safe/Low i HTTPS 0/Safe/Low. Jedyna różnica to insecure-protocol; brand-mismatch nie występuje. [Raport i dowody](proby-oauth-http-https-2026-10-08.md) opisują zakres i brak aktualnych metadanych. To trzecia para z pięciu. Pozostały oauth-false-positive-test i fake-paypal-login. Nie wykonano rzeczywistego uwierzytelniania OAuth ani C21–C40; kod bez zmian.

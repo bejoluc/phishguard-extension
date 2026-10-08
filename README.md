@@ -7,6 +7,8 @@ Sposób zapisu i późniejszej oceny scenariuszy: [Protokół testów](docs/prot
 Zakres modelowego zestawu testowego: [40 scenariuszy URL + DOM](docs/scenariusze-40.md).
 Wykonany zbiór rozwojowy: [C01–C20 i analiza C07/C09](docs/zbior-rozwojowy-2026-10-05.md).
 Pierwsze porównanie w Chrome: [E13/E14 — własny formularz HTTP/HTTPS](docs/proby-http-https-2026-10-05.md).
+Trzecia para w Chrome: [E17/E18 — przycisk Google HTTP/HTTPS](docs/proby-oauth-http-https-2026-10-08.md).
+
 Druga para w Chrome: [E15/E16 — obcy cel formularza HTTP/HTTPS](docs/proby-http-https-2026-10-08.md).
 Przygotowanie porównania transportu: [Instrukcja HTTP/HTTPS w Windows](docs/proby-https-instrukcja-2026-10-05.md).
 Dalsze decyzje i wyniki weryfikacji: [Dziennik prac](docs/dziennik-prac.md).

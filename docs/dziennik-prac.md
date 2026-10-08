@@ -128,3 +128,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Zapisano oryginalne kadry, SHA-256, raport, dwa wiersze CSV i opis w pracy. Nowego SHA użytkownika i wersji Chrome nie podano; metadane poprzedniej sesji nie są przypisywane wstecz.
 - Ostrzeżenie o obcym celu jest odczytem cech DOM, bez obserwacji faktycznej wysyłki. Nie wyliczano nowych metryk skuteczności i nie zmieniano kodu.
 - Wykonane są dwie z pięciu par; następna to oauth-inside-form HTTP/HTTPS.
+
+## 08.10.2026 — trzecia para HTTP/HTTPS E17/E18
+
+- Odczytano oauth-inside-form: HTTP 25/Bezpieczny/Niska i HTTPS 0/Bezpieczny/Niska. Pełne listy odpowiadają oczekiwaniom; napis Google nie uruchamia brand-mismatch w żadnym warunku.
+- Zapisano kadry, SHA-256, raport, dwa wiersze CSV i opis w pracy. Aktualnych metadanych checkoutu i Chrome nie podano.
+- To atrapa interfejsu, bez wykonania logowania OAuth. Kod i wagi bez zmian; trzy z pięciu par wykonane. Następna: oauth-false-positive-test.

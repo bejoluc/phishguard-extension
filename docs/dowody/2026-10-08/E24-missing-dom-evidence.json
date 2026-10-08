@@ -1,0 +1,33 @@
+{
+  "observation_id": "E24",
+  "evidence_received_date": "2026-10-08",
+  "evidence_kind": "screenshot_transcription",
+  "url": "http://localhost:8000/test-pages/oauth-inside-form.html",
+  "scheme_basis": "procedure, port and insecure-protocol indicator; address bar omits scheme",
+  "fault_injection": {
+    "context": "extension popup.html console",
+    "sendMessage": "async rejection: TEST: brak DOM",
+    "executeScript": "async rejection: TEST: brak wstrzykniecia",
+    "trigger": "scan-btn click",
+    "observed_error": "Dynamiczne wstrzykiwanie zablokowane. Error: TEST: brak wstrzykniecia",
+    "nature": "controlled simulation, not a native Chrome restriction"
+  },
+  "observed": {
+    "hostname": "localhost",
+    "score": 25,
+    "status_label": "Niepełna",
+    "confidence_label": "Niepełna",
+    "indicator_ids": ["insecure-protocol"],
+    "warning": "Nie udało się zbadać struktury strony. Wynik obejmuje tylko adres URL i może być zaniżony."
+  },
+  "session_metadata": {
+    "reported_browser_version": "154.0.8037.98",
+    "reported_browser_build": "official 64-bit",
+    "reported_checkout_sha": "a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1",
+    "loaded_extension_sha": null,
+    "reload_confirmed": false
+  },
+  "new_baseline_observation_received": false,
+  "recovery_observation_received": false,
+  "fault_condition_matches_expectation": true
+}

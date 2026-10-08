@@ -157,3 +157,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 
 - Użytkownik podał Chrome 154.0.8037.98, oficjalny 64-bit, oraz checkout a19bb2cb59e50e28bdb9458c39dd4f19bd3161e1. Porównanie z 1a7832d wykazało wyłącznie zmiany dokumentacji; kod aplikacji identyczny. Nie przypisano tych danych wstecz do E15–E23 ani nie uznano ich za potwierdzenie załadowanego rozszerzenia.
 - Dodano instrukcję symulacji odrzucenia sendMessage i executeScript w konsoli popupu, z wynikiem bazowym i kontrolą po ponownym otwarciu. Oczekiwania wynikają z kodu; próba czeka na wykonanie i dowody. Plików aplikacji nie zmieniono, nowego wyniku do pracy nie dopisano.
+
+## 08.10.2026 — E24 kontrolowana niedostępność DOM
+
+- Po pierwszej, niewykonanej próbie w błędnym kontekście konsoli użytkownik potwierdził popup.html i dostępność chrome.tabs. Nowy zrzut potwierdza odrzucenie obu metod w popupie i uruchomienie skanowania.
+- Odczyt: 25/100, Niepełna/Niepełna, ostrzeżenie analizy wyłącznie URL i wskaźnik braku HTTPS. Warunek awarii zgodny z oczekiwaniem. Zapisano transkrypcję, raport i CSV; pełnego kadru i prywatnych identyfikatorów nie opublikowano.
+- To kontrolowana symulacja, nie natywna blokada Chrome. Kontrola powrotu po ponownym otwarciu panelu jeszcze nieprzekazana. Kod i punktacja bez zmian.

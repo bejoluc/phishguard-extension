@@ -140,3 +140,9 @@ Wpisy sprzed 25.09.2026 odtworzono z historii repozytorium i wcześniejszych tes
 - Odczytano oauth-false-positive-test: HTTP 70/Podejrzany/Wysoka i HTTPS 15/Bezpieczny/Niska, zgodnie z oczekiwaniami. Znikają dwa wskaźniki HTTP warte 55 pkt; alarm marki nie występuje w obu warunkach.
 - Zachowano kadry, SHA-256, CSV, raport i opis w pracy. Aktualnych metadanych wersji nie podano. Nie wykonano rzeczywistego OAuth ani wysyłki formularza.
 - Kod bez zmian; cztery z pięciu par wykonane. Pozostała atrapa PayPal. C21–C40 nie uruchomiono.
+
+## 08.10.2026 — piąta para E21/E22 i zakończenie porównania HTTP/HTTPS
+
+- Atrapa PayPal: oba warunki 100/Zagrożenie/Wysoka. Pełne listy: sześć wskaźników HTTP (suma 155), pięć HTTPS (130), z limitem 100. Znika tylko brak HTTPS strony; jawny cel HTTP, obcy host i marka pozostają.
+- Zachowano kadry, SHA-256, CSV oraz zbiorczy raport pięciu par. Dopisano wynik i wniosek do pracy. Aktualnych metadanych użytkownika nie podano.
+- Wszystkie dziesięć obserwacji odpowiada wcześniejszym przewidywaniom. To zakończenie pięciu par funkcjonalnych, bez metryk trafności. Kod i wagi bez zmian; C21–C40 niewykonane. Kolejny etap: stany braku analizy i przegląd komunikatów.

@@ -115,3 +115,7 @@ Odczytano 80/Dangerous/High na HTTP i 25/Safe/Medium na HTTPS. Pełne listy odpo
 ## 14. E19 i E20 — przycisk Google obok formularza
 
 Odczytano HTTP 70/Suspicious/High i HTTPS 15/Safe/Low. Pełne listy zgodne z przewidywaniami; różnica 55 pkt to insecure-protocol i insecure-form-action. Brand-mismatch nie występuje w obu warunkach. [Raport i dowody](proby-oauth-obok-http-https-2026-10-08.md) opisują warunki i ograniczenia. To czwarta para; pozostała fake-paypal-login. Kod bez zmian; C21–C40 niewykonane.
+
+## 15. E21 i E22 — PayPal i komplet pięciu par
+
+Oba wyniki 100/Dangerous/High; sześć wskaźników HTTP i pięć HTTPS widoczne w całości. Znika tylko insecure-protocol, a sumy wag 155 i 130 osiągają limit 100. [Raport zbiorczy](podsumowanie-http-https-2026-10-08.md) zestawia dziesięć wykonanych warunków i ograniczenia. Pięć par zakończono, zgodnie z przewidywaniami. Nie oznacza to pomiaru skuteczności; brak DOM i C21–C40 nie są uznane za wykonane. Kod bez zmian.

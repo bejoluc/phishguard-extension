@@ -1,0 +1,34 @@
+✔ a missing DOM scan never presents a clean URL as safe (1.777649ms)
+✔ a dangerous URL still warns even if the DOM scan failed (0.771087ms)
+✔ a complete scan can still return zero detected indicators (0.134632ms)
+✔ internal browser pages are reported as not evaluated (0.143395ms)
+✔ the initial popup and subsequent scans show a pending state (0.376866ms)
+✔ a local password form yields login evidence without reading entered values (3.402488ms)
+✔ external HTTPS and same-host HTTP login actions yield distinct signals (1.557388ms)
+✔ a single OAuth button inside a login form is one brand mention (0.836876ms)
+✔ one brand heading inside a password form is one brand mention (1.466351ms)
+✔ two independent mentions in the login context identify an unofficial brand (1.083546ms)
+✔ brand names embedded in longer words do not count as brand mentions (0.840742ms)
+✔ a mention in the footer is ignored and the official host is exempt (1.540152ms)
+✔ lookalike hosts cannot borrow the suffix of an official domain (2.374004ms)
+✔ the exact official host and its subdomains remain recognized (0.149324ms)
+✔ the DOM scanner does not suppress a PayPal mention on fakepaypal.com (2.240524ms)
+✔ overlapping scan requests produce one result and the next scan remains available (3.689199ms)
+✔ a changed URL is not rendered as the result of the previous page (1.181123ms)
+✔ pending navigation, loading and inactive tabs suppress the old assessment (1.809607ms)
+✔ a closed tab releases the scan lock and the button (0.900362ms)
+✔ official domains and their real subdomains do not trigger brand impersonation (0.339019ms)
+✔ brand names on a different host or behind an official-looking prefix are flagged (0.230696ms)
+✔ configured typo patterns trigger one brand indicator with 40 points (0.356285ms)
+✔ keywords are counted once in host or path, not in query or fragment (0.168834ms)
+✔ the subdomain threshold counts domain segments and skips www (0.170086ms)
+✔ an IPv4 address gets IP points, never artificial subdomain points (0.11319ms)
+✔ an IPv6 address is detected without subdomain points (0.191797ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47.336072

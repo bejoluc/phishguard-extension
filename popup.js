@@ -18,6 +18,7 @@ import { UiRenderer } from './src/ui/renderResults.js';
 import { isBrowserInternal } from './src/utils/urlUtils.js';
 
 const AppController = {
+  scanInProgress: false,
   /**
    * Inicjalizuje aplikację po załadowaniu drzewa DOM.
    */
@@ -39,8 +40,12 @@ const AppController = {
    * Procedura główna sterująca przepływem i koordynacją skanowania.
    */
   async runScanner() {
-    UiRenderer.renderScanning();
+    if (this.scanInProgress) return;
+    this.scanInProgress = true;
+    const scanBtn = document.getElementById("scan-btn");
+    if (scanBtn) scanBtn.disabled = true;
     try {
+      UiRenderer.renderScanning();
       // 1. Pobranie aktywnej karty przeglądarki z Chrome API
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       if (!tab) {
@@ -80,6 +85,15 @@ const AppController = {
         }
       }
 
+      // Nie przedstawiamy wyniku po zmianie adresu, rozpoczęciu nawigacji
+      // lub przełączeniu aktywnej karty w trakcie pobierania DOM.
+      const currentTab = await chrome.tabs.get(tab.id);
+      if (!currentTab.active || currentTab.url !== tab.url || currentTab.pendingUrl ||
+          currentTab.status === "loading") {
+        UiRenderer.renderError("Strona zmieniła się lub nadal się ładuje. Poczekaj i uruchom skanowanie ponownie.");
+        return;
+      }
+
       // 5. Wywołanie silnika kalkulacji ryzyka
       const assessment = RiskCalculator.calculate(urlHeuristics, domAnalysis, urlObj.hostname);
 
@@ -89,6 +103,9 @@ const AppController = {
     } catch (err) {
       console.error("Błąd w pętli głównej AppController: ", err);
       UiRenderer.renderError("Wystąpił błąd podczas wykonywania skanowania.");
+    } finally {
+      this.scanInProgress = false;
+      if (scanBtn) scanBtn.disabled = false;
     }
   },
 

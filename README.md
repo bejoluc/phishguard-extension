@@ -67,7 +67,7 @@ phishguard-extension/
 ## 4. Zasada Działania Rozszerzenia
 1. **Wyzwolenie skanowania**: Automatycznie po otwarciu panelu rozszerzenia lub manualnie po kliknięciu przycisku "Skanuj ponownie".
 2. **Inspekcja URL**: Koordynator (`popup.js`) przekazuje adres URL aktywnej karty do `UrlHeuristicsEngine`. Moduł ten bada strukturę adresu i zwraca listę ustrukturyzowanych indykatorów ryzyka.
-3. **Telemetria DOM**: Koordynator przesyła żądanie do skryptu zawartości (`content.js`). Skrypt wstrzykuje i wywołuje bezpieczną analizę `DomDetector` na odwiedzanej witrynie, zbierając wyłącznie parametry techniczne (formularze, pola haseł, brand keywords) i odsyłając je jako surowe dane telemetryczne.
+3. **Telemetria DOM**: Koordynator przesyła żądanie do skryptu zawartości (`content.js`). Skrypt zawartości wywołuje analizę `DomDetector` na odwiedzanej witrynie, zbierając wyłącznie parametry techniczne (formularze, pola haseł, brand keywords) i odsyłając je jako surowe dane telemetryczne.
 4. **Obliczenie Ryzyka**: Moduł `RiskCalculator` łączy dane z URL oraz DOM, sumując wagi wykrytych anomalii, a następnie dokonuje klasyfikacji bezpieczeństwa.
 5. **Renderowanie Wyników**: Obiekt oceny trafia do `UiRenderer`, który bez zbędnych efektów wizualnych prezentuje wynik punktowy, status słowny oraz listę wykrytych zagrożeń w pliku `popup.html`.
 
@@ -81,12 +81,12 @@ Wynik końcowy jest sumą wag wykrytych indykatorów bezpieczeństwa i jest ogra
 | **URL** | Brak protokołu HTTPS | **+25** | Protokół witryny jest inny niż `https:` (np. `http:`). |
 | **URL** | Adres IP jako nazwa hosta | **+30** | Hostname pasuje do wzorca adresu IPv4 lub IPv6. |
 | **URL** | Nadmierna liczba subdomen | **+15** | Host inny niż IP zawiera co najmniej 4 segmenty rozdzielone kropkami (bez `www`). |
-| **URL** | Podejrzane słowo w URL | **+10** | URL zawiera słowa: *login, verify, secure, account, update, password*. |
+| **URL** | Podejrzane słowo w URL | **+10** | Host lub ścieżka URL zawierają słowa: *login, verify, secure, account, update, password*. |
 | **URL** | Typosquatting | **+40** | Domena zniekształca pisownię monitorowanej marki (np. g00gle, alegro). |
 | **DOM** | Obecność pola hasła | **+15** | Drzewo DOM zawiera przynajmniej jeden element `input[type="password"]`. |
 | **DOM** | Nieszyfrowany formularz | **+30** | Niepusty `action`, po rozwiązaniu względem URL strony, wskazuje na HTTP. |
 | **DOM** | Zewnętrzny cel formularza | **+35** | Atrybut `action` formularza wskazuje na host inny niż domena strony. |
-| **DOM** | Niezgodność marki | **+40** | Strona zawiera nazwę marki, ale domena nie jest powiązana z tą marką. |
+| **DOM** | Niezgodność marki | **+40** | Co najmniej dwie wzmianki o marce jako samodzielnym słowie w badanym kontekście logowania; host nie jest oficjalną domeną marki ani jej subdomeną. |
 
 ### Klasyfikacja Poziomów Bezpieczeństwa:
 - **0 - 30**: **Safe (Niskie ryzyko)**
@@ -101,7 +101,7 @@ Klasyfikacja „Niskie ryzyko” dotyczy wyłącznie stron, dla których udało 
 1. Uruchom przeglądarkę Google Chrome i przejdź pod adres `chrome://extensions/`.
 2. Włącz suwak **Tryb dewelopera** (Developer mode) w prawym górnym rogu.
 3. Kliknij przycisk **Załaduj rozpakowane** (Load unpacked) z lewej strony.
-4. Wskaż katalog główny projektu w swoim obszarze roboczym: `c:\Users\blaze\StudioProjects\phishguard-extension`.
+4. Wskaż katalog główny projektu w swoim obszarze roboczym: rozpakowany folder projektu zawierający `manifest.json`.
 5. Rozszerzenie zostanie pomyślnie załadowane i pojawi się na liście Twoich dodatków. Przypnij je do paska zadań za pomocą ikony puzzla.
 
 ---
@@ -124,7 +124,7 @@ Regresję można uruchomić przez `node --test --test-isolation=none tests/*.tes
 
 ## 8. Ograniczenia Projektu
 - **Analiza wyłącznie statyczna/heurystyczna**: Rozszerzenie nie korzysta z dynamicznych analiz zachowań skryptów JS na stronie (brak sandboxa behawioralnego).
-- **Zależność od bazy marek**: Detekcja typosquattingu oraz niezgodności marek w treści opiera się na statycznie zdefiniowanym słowniku w `brands.js`.
+- **Zależność od bazy marek**: Detekcja typosquattingu oraz niezgodności marek w treści opiera się na statycznych słownikach w `src/constants/brands.js` i `src/detectors/domDetector.js`; ich spójność wymaga kontroli.
 - **Weryfikacja lokalna**: Brak integracji z globalnymi, stale aktualizowanymi bazami reputacyjnymi (np. Google Safe Browsing, PhishTank).
 
 ---
@@ -135,3 +135,23 @@ Regresję można uruchomić przez `node --test --test-isolation=none tests/*.tes
 3. **Analiza behawioralna skryptów**: Wykrywanie prób maskowania kodu źródłowego (obfuscation) lub prób blokowania otwierania konsoli deweloperskiej przez witrynę.
 
 Przegląd komunikatów z 08.10.2026: [raport i kontrola po przeładowaniu](docs/przeglad-komunikatow-2026-10-08.md). Panel opisuje poziom jako Siła wskaźników; nie jest to pomiar pewności klasyfikacji. Wskazanie celu formularza dotyczy atrybutu action, nie obserwacji wysłania danych.
+
+
+## Wersja do konsultacji z promotorem — 23.11.2026
+
+Wyniki historyczne opisują wersję `a4af920`. Późniejsza poprawka panelu blokuje równoległe skanowania i przed prezentacją sprawdza adres, aktywność oraz stan ładowania karty. Nie zmienia detektorów, wag ani progów. Testy kontrolera używają atrapy Chrome API; wymagają uzupełnienia próbą na docelowym Chrome.
+
+- [Ocena modelowa C21–C40](docs/ocena-modelowa-2026-10-08.md): TP=8, TN=8, FP=2, FN=2. Trafność 80% dotyczy tylko 20 modeli.
+- [Protokół i oryginalne kadry E29–E32](docs/PhishGuard-protokol-2026-10-27.md).
+- [Opis poprawki i sprawdzeń](docs/kontrola-panelu-2026-11-23.md).
+
+### Krótkie uruchomienie pokazu
+
+1. Pobierz kod tej wersji, rozpakuj i załaduj folder z manifest.json przez chrome://extensions → Tryb dewelopera → Załaduj rozpakowane.
+2. W terminalu otwartym w folderze projektu uruchom `python -m http.server 8000 --bind 127.0.0.1` (Windows: można użyć `py -m http.server 8000 --bind 127.0.0.1`). Pozostaw terminal otwarty.
+3. Otwórz `http://localhost:8000/test-pages/oauth-inside-form.html`: oczekiwane 25 pkt i Niskie ryzyko.
+4. Otwórz `http://localhost:8000/test-pages/external-form.html`: oczekiwane 75 pkt i Zagrożenie.
+5. Otwórz chrome://settings: oczekiwane Nie oceniono, bez punktacji.
+6. Sprawdź przycisk Skanuj ponownie. Podczas skanu jest wyłączony; po zakończeniu działa ponownie. Nie wpisuj danych logowania ani nie wysyłaj formularzy.
+
+Testy kodu: `node --test --test-isolation=none tests/*.test.mjs` (Node.js 24). Ocena modelowa: `node scripts/run-development-model.mjs --evaluation`. Pierwsza komenda w tej wersji obejmuje 26 testów; historyczne 22/22 w pracy pozostaje wynikiem wcześniejszego etapu.
